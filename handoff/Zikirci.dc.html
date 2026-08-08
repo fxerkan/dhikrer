@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-95389983-81ff-45dc-bcbc-e1628f5ec4dd/styles.css">
+<script src="_ds/nocturne-95389983-81ff-45dc-bcbc-e1628f5ec4dd/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+body{margin:0}
+a{color:var(--color-accent)}a:hover{color:var(--color-accent-300)}
+input[type=range]{accent-color:var(--color-accent);width:100%}
+/* Self-contained dark base (nocturne). The injected design-system stylesheet is
+   inert in the DC/WebView runtime, so every dark theme's tokens + component
+   classes live here (this style block DOES apply). Light themes (.zk-light)
+   override these below. */
+.zk-app{
+ --color-bg:#161826;--color-surface:#232532;--color-text:#e9e9ed;
+ --color-divider:color-mix(in srgb,#e9e9ed 16%,transparent);
+ --color-accent:#9184d9;--color-accent-2:#a7a1db;
+ --color-neutral-100:#f3f5fe;--color-neutral-200:#e4e7f5;--color-neutral-300:#cfd3e5;--color-neutral-400:#b2b6ca;--color-neutral-500:#9397ab;--color-neutral-600:#75798c;--color-neutral-700:#595d6c;--color-neutral-800:#3f424d;--color-neutral-900:#292b31;
+ --color-accent-100:#f5f4ff;--color-accent-200:#e7e5fe;--color-accent-300:#d2cefd;--color-accent-400:#b5abfc;--color-accent-500:#968ae0;--color-accent-600:#796cbf;--color-accent-700:#5d5294;--color-accent-800:#423a6a;--color-accent-900:#2b2741;
+ --color-accent-2-100:#f5f4ff;--color-accent-2-200:#e7e5fe;--color-accent-2-300:#d2cefd;--color-accent-2-400:#b5afe8;--color-accent-2-500:#9690c9;--color-accent-2-600:#7972a9;--color-accent-2-700:#5c5783;--color-accent-2-800:#423e5d;--color-accent-2-900:#2b293a;
+ --font-heading:"Archivo",system-ui,sans-serif;--font-heading-weight:800;--font-body:"Archivo",system-ui,sans-serif;
+ --radius-sm:8px;--radius-md:12px;--radius-lg:18px;
+ --shadow-sm:0 0 0 1px rgba(255,255,255,0.07);--shadow-md:0 8px 24px rgba(0,0,0,0.5);--shadow-lg:0 16px 40px rgba(0,0,0,0.6);
+ --space-1:4px;--space-2:8px;--space-3:14px;--space-4:18px;--space-6:24px;--space-8:32px;
+ font-family:var(--font-body);
+}
+.zk-app .card{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:var(--radius-md);background:var(--color-surface)}
+.zk-app .input{width:100%;min-height:40px;padding:10px 12px;font-size:15px;font-family:inherit;color:var(--color-text);background:var(--color-surface);border:1px solid var(--color-divider);border-radius:var(--radius-md)}
+.zk-app .input:focus{outline:none;border-color:var(--color-accent)}
+.zk-app .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:14px;color:var(--color-text);background:transparent;border:1px solid transparent;padding:10px 16px;border-radius:var(--radius-md)}
+.zk-app .btn-primary{background:var(--color-accent);color:#fff;border-color:var(--color-accent)}
+.zk-app .btn-secondary{border-color:var(--color-divider);color:var(--color-text)}
+.zk-app .btn-ghost{color:var(--color-accent)}
+.zk-light{
+ --color-bg:#f3f2f2;--color-surface:#eae9e9;--color-text:#201e1d;--color-accent:#ec3013;--color-accent-2:#e15b47;
+ --color-divider:color-mix(in srgb,#201e1d 30%,transparent);
+ --color-neutral-100:#f8f4f4;--color-neutral-200:#eae7e7;--color-neutral-300:#d7d3d3;--color-neutral-400:#bab6b6;--color-neutral-500:#9b9797;--color-neutral-600:#7d7979;--color-neutral-700:#605d5d;--color-neutral-800:#444141;--color-neutral-900:#2d2b2b;
+ --color-accent-100:#fff2ef;--color-accent-200:#ffe0d9;--color-accent-300:#ffc4b8;--color-accent-400:#ff9783;--color-accent-500:#ff563c;--color-accent-600:#dd2b0f;--color-accent-700:#ae1800;--color-accent-800:#7c1405;--color-accent-900:#4d170e;
+ --color-accent-2-100:#fff2ef;--color-accent-2-200:#ffe0da;--color-accent-2-300:#ffc4b9;--color-accent-2-400:#ff9784;--color-accent-2-500:#ef6853;--color-accent-2-600:#c94b39;--color-accent-2-700:#9e3526;--color-accent-2-800:#71261b;--color-accent-2-900:#471d16;
+ --font-heading:"Archivo",system-ui,sans-serif;--font-heading-weight:800;--font-body:"Archivo",system-ui,sans-serif;
+ --radius-sm:0px;--radius-md:0px;--radius-lg:0px;
+ --shadow-sm:0 1px 2px color-mix(in srgb,#2d2b2b 14%,transparent);--shadow-md:0 3px 10px color-mix(in srgb,#2d2b2b 16%,transparent);--shadow-lg:0 12px 32px color-mix(in srgb,#2d2b2b 22%,transparent);
+}
+.zk-okyanus{
+ --color-bg:#121a2b;--color-surface:#1c2639;--color-accent:#5b8ef2;--color-accent-2:#7ea6f5;
+ --color-accent-100:#eef4ff;--color-accent-200:#d9e6fe;--color-accent-300:#b7d0fd;--color-accent-400:#8db2fb;--color-accent-500:#5b8ef2;--color-accent-600:#3a70d4;--color-accent-700:#2a55a6;--color-accent-800:#1f3d77;--color-accent-900:#16294d;
+}
+.zk-zumrut{
+ --color-bg:#101b16;--color-surface:#1a281f;--color-accent:#3fc487;--color-accent-2:#63d3a0;
+ --color-accent-100:#ecfdf3;--color-accent-200:#d2f7e3;--color-accent-300:#a9edc9;--color-accent-400:#74dda8;--color-accent-500:#3fc487;--color-accent-600:#2aa06c;--color-accent-700:#1f7d55;--color-accent-800:#185c40;--color-accent-900:#123f2d;
+}
+.zk-gul{
+ --color-bg:#fbf4f8;--color-surface:#f5e9ef;--color-accent:#e75a9e;--color-accent-2:#f07fb4;
+ --color-divider:color-mix(in srgb,#47182f 22%,transparent);
+ --color-accent-100:#fff0f6;--color-accent-200:#ffdcec;--color-accent-300:#ffbcd9;--color-accent-400:#f98cbd;--color-accent-500:#e75a9e;--color-accent-600:#c43e81;--color-accent-700:#983064;--color-accent-800:#6e2449;--color-accent-900:#471831;
+ --radius-sm:6px;--radius-md:10px;--radius-lg:16px;
+}
+.zk-kehribar{
+ --color-bg:#1e1a11;--color-surface:#2a2416;--color-accent:#e8a33d;--color-accent-2:#efb85c;
+ --color-accent-100:#fdf5e6;--color-accent-200:#fae7c2;--color-accent-300:#f5d08d;--color-accent-400:#efb85c;--color-accent-500:#e8a33d;--color-accent-600:#c4832a;--color-accent-700:#99651f;--color-accent-800:#6e4816;--color-accent-900:#472f0f;
+}
+.zk-yakut{
+ --color-bg:#221319;--color-surface:#301c24;--color-accent:#e85464;--color-accent-2:#f8808d;
+ --color-accent-100:#ffeef0;--color-accent-200:#ffd9dd;--color-accent-300:#ffb3bb;--color-accent-400:#f8808d;--color-accent-500:#e85464;--color-accent-600:#c53a4d;--color-accent-700:#992c3c;--color-accent-800:#6e202c;--color-accent-900:#47151d;
+}
+.zk-lavanta{
+ --color-bg:#f4f2fa;--color-surface:#ebe7f4;--color-accent:#8f77dd;--color-accent-2:#b3a0ef;
+ --color-accent-100:#f5f2ff;--color-accent-200:#e9e2fe;--color-accent-300:#d4c7fb;--color-accent-400:#b3a0ef;--color-accent-500:#8f77dd;--color-accent-600:#705ab8;--color-accent-700:#57458f;--color-accent-800:#3f3268;--color-accent-900:#292143;
+}
+.zk-kum{
+ --color-bg:#f6f1e8;--color-surface:#ede5d6;--color-accent:#c1932f;--color-accent-2:#d5ae5f;
+ --color-accent-100:#faf4e9;--color-accent-200:#f2e5c9;--color-accent-300:#e6cd97;--color-accent-400:#d5ae5f;--color-accent-500:#c1932f;--color-accent-600:#a1781f;--color-accent-700:#7d5c16;--color-accent-800:#5a420f;--color-accent-900:#3a2a0a;
+}
+.zk-buz{
+ --color-bg:#eef3f7;--color-surface:#e2eaf1;--color-accent:#549bce;--color-accent-2:#86bbe0;
+ --color-accent-100:#eef6fc;--color-accent-200:#d8eaf7;--color-accent-300:#b5d6ee;--color-accent-400:#86bbe0;--color-accent-500:#549bce;--color-accent-600:#3a7db0;--color-accent-700:#2c5f88;--color-accent-800:#204562;--color-accent-900:#152d40;
+}
+.zk-app *::-webkit-scrollbar{width:0;height:0;display:none}
+.zk-app *{scrollbar-width:none}
+@keyframes zkPop{0%{transform:translate(-50%,0) scale(.6);opacity:0}20%{transform:translate(-50%,0) scale(1.05);opacity:1}70%{opacity:1}100%{transform:translate(-50%,-14px) scale(1);opacity:0}}
+@keyframes zkWave{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes zkRipple{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--color-accent) 40%,transparent)}100%{box-shadow:0 0 0 26px transparent}}
+@keyframes zkNumA{0%{transform:scale(1)}35%{transform:scale(1.1)}100%{transform:scale(1)}}
+@keyframes zkNumB{0%{transform:scale(1)}35%{transform:scale(1.1)}100%{transform:scale(1)}}
+@keyframes zkBreath{0%,100%{opacity:.55}50%{opacity:1}}
+</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:22px;background:radial-gradient(1200px 600px at 50% 0%,#1c1f33,#0e0f1a)">
+<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding-bottom:16px">
+  <sc-for list="{{ deviceSeg }}" as="d" hint-placeholder-count="4">
+    <div onClick="{{ d.pick }}" style="padding:7px 14px;font-size:12px;font-weight:600;font-family:Inter,system-ui,sans-serif;cursor:pointer;border-radius:8px;border:1px solid {{ d.bd }};background:{{ d.bg }};color:{{ d.fg }};display:flex;align-items:center;gap:6px"><i class="ph {{ d.icon }}" style="font-size:14px"></i>{{ d.label }}</div>
+  </sc-for>
+</div>
+<div style="width:{{ deskW }};height:{{ deskH }};overflow:visible">
+<div style="transform:{{ deskT }};transform-origin:top left;width:fit-content">
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" dark="{{ isDark }}" width="{{ devW }}" height="{{ devH }}" hint-size="428,908">
+<div class="zk-app {{ appClass }}" ref="{{ appRef }}" style="height:100%;display:flex;flex-direction:column;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);position:relative;overflow:hidden">
+
+<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 20px 6px;position:relative;z-index:2">
+  <div dir="ltr" style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:21px;letter-spacing:-0.02em;unicode-bidi:isolate">{{ t.app }}<span style="color:var(--color-accent)">.</span></div>
+  <div onClick="{{ toggleTheme }}" title="{{ themeName }}" style="height:38px;padding:0 12px;border-radius:var(--radius-lg);border:1px solid var(--color-divider);display:flex;align-items:center;gap:7px;cursor:pointer;font-size:17px" style-hover="border-color:var(--color-accent);color:var(--color-accent)">
+    <span style="width:14px;height:14px;border-radius:50%;background:var(--color-accent);display:inline-block"></span>
+    <i class="ph ph-palette"></i>
+  </div>
+</div>
+
+<div style="flex:1;overflow:{{ contentOverflow }};padding:4px 20px 14px;display:flex;flex-direction:column;position:relative;width:100%;max-width:{{ contentMax }};margin:0 auto">
+
+<sc-if value="{{ isSayac }}" hint-placeholder-val="{{ true }}">
+  <div style="display:flex;flex-direction:{{ sayacDir }};align-items:center;justify-content:{{ sayacJustify }};gap:{{ sayacGap }};flex:1;min-height:0;position:relative">
+    <div style="position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:430px;height:430px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--color-accent) 17%,transparent),transparent 68%);pointer-events:none;animation:zkBreath 5s ease-in-out infinite"></div>
+    <div style="display:flex;flex-direction:column;align-items:center;min-width:0;position:relative">
+    <div style="display:flex;align-items:center;gap:8px;margin-top:2px;position:relative">
+      <span style="font-size:13px;font-weight:600;color:color-mix(in srgb,var(--color-text) 80%, transparent)">{{ activeName }}</span>
+      <span style="font-size:11px;padding:3px 8px;border:1px solid var(--color-divider);border-radius:var(--radius-sm);color:color-mix(in srgb,var(--color-text) 60%, transparent)">{{ targetChip }}</span>
+    </div>
+    <div style="display:flex;gap:12px;margin:{{ ctrlMy }};position:relative">
+      <sc-for list="{{ ctrlBtns }}" as="b" hint-placeholder-count="5">
+        <div onClick="{{ b.pick }}" title="{{ b.tip }}" style="width:42px;height:42px;border-radius:50%;border:1px solid {{ b.bd }};color:{{ b.fg }};background:{{ b.bg }};display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;box-shadow:var(--shadow-sm)" style-hover="border-color:var(--color-accent)" style-active="transform:scale(.92)"><i class="ph {{ b.icon }}"></i></div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ hasThousand }}">
+      <div style="margin:-6px 0 10px;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--color-accent);border:1px solid color-mix(in srgb,var(--color-accent) 45%,transparent);background:color-mix(in srgb,var(--color-accent) 10%,transparent);padding:4px 12px;border-radius:var(--radius-lg);position:relative">{{ thousandLabel }}</div>
+    </sc-if>
+    <sc-if value="{{ effIsRing }}">
+      <div style="position:relative;width:{{ ringPx }};height:{{ ringPx }}">
+        <svg width="100%" height="100%" viewBox="0 0 240 240">
+          <sc-if value="{{ ringIsCircle }}" hint-placeholder-val="{{ true }}">
+            <circle cx="120" cy="120" r="104" fill="none" stroke="{{ ringTrack }}" stroke-width="14"></circle>
+            <circle cx="120" cy="120" r="104" fill="none" stroke="var(--color-accent)" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="{{ ringDash }}" transform="rotate(-90 120 120)" style="transition:stroke-dasharray .35s"></circle>
+          </sc-if>
+          <sc-if value="{{ ringIsRect }}">
+            <rect x="12" y="12" width="216" height="216" rx="{{ ringRx }}" fill="none" stroke="{{ ringTrack }}" stroke-width="14"></rect>
+            <rect x="12" y="12" width="216" height="216" rx="{{ ringRx }}" fill="none" stroke="var(--color-accent)" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="{{ ringDash }}" style="transition:stroke-dasharray .35s"></rect>
+          </sc-if>
+        </svg>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+          <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:{{ countFs }};line-height:1;letter-spacing:-0.02em;animation:{{ countAnim }}">{{ bigCount }}</div>
+          <sc-if value="{{ showRemainLine }}"><div style="font-size:12.5px;font-weight:600;color:{{ remainColor }}">{{ remainLine }}</div></sc-if>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ effIsShape }}">
+      <div style="position:relative;width:{{ shapePx }};height:{{ shapePx }};background:{{ shapeTrack }};clip-path:{{ shapeClip }};border-radius:{{ shapeRadius }};overflow:hidden;transition:clip-path .8s ease,border-radius .8s ease">
+        <div style="position:absolute;left:0;right:0;bottom:0;height:{{ pctStr }};background:linear-gradient(180deg,var(--color-accent-400),var(--color-accent-700));transition:height .35s">
+          <sc-if value="{{ effIsWave }}">
+            <div style="position:absolute;left:0;top:-14px;width:200%;height:16px;animation:zkWave 3.2s linear infinite">
+              <svg width="100%" height="16" viewBox="0 0 460 16" preserveAspectRatio="none"><path d="M0 8 Q28.75 0 57.5 8 T115 8 T172.5 8 T230 8 T287.5 8 T345 8 T402.5 8 T460 8 V16 H0 Z" fill="var(--color-accent-400)"></path></svg>
+            </div>
+          </sc-if>
+        </div>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px">
+          <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:{{ countFs }};line-height:1;animation:{{ countAnim }}">{{ bigCount }}</div>
+          <sc-if value="{{ showRemainLine }}"><div style="font-size:12.5px;font-weight:600;color:{{ remainColor }}">{{ remainLine }}</div></sc-if>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ flashOn }}">
+      <div style="position:absolute;top:112px;left:50%;transform:translate(-50%,0);background:var(--color-accent);color:#fff;font-family:var(--font-heading);font-weight:600;font-size:15px;padding:8px 18px;border-radius:var(--radius-lg);animation:zkPop .95s ease forwards;z-index:5;box-shadow:var(--shadow-md);white-space:nowrap">{{ flashLabel }}</div>
+    </sc-if>
+    </div>
+    <sc-if value="{{ isKlasik }}">
+    <div style="width:{{ btnWrapW }};display:flex;align-items:center;justify-content:{{ btnJustify }};padding:0 4px {{ btnLiftPx }};position:relative">
+      <div onClick="{{ tap }}" style="width:{{ btnPx }};height:{{ btnHpx }};border-radius:{{ btnRadius }};background:{{ btnBg }};border:2px solid {{ btnBd }};color:{{ btnFg }};display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;opacity:{{ btnOpacity }};box-shadow:0 14px 34px color-mix(in srgb,{{ btnBd }} 30%,transparent);transition:transform .08s,opacity .3s" style-active="transform:scale(.955);animation:zkRipple .5s ease-out">
+        <i class="ph {{ tapIcon }}" style="font-size:52px"></i>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isBirlesik }}">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:{{ btnJustify }};pointer-events:none;padding:0 12px">
+      <div id="zk-tapbtn" onClick="{{ tap }}" style="pointer-events:auto;width:{{ uniW }};height:{{ uniH }};border-radius:{{ uniRadius }};background:{{ btnBg }};border:3px solid {{ btnBd }};color:{{ btnFg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;opacity:{{ btnOpacity }};box-shadow:0 18px 46px color-mix(in srgb,{{ btnBd }} 34%,transparent);transition:transform .08s" style-active="transform:scale(.965);animation:zkRipple .5s ease-out">
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:72px;line-height:1;letter-spacing:-0.02em;animation:{{ countAnim }}">{{ bigCount }}</div>
+        <sc-if value="{{ showRemainLine }}"><div style="font-size:14px;font-weight:600;opacity:.85">{{ remainLine }}</div></sc-if>
+        <i class="ph ph-hand-tap" style="font-size:24px;opacity:.5;margin-top:4px"></i>
+      </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isTespih }}">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none">
+      <div style="position:relative;width:{{ tespihPx }};height:{{ tespihPx }};max-width:100%">
+        <svg viewBox="0 0 100 100" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:auto">
+          <sc-for list="{{ beads }}" as="bd" hint-placeholder-count="33">
+            <circle onClick="{{ tap }}" cx="{{ bd.cx }}" cy="{{ bd.cy }}" r="{{ bd.r }}" fill="{{ bd.fill }}" stroke="{{ bd.stroke }}" stroke-width="{{ bd.sw }}" style="cursor:pointer;transition:fill .25s"></circle>
+          </sc-for>
+        </svg>
+        <div id="zk-tapbtn" onClick="{{ tap }}" style="pointer-events:auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:{{ tespihBtnW }};height:{{ tespihBtnW }};border-radius:{{ uniRadius }};background:{{ btnBg }};border:3px solid {{ btnBd }};color:{{ btnFg }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;box-shadow:0 14px 34px color-mix(in srgb,{{ btnBd }} 30%,transparent)" style-active="animation:zkRipple .5s ease-out">
+          <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:46px;line-height:1;animation:{{ countAnim }}">{{ bigCount }}</div>
+          <sc-if value="{{ showRemainLine }}"><div style="font-size:12px;font-weight:600;opacity:.85">{{ remainLine }}</div></sc-if>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isKutup }}">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin:6px 0 12px">
+    <div>
+      <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:26px;letter-spacing:-0.02em">{{ t.libNav }}</div>
+      <div style="font-size:12.5px;color:color-mix(in srgb,var(--color-text) 55%, transparent);margin-top:2px">{{ t.kutupSub }}</div>
+    </div>
+    <div onClick="{{ openNew }}" title="{{ t.yeni }}" style="width:50px;height:50px;border-radius:var(--radius-lg);border:1.5px solid var(--color-accent);color:var(--color-accent);background:color-mix(in srgb,var(--color-accent) 10%,transparent);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px color-mix(in srgb,var(--color-accent) 25%,transparent)" style-hover="background:color-mix(in srgb,var(--color-accent) 20%,transparent)" style-active="transform:scale(.93)"><i class="ph ph-plus" style="font-size:26px"></i></div>
+  </div>
+  <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px">
+    <sc-for list="{{ catSeg }}" as="o" hint-placeholder-count="4">
+      <div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12.5px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div>
+    </sc-for>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ libCols }};gap:12px">
+    <sc-for list="{{ zikirCards }}" as="z" hint-placeholder-count="3">
+      <div style="position:relative;border-radius:var(--radius-md);overflow:hidden">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:color-mix(in srgb,var(--color-text) 6%,transparent)">
+          <i class="ph ph-push-pin-fill" style="font-size:22px;color:var(--color-accent)"></i>
+          <i class="ph ph-trash" style="font-size:22px;color:#ff5a5a"></i>
+        </div>
+        <div ontouchstart="{{ z.onStart }}" ontouchmove="{{ z.onMove }}" ontouchend="{{ z.onEnd }}" class="card" style="border:1px solid {{ z.bd }};box-shadow:var(--shadow-sm);background:{{ z.cardBg }};transform:translateX({{ z.dx }}px);position:relative">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px">
+            <div style="flex:1;min-width:0">
+              <div style="display:flex;align-items:center;gap:6px">
+                <sc-if value="{{ z.pinned }}"><i class="ph ph-push-pin" style="font-size:13px;color:var(--color-accent)"></i></sc-if>
+                <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ z.name }}</div>
+              </div>
+              <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 62%, transparent);margin-top:3px"><i class="ph ph-repeat" style="font-size:11px"></i> {{ z.targetLabel }} · <i class="ph ph-speaker-simple-high" style="font-size:11px"></i> {{ z.soundLabel }}</div>
+            </div>
+            <div style="font-size:19px;font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-align:right;line-height:1.1">{{ z.countFmt }}<div style="font-size:11px;color:color-mix(in srgb,var(--color-text) 55%, transparent);font-family:var(--font-body);font-weight:400">{{ z.pctLabel }}</div></div>
+            <div onClick="{{ z.pin }}" style="width:34px;height:34px;flex:none;border-radius:50%;border:1px solid {{ z.pinBd }};background:{{ z.pinBg }};display:flex;align-items:center;justify-content:center;cursor:pointer;color:{{ z.pinFg }}"><i class="ph ph-push-pin" style="font-size:15px"></i></div>
+            <div onClick="{{ z.edit }}" title="{{ t.zikirAyar }}" style="width:34px;height:34px;flex:none;border-radius:50%;border:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center;cursor:pointer;color:color-mix(in srgb,var(--color-text) 65%, transparent)"><i class="ph ph-sliders-horizontal" style="font-size:16px"></i></div>
+          </div>
+          <div onClick="{{ z.pick }}" style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px;padding:11px 0;border-radius:var(--radius-md);cursor:pointer;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:14px;background:{{ z.ctaBg }};color:{{ z.ctaFg }};border:1px solid {{ z.ctaBd }}"><i class="ph ph-play" style="font-size:14px"></i> {{ z.cta }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isStat }}">
+  <div style="margin:6px 0 14px">
+    <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:26px;letter-spacing:-0.02em">{{ t.statNav }}</div>
+    <div style="font-size:12.5px;color:color-mix(in srgb,var(--color-text) 55%, transparent);margin-top:2px">{{ t.statSub }}</div>
+  </div>
+  <div class="card" style="box-shadow:var(--shadow-sm);margin-bottom:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:15px">{{ t.yogunluk }}</div>
+      <sc-if value="{{ statSelOn }}"><div style="font-size:12px;font-weight:600;color:var(--color-accent);background:color-mix(in srgb,var(--color-accent) 12%,transparent);padding:2px 10px;border-radius:var(--radius-lg)">{{ statSelLabel }}</div></sc-if>
+    </div>
+    <svg width="100%" height="104" viewBox="0 0 322 104">
+      <sc-for list="{{ heatMonths }}" as="m" hint-placeholder-count="6">
+        <text x="{{ m.x }}" y="9" font-size="8.5" font-weight="600" fill="{{ axisFill }}">{{ m.label }}</text>
+      </sc-for>
+      <sc-for list="{{ heatDays }}" as="d" hint-placeholder-count="7">
+        <text x="0" y="{{ d.y }}" font-size="8" font-weight="600" fill="{{ axisFill }}">{{ d.label }}</text>
+      </sc-for>
+      <sc-for list="{{ heatCells }}" as="c" hint-placeholder-count="20">
+        <rect onClick="{{ c.pick }}" onpointerenter="{{ c.pick }}" x="{{ c.x }}" y="{{ c.y }}" width="8.5" height="8.5" rx="2" fill="{{ c.f }}" style="cursor:pointer"></rect>
+      </sc-for>
+    </svg>
+    <div style="display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-top:8px;font-size:10.5px;color:color-mix(in srgb,var(--color-text) 55%, transparent)">
+      {{ t.az }}
+      <sc-for list="{{ legendCells }}" as="c" hint-placeholder-count="5"><span style="width:9px;height:9px;border-radius:2px;background:{{ c.f }};display:inline-block"></span></sc-for>
+      {{ t.cok }}
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:{{ kpiCols }};gap:10px;margin-bottom:12px">
+    <sc-for list="{{ statCards }}" as="s" hint-placeholder-count="4">
+      <div class="card" style="box-shadow:var(--shadow-sm)">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:color-mix(in srgb,var(--color-text) 60%, transparent)">{{ s.label }}<span style="width:26px;height:26px;border-radius:50%;background:color-mix(in srgb,var(--color-accent) 12%,transparent);display:flex;align-items:center;justify-content:center"><i class="ph {{ s.icon }}" style="font-size:14px;color:var(--color-accent)"></i></span></div>
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:23px;margin-top:4px">{{ s.value }}<span style="font-size:12px;font-weight:400;margin-left:4px;color:color-mix(in srgb,var(--color-text) 55%, transparent)">{{ s.unit }}</span></div>
+        <div style="font-size:11px;color:{{ accentSubColor }};margin-top:2px">{{ s.sub }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div class="card" style="box-shadow:var(--shadow-sm);margin-bottom:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:15px">{{ t.aktivite }}</div>
+      <sc-if value="{{ statSelOn }}"><div style="font-size:12px;font-weight:600;color:var(--color-accent);background:color-mix(in srgb,var(--color-accent) 12%,transparent);padding:2px 10px;border-radius:var(--radius-lg)">{{ statSelLabel }}</div></sc-if>
+    </div>
+    <div style="display:flex;gap:6px;margin-bottom:12px">
+      <sc-for list="{{ rangeSeg }}" as="o" hint-placeholder-count="3">
+        <div onClick="{{ o.pick }}" style="flex:1;text-align:center;padding:7px 0;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div>
+      </sc-for>
+    </div>
+    <svg width="100%" height="150" viewBox="0 0 322 150">
+      <line x1="0" y1="120" x2="322" y2="120" stroke="{{ mutedFill }}" stroke-width="0.5"></line>
+      <sc-for list="{{ bars }}" as="b" hint-placeholder-count="7">
+        <rect onClick="{{ b.pick }}" onpointerenter="{{ b.pick }}" x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}" rx="2" fill="{{ b.fill }}" style="cursor:pointer"></rect>
+      </sc-for>
+      <sc-for list="{{ bars }}" as="b" hint-placeholder-count="7">
+        <sc-if value="{{ b.showVal }}"><text x="{{ b.lx }}" y="{{ b.vy }}" font-size="8.5" text-anchor="middle" font-weight="700" fill="var(--color-accent)">{{ b.val }}</text></sc-if>
+      </sc-for>
+      <sc-for list="{{ barLabels }}" as="b">
+        <text x="{{ b.x }}" y="134" font-size="10" text-anchor="middle" font-weight="600" fill="{{ axisFill }}">{{ b.label }}</text>
+      </sc-for>
+    </svg>
+  </div>
+  <div class="card" style="box-shadow:var(--shadow-sm)">
+    <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:15px;margin-bottom:10px">{{ t.dagilim }}</div>
+    <div style="display:flex;align-items:center;gap:18px">
+      <svg width="128" height="128" viewBox="0 0 128 128" style="transform:rotate(-90deg);flex:none">
+        <sc-for list="{{ donutSegs }}" as="s" hint-placeholder-count="4">
+          <circle onClick="{{ s.pick }}" onpointerenter="{{ s.pick }}" cx="64" cy="64" r="50" fill="none" stroke="{{ s.color }}" stroke-width="22" stroke-dasharray="{{ s.dash }}" stroke-dashoffset="{{ s.off }}" style="cursor:pointer"></circle>
+        </sc-for>
+      </svg>
+      <div style="display:flex;flex-direction:column;gap:9px;flex:1">
+        <sc-for list="{{ donutSegs }}" as="s" hint-placeholder-count="4">
+          <div onClick="{{ s.pick }}" style="display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer">
+            <span style="width:11px;height:11px;border-radius:3px;background:{{ s.color }};flex:none"></span>
+            <span style="flex:1">{{ s.name }}</span>
+            <span style="font-weight:700">{{ s.pctLabel }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ isAyar }}">
+  <sc-if value="{{ notReminders }}">
+    <div style="margin:6px 0 14px">
+      <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:26px;letter-spacing:-0.02em">{{ t.ayar }}</div>
+      <div style="font-size:12.5px;color:color-mix(in srgb,var(--color-text) 55%, transparent);margin-top:2px">{{ t.ayarSub }}</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card" style="box-shadow:var(--shadow-sm)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><i class="ph ph-paint-brush" style="color:var(--color-accent);font-size:17px"></i><span style="font-weight:600;font-size:14px">{{ t.gorunum }}</span></div>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:8px">{{ t.tema }}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+          <sc-for list="{{ themeSwatches }}" as="o" hint-placeholder-count="5">
+            <div onClick="{{ o.pick }}" style="display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;width:54px">
+              <div style="width:38px;height:38px;border-radius:50%;background:{{ o.swatch }};border:2px solid {{ o.ring }};box-shadow:{{ o.glow }}"></div>
+              <span style="font-size:10.5px;font-weight:600;color:{{ o.fg }}">{{ o.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.dil }}</div>
+        <select class="input" value="{{ lang }}" onChange="{{ setLang }}" style="width:100%">
+          <option value="tr">Türkçe</option>
+          <option value="en">English</option>
+          <option value="ar" disabled>العربية · {{ t.yakinda }}</option>
+          <option value="id" disabled>Bahasa Indonesia · {{ t.yakinda }}</option>
+          <option value="hi" disabled>हिन्दी · {{ t.yakinda }}</option>
+          <option value="zh" disabled>中文 · {{ t.yakinda }}</option>
+        </select>
+      </div>
+      <div class="card" style="box-shadow:var(--shadow-sm)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><i class="ph ph-speaker-high" style="color:var(--color-accent);font-size:17px"></i><span style="font-weight:600;font-size:14px">{{ t.sesTitresim }}</span></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ masterToggles }}" as="m" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+              <div><div style="font-size:13.5px;font-weight:500">{{ m.label }}</div><div style="font-size:11.5px;color:color-mix(in srgb,var(--color-text) 55%, transparent)">{{ m.desc }}</div></div>
+              <div onClick="{{ m.pick }}" style="width:46px;height:26px;flex:none;border-radius:var(--radius-lg);background:{{ m.bg }};cursor:pointer;position:relative;transition:background .2s">
+                <div style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:var(--radius-lg);background:{{ m.knob }};transform:{{ m.tx }};transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)"></div>
+              </div>
+            </div>
+          </sc-for>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:4px"><span>{{ t.sesSev }}</span><span>{{ volumePct }}%</span></div>
+            <input type="range" min="0" max="100" value="{{ volumePct }}" onChange="{{ setVolume }}">
+          </div>
+          <div>
+            <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.tikSes }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ clickSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent)">{{ t.taslar }}</div>
+            <div style="font-size:11px;color:color-mix(in srgb,var(--color-text) 45%, transparent);margin-bottom:7px">{{ t.taslarDesc }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap">
+              <sc-for list="{{ milestonePills }}" as="o" hint-placeholder-count="6"><div onClick="{{ o.pick }}" style="padding:7px 12px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};display:flex;align-items:center;gap:5px"><i class="ph {{ o.icon }}" style="font-size:12px"></i>{{ o.label }}</div></sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="box-shadow:var(--shadow-sm)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><i class="ph ph-circles-three" style="color:var(--color-accent);font-size:17px"></i><span style="font-weight:600;font-size:14px">{{ t.sayacBtn }}</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.presetler }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ presetSeg }}" as="o" hint-placeholder-count="6"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }};display:flex;align-items:center;gap:5px"><i class="ph {{ o.icon }}" style="font-size:12px"></i>{{ o.label }}</div></sc-for></div></div>
+          <div><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.tasarim }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ designSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="padding:9px 15px;font-size:12.5px;font-weight:600;cursor:pointer;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <div style="{{ dimLayoutSty }}"><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.yerlesim }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ layoutSeg }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="padding:9px 15px;font-size:12.5px;font-weight:600;cursor:pointer;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <div style="{{ dimEffectSty }}"><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.anim }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ effectSeg }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <div style="{{ dimShapeSty }}"><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.sayacSekil }}</div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ cShapeSeg }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <div><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.renk }}</div>
+            <div style="display:flex;gap:6px"><sc-for list="{{ colorSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <div><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.sekil }}</div>
+            <div style="display:flex;gap:6px"><sc-for list="{{ shapeSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <div><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.boyut }}</div>
+            <div style="display:flex;gap:6px"><sc-for list="{{ sizeSeg }}" as="o" hint-placeholder-count="4"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <div style="{{ dimPosSty }}"><div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:6px">{{ t.konum }}</div>
+            <div style="display:flex;gap:6px"><sc-for list="{{ posSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;border-radius:var(--radius-lg);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for></div></div>
+          <sc-if value="{{ showCustom }}">
+            <div style="border:1px dashed var(--color-divider);border-radius:var(--radius-md);padding:12px;display:flex;flex-direction:column;gap:10px">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:4px"><span>{{ t.genislik }}</span><span>%{{ btnCw }}</span></div>
+                <input type="range" min="30" max="100" value="{{ btnCw }}" onChange="{{ setBtnCw }}">
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:4px"><span>{{ t.yukseklik }}</span><span>{{ btnCh }}px</span></div>
+                <input type="range" min="70" max="360" value="{{ btnCh }}" onChange="{{ setBtnCh }}">
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:4px"><span>{{ t.altBosluk }}</span><span>{{ btnLift }}px</span></div>
+                <input type="range" min="0" max="300" value="{{ btnLift }}" onChange="{{ setBtnLift }}">
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <div class="card" style="box-shadow:var(--shadow-sm);cursor:pointer" onClick="{{ openReminders }}" style-hover="border-color:var(--color-accent)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <i class="ph ph-bell" style="color:var(--color-accent);font-size:19px"></i>
+          <div style="flex:1"><div style="font-weight:600;font-size:14px">{{ t.hatir }}</div><div style="font-size:11.5px;color:color-mix(in srgb,var(--color-text) 55%, transparent)">{{ reminderSummary }}</div></div>
+          <i class="ph ph-caret-right" style="font-size:16px;color:color-mix(in srgb,var(--color-text) 45%, transparent)"></i>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:11px;color:color-mix(in srgb,var(--color-text) 40%, transparent);padding:4px 0 8px">{{ t.dev }}<a href="https://fxerkan.com" target="_blank" style="color:var(--color-accent);text-decoration:none;font-weight:600">@FXerkan</a></div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isReminders }}">
+    <div style="display:flex;align-items:center;gap:10px;margin:6px 0 14px">
+      <div onClick="{{ closeReminders }}" style="width:36px;height:36px;border-radius:var(--radius-lg);border:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center;cursor:pointer"><i class="ph ph-arrow-left" style="font-size:17px"></i></div>
+      <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px">{{ t.hatir }}</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ reminderRows }}" as="r" hint-placeholder-count="3">
+        <div class="card" style="box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:12px">
+          <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:21px;min-width:64px">{{ r.time }}</div>
+          <div style="flex:1;font-size:12.5px;color:color-mix(in srgb,var(--color-text) 65%, transparent)">{{ r.label }}</div>
+          <div onClick="{{ r.pick }}" style="width:46px;height:26px;flex:none;border-radius:var(--radius-lg);background:{{ r.bg }};cursor:pointer;position:relative;transition:background .2s">
+            <div style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:var(--radius-lg);background:{{ r.knob }};transform:{{ r.tx }};transition:transform .2s"></div>
+          </div>
+          <div onClick="{{ r.remove }}" style="width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:color-mix(in srgb,var(--color-text) 45%, transparent)" style-hover="color:var(--color-accent)"><i class="ph ph-trash" style="font-size:16px"></i></div>
+        </div>
+      </sc-for>
+      <div class="card" style="box-shadow:var(--shadow-sm)">
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 60%, transparent);margin-bottom:8px">{{ t.yeniHatir }}</div>
+        <div style="display:flex;gap:8px">
+          <input type="time" class="input" value="{{ newRemTime }}" onChange="{{ onRemTime }}" style="flex:none;width:110px">
+          <input type="text" class="input" placeholder="{{ t.etiket }}" value="{{ newRemLabel }}" onChange="{{ onRemLabel }}" style="flex:1;min-width:0">
+          <div onClick="{{ addReminder }}" class="btn btn-primary" style="flex:none">{{ t.ekle }}</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</sc-if>
+
+</div>
+
+<div style="display:flex;border-top:1px solid var(--color-divider);padding:6px 8px 4px;background:var(--color-bg)">
+  <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+    <div onClick="{{ n.pick }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;cursor:pointer;color:{{ n.fg }};background:{{ n.bg }};border-radius:var(--radius-lg)">
+      <i class="ph {{ n.icon }}" style="font-size:22px"></i>
+      <span style="font-size:10.5px;font-weight:600">{{ n.label }}</span>
+    </div>
+  </sc-for>
+</div>
+
+<sc-if value="{{ modalOn }}">
+  <div onClick="{{ closeModal }}" style="position:absolute;inset:0;background:rgba(8,9,16,.62);z-index:20;display:flex;align-items:center;justify-content:center;padding:22px">
+    <div onClick="{{ stopProp }}" style="width:100%;max-height:86%;overflow:auto;box-shadow:var(--shadow-lg);background:var(--color-surface);border:1px solid var(--color-divider);border-radius:var(--radius-lg);padding:20px">
+      <sc-if value="{{ modalIsEdit }}">
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:20px;margin-bottom:5px">{{ t.duzenle }}</div>
+        <div style="font-size:12.5px;color:color-mix(in srgb,var(--color-text) 58%, transparent);margin-bottom:16px">{{ t.duzenleDesc }}</div>
+        <input type="number" class="input" value="{{ editVal }}" onChange="{{ onEditVal }}" style="width:100%;margin-bottom:18px;font-size:20px;padding:12px 14px">
+        <div style="display:flex;gap:10px">
+          <div onClick="{{ closeModal }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:transparent;color:var(--color-text);border:1px solid var(--color-divider);font-size:14px;font-weight:600;cursor:pointer">{{ t.iptal }}</div>
+          <div onClick="{{ saveEdit }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:var(--color-accent);color:#fff;border:none;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:14px;cursor:pointer">{{ t.kaydet }}</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ modalIsTarget }}">
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:20px;margin-bottom:5px">{{ t.hedefAyar }}</div>
+        <div style="font-size:12.5px;color:color-mix(in srgb,var(--color-text) 58%, transparent);margin-bottom:16px">{{ t.hedefDesc }}</div>
+        <input type="number" class="input" value="{{ targetVal }}" onChange="{{ onTargetVal }}" style="width:100%;margin-bottom:14px;font-size:20px;padding:12px 14px">
+        <div style="display:flex;gap:8px;margin-bottom:16px">
+          <sc-for list="{{ modeSeg }}" as="o" hint-placeholder-count="2"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;padding:11px 0;font-size:13px;font-weight:600;cursor:pointer;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for>
+        </div>
+        <div onClick="{{ toggleRemain }}" style="display:flex;align-items:center;gap:8px;font-size:13.5px;cursor:pointer;margin-bottom:18px">
+          <i class="ph {{ remainCheckIcon }}" style="font-size:20px;color:var(--color-accent)"></i>{{ t.kalanG }}
+        </div>
+        <div style="display:flex;gap:10px">
+          <div onClick="{{ closeModal }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:transparent;color:var(--color-text);border:1px solid var(--color-divider);font-size:14px;font-weight:600;cursor:pointer">{{ t.iptal }}</div>
+          <div onClick="{{ saveTarget }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:var(--color-accent);color:#fff;border:none;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:14px;cursor:pointer">{{ t.kaydet }}</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ modalIsNew }}">
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:20px;margin-bottom:16px">{{ t.yeni }}</div>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 65%, transparent);margin-bottom:6px">{{ t.ad }}</div>
+        <input type="text" class="input" placeholder="{{ t.ad }}" value="{{ nzName }}" onChange="{{ onNzName }}" style="width:100%;margin-bottom:14px;padding:11px 14px;font-size:15px">
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 65%, transparent);margin-bottom:6px">{{ t.hedef }}</div>
+        <input type="number" class="input" placeholder="{{ t.hedefPh }}" value="{{ nzTarget }}" onChange="{{ onNzTarget }}" style="width:100%;margin-bottom:14px;padding:11px 14px;font-size:15px">
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 65%, transparent);margin-bottom:6px">{{ t.kategori }}</div>
+        <div style="display:flex;gap:8px;margin-bottom:18px">
+          <sc-for list="{{ nzCatSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;padding:11px 0;font-size:13px;font-weight:600;cursor:pointer;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for>
+        </div>
+        <div style="display:flex;gap:10px">
+          <div onClick="{{ closeModal }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:transparent;color:var(--color-text);border:1px solid var(--color-divider);font-size:14px;font-weight:600;cursor:pointer">{{ t.iptal }}</div>
+          <div onClick="{{ saveNew }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:var(--color-accent);color:#fff;border:none;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:14px;cursor:pointer">{{ t.kaydet }}</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ modalIsZedit }}">
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:20px;margin-bottom:5px">{{ t.zikirAyar }}</div>
+        <div style="font-size:12.5px;color:color-mix(in srgb,var(--color-text) 58%, transparent);margin-bottom:16px">{{ t.zikirAyarDesc }}</div>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 65%, transparent);margin-bottom:6px">{{ t.adDegis }}</div>
+        <input type="text" class="input" value="{{ zeName }}" onChange="{{ onZeName }}" style="width:100%;margin-bottom:16px;padding:11px 14px;font-size:15px">
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 65%, transparent);margin-bottom:6px">{{ t.sesZikir }}</div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px">
+          <sc-for list="{{ zeSoundSeg }}" as="o" hint-placeholder-count="6"><div onClick="{{ o.pick }}" style="flex:1;min-width:64px;text-align:center;padding:10px 0;font-size:12.5px;font-weight:600;cursor:pointer;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <div style="font-size:14px;font-weight:600">{{ t.titresim }}</div>
+          <div onClick="{{ zeVibToggle }}" style="width:48px;height:28px;border-radius:var(--radius-lg);background:{{ zeVibBg }};cursor:pointer;position:relative;transition:background .2s">
+            <div style="position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:{{ zeVibKnob }};transform:{{ zeVibTx }};transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)"></div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 65%, transparent);margin-bottom:6px">{{ t.vibStil }}</div>
+        <div style="display:flex;gap:8px;margin-bottom:16px">
+          <sc-for list="{{ zeStyleSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;padding:10px 0;font-size:12.5px;font-weight:600;cursor:pointer;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for>
+        </div>
+        <div style="font-size:12px;color:color-mix(in srgb,var(--color-text) 65%, transparent);margin-bottom:6px">{{ t.siddet }}</div>
+        <div style="display:flex;gap:8px;margin-bottom:18px">
+          <sc-for list="{{ zeStrSeg }}" as="o" hint-placeholder-count="3"><div onClick="{{ o.pick }}" style="flex:1;text-align:center;padding:10px 0;font-size:12.5px;font-weight:600;cursor:pointer;border-radius:var(--radius-md);border:1px solid {{ o.bd }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</div></sc-for>
+        </div>
+        <div style="display:flex;gap:10px">
+          <div onClick="{{ closeModal }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:transparent;color:var(--color-text);border:1px solid var(--color-divider);font-size:14px;font-weight:600;cursor:pointer">{{ t.iptal }}</div>
+          <div onClick="{{ saveZedit }}" style="flex:1;text-align:center;padding:12px 0;border-radius:var(--radius-md);background:var(--color-accent);color:#fff;border:none;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:14px;cursor:pointer">{{ t.kaydet }}</div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</x-import>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:520,&quot;height&quot;:990},&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;nocturne&quot;,&quot;okyanus&quot;,&quot;zumrut&quot;,&quot;modernist&quot;,&quot;gul&quot;],&quot;default&quot;:&quot;nocturne&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Başlangıç&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;tr&quot;,&quot;en&quot;],&quot;default&quot;:&quot;tr&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Başlangıç&quot;}}">
+const PERSIST = ['tab','theme','lang','zikirs','activeId','mode','showRemaining','haptic','sound','volumeKeys','volume','clickSound','milestones','effect','btn','reminders','statRange','counterShape','device','layout','locked','logs','design'];
+const DEVICES = {phone:[412,892],phoneL:[892,412],tabletP:[800,1112],tabletL:[1180,800]};
+const THEMES = ['nocturne','okyanus','zumrut','kehribar','yakut','modernist','gul','lavanta','kum','buz'];
+const THEME_META = {
+  nocturne:{cls:'',dark:true,bg:'#161826',ac:'#9184d9',tr:'Gece',en:'Night',shape:'soft'},
+  okyanus:{cls:'zk-okyanus',dark:true,bg:'#121a2b',ac:'#5b8ef2',tr:'Okyanus',en:'Ocean',shape:'soft'},
+  zumrut:{cls:'zk-zumrut',dark:true,bg:'#101b16',ac:'#3fc487',tr:'Zümrüt',en:'Emerald',shape:'circle'},
+  kehribar:{cls:'zk-kehribar',dark:true,bg:'#1e1a11',ac:'#e8a33d',tr:'Kehribar',en:'Amber',shape:'soft'},
+  yakut:{cls:'zk-yakut',dark:true,bg:'#221319',ac:'#e85464',tr:'Yakut',en:'Ruby',shape:'circle'},
+  modernist:{cls:'zk-light',dark:false,bg:'#f3f2f2',ac:'#ec3013',tr:'Modern',en:'Modern',shape:'square'},
+  gul:{cls:'zk-light zk-gul',dark:false,bg:'#fbf4f8',ac:'#e75a9e',tr:'Gül',en:'Rose',shape:'circle'},
+  lavanta:{cls:'zk-light zk-lavanta',dark:false,bg:'#f4f2fa',ac:'#8f77dd',tr:'Lavanta',en:'Lavender',shape:'circle'},
+  kum:{cls:'zk-light zk-kum',dark:false,bg:'#f6f1e8',ac:'#c1932f',tr:'Kum',en:'Sand',shape:'square'},
+  buz:{cls:'zk-light zk-buz',dark:false,bg:'#eef3f7',ac:'#549bce',tr:'Buz',en:'Ice',shape:'soft'}
+};
+const PRESETS = {
+  klasik:{color:'accent',shape:'circle',size:'m',pos:'orta'},
+  tam:{color:'accent',shape:'soft',size:'bar',pos:'orta'},
+  mini:{color:'neutral',shape:'circle',size:'s',pos:'orta'},
+  solak:{color:'accent',shape:'circle',size:'l',pos:'sol'},
+  saglak:{color:'accent',shape:'circle',size:'l',pos:'sag'}
+};
+const L = {
+  tr: {app:'Zikirci',sayac:'Sayaç',kutup:'Kütüphanem',stat:'İstatistikler',ayar:'Ayarlar',
+    kutupSub:'Zikirlerinizi seçin ve yönetin',statSub:'Ruhsal gelişiminizi takip edin',ayarSub:'Deneyiminizi özelleştirin',
+    hedef:'Hedef',kalan:'Kalan',serbest:'Serbest',devam:'Devam Et',basla:'Başla',yeni:'Yeni Zikir',
+    ad:'Zikir adı',hedefPh:'Hedef (boş = serbest)',kategori:'Kategori',sesZikir:'Bu zikire özel ses',kaydet:'Kaydet',iptal:'İptal',
+    hepsi:'Hepsi',gunlukK:'Günlük',namaz:'Namaz Sonrası',ozel:'Özel',
+    gunluk:'Günlük',haftalik:'Haftalık',aylik:'Aylık',
+    yogunluk:'Zikir Yoğunluğu',az:'Az',cok:'Çok',
+    toplam:'Toplam Zikir',ort:'Günlük Ort.',seri:'En Uzun Seri',sure:'Geçen Süre',
+    buHafta:'+%15 bu hafta',istikrar:'İstikrarlı',gun:'gün',saat:'saat',aktifSeri:'Şu an aktif!',haftaTop:'Bu hafta toplam',
+    aktivite:'Zaman İçinde Aktivite',dagilim:'Zikir Dağılımı',
+    gorunum:'Görünüm',tema:'Tema',dil:'Dil',yakinda:'yakında',
+    sesTitresim:'Ses & Titreşim',sesli:'Sesli Uyarılar',sesliDesc:'Bildirim noktalarında ses çal',
+    titresim:'Titreşim (Haptic)',titresimDesc:'Her dokunuşta ve bildirimlerde titre',
+    ekranKapali:'Ses tuşlarıyla sayım',ekranKapaliDesc:'Ekran kapalıyken ses aç/kapa ile say',
+    sesSev:'Ses Seviyesi',tikSes:'Tıklama Sesi',yumusak:'Yumuşak Tık',damla:'Damla',tespih:'Tespih',hicSes:'Hiç',tahta:'Tahta',can:'Çan',
+    kilit:'Kilit',kilitli:'Kilitli',kilitAcikla:'Kilidi açmak için basılı tut',yerlesim:'Yerleşim',normal:'Normal',merkez:'Merkez',
+    libNav:'Zikirler',statNav:'İstatistik',ortaSid:'Orta',adDegis:'Zikir adı',sil:'Sil',sabitle:'Sabitle',sabitli:'Sabit',
+    tasarim:'Sayaç Tasarımı',dKlasik:'Klasik',dBirlesik:'Birleşik',dTespih:'Tesbih',
+    taslar:'Bildirim Noktaları',taslarDesc:'Ses ve titreşim verilecek sayılar — tek tek aç/kapa',
+    sayacBtn:'Sayaç & Buton',presetler:'Hazır Ayarlar',klasik:'Klasik',tamG:'Tam Genişlik',mini:'Mini',solak:'Sol El',saglak:'Sağ El',sifirlaA:'Sıfırla',
+    anim:'Sayaç Animasyonu',halka:'Halka',dalga:'Dalga',dolum:'Dolum',sekilM:'Şekil Dönüşümü',
+    renk:'Buton Rengi',vurgu:'Vurgu',notr:'Nötr',murekkep:'Mürekkep',
+    sekil:'Buton Şekli',daire:'Daire',yumKare:'Yumuşak Kare',kare:'Kare',
+    boyut:'Buton Boyutu',tam:'Tam',konum:'Buton Konumu',sol:'Sol',orta:'Orta',sag:'Sağ',
+    ozelT:'Özel',genislik:'Genişlik',yukseklik:'Yükseklik',altBosluk:'Alt Boşluk',
+    sayacSekil:'Sayaç Şekli',temaOto:'Tema',telefon:'Telefon',telefonY:'Telefon Yatay',tabletT:'Tablet',tabletY:'Tablet Yatay',
+    hatir:'Hatırlatıcılar',yeniHatir:'Yeni hatırlatıcı',etiket:'Etiket (örn. Sabah)',ekle:'Ekle',
+    duzenle:'Sayaç Değeri',duzenleDesc:'Sayacı istediğiniz değere ayarlayın',
+    hedefAyar:'Hedef Ayarla',hedefDesc:'Hedef sayısı ve sayım yönü',yukari:'Yukarı Sayım',geriSay:'Geri Sayım',kalanG:'Kalanı ve yüzdeyi göster',
+    sifirla:'Sıfırla',hedefBtn:'Hedef',haptik:'Titreşim',ozellestir:'Özelleştir',
+    zikirAyar:'Zikir Ayarları',zikirAyarDesc:'Bu zikire özel ses ve titreşim',
+    vibStil:'Titreşim Şekli',kisa:'Kısa',cift:'Çift',uzun:'Uzun',
+    siddet:'Titreşim Şiddeti',hafif:'Hafif',guclu:'Güçlü',
+    hedefTamam:'Hedef Tamamlandı',bin:'bin',tamamlandi:'tamamlandı',aktifHatir:'hatırlatıcı aktif',
+    dev:'Zikirci · v1.0 · ',
+    dayRows:['Pzt','Çar','Cum'],
+    dLabels:['00','06','12','18','23'],wLabels:['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'],mLabels:['O','Ş','M','N','M','H','T','A','E','E','K','A']},
+  en: {app:'Dhikrer',sayac:'Counter',kutup:'My Library',stat:'Statistics',ayar:'Settings',
+    kutupSub:'Choose and manage your dhikrs',statSub:'Track your spiritual progress',ayarSub:'Customize your experience',
+    hedef:'Target',kalan:'Left',serbest:'Free',devam:'Continue',basla:'Start',yeni:'New Dhikr',
+    ad:'Dhikr name',hedefPh:'Target (empty = free)',kategori:'Category',sesZikir:'Sound for this dhikr',kaydet:'Save',iptal:'Cancel',
+    hepsi:'All',gunlukK:'Daily',namaz:'After Prayer',ozel:'Custom',
+    gunluk:'Daily',haftalik:'Weekly',aylik:'Monthly',
+    yogunluk:'Dhikr Intensity',az:'Less',cok:'More',
+    toplam:'Total Dhikr',ort:'Daily Avg.',seri:'Longest Streak',sure:'Time Spent',
+    buHafta:'+15% this week',istikrar:'Consistent',gun:'days',saat:'hours',aktifSeri:'Active now!',haftaTop:'Total this week',
+    aktivite:'Activity Over Time',dagilim:'Dhikr Distribution',
+    gorunum:'Appearance',tema:'Theme',dil:'Language',yakinda:'soon',
+    sesTitresim:'Sound & Haptics',sesli:'Sound Alerts',sesliDesc:'Play sound at notification points',
+    titresim:'Vibration (Haptic)',titresimDesc:'Vibrate on taps and alerts',
+    ekranKapali:'Volume-key counting',ekranKapaliDesc:'Count with volume keys while screen is off',
+    sesSev:'Volume',tikSes:'Click Sound',yumusak:'Soft Tick',damla:'Drop',tespih:'Beads',hicSes:'None',tahta:'Wood',can:'Bell',
+    kilit:'Lock',kilitli:'Locked',kilitAcikla:'Hold to unlock',yerlesim:'Layout',normal:'Normal',merkez:'Center',
+    libNav:'Dhikrs',statNav:'Stats',ortaSid:'Medium',adDegis:'Dhikr name',sil:'Delete',sabitle:'Pin',sabitli:'Pinned',
+    tasarim:'Counter Design',dKlasik:'Classic',dBirlesik:'Unified',dTespih:'Beads',
+    taslar:'Notification Points',taslarDesc:'Counts that trigger sound & vibration — toggle each',
+    sayacBtn:'Counter & Button',presetler:'Presets',klasik:'Classic',tamG:'Full Width',mini:'Mini',solak:'Left Hand',saglak:'Right Hand',sifirlaA:'Reset',
+    anim:'Counter Animation',halka:'Ring',dalga:'Wave',dolum:'Fill',sekilM:'Shape Morph',
+    renk:'Button Color',vurgu:'Accent',notr:'Neutral',murekkep:'Ink',
+    sekil:'Button Shape',daire:'Circle',yumKare:'Soft Square',kare:'Square',
+    boyut:'Button Size',tam:'Full',konum:'Button Position',sol:'Left',orta:'Center',sag:'Right',
+    ozelT:'Custom',genislik:'Width',yukseklik:'Height',altBosluk:'Bottom Offset',
+    sayacSekil:'Counter Shape',temaOto:'Theme',telefon:'Phone',telefonY:'Phone Landscape',tabletT:'Tablet',tabletY:'Tablet Landscape',
+    hatir:'Reminders',yeniHatir:'New reminder',etiket:'Label (e.g. Morning)',ekle:'Add',
+    duzenle:'Counter Value',duzenleDesc:'Set the counter to any value',
+    hedefAyar:'Set Target',hedefDesc:'Target count and direction',yukari:'Count Up',geriSay:'Countdown',kalanG:'Show remaining & percent',
+    sifirla:'Reset',hedefBtn:'Target',haptik:'Haptic',ozellestir:'Customize',
+    zikirAyar:'Dhikr Settings',zikirAyarDesc:'Sound and vibration for this dhikr',
+    vibStil:'Vibration Style',kisa:'Short',cift:'Double',uzun:'Long',
+    siddet:'Vibration Intensity',hafif:'Light',guclu:'Strong',
+    hedefTamam:'Target Completed',bin:'k',tamamlandi:'completed',aktifHatir:'reminders active',
+    dev:'Zikirci · v1.0 · ',
+    dayRows:['Mon','Wed','Fri'],
+    dLabels:['00','06','12','18','23'],wLabels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],mLabels:['J','F','M','A','M','J','J','A','S','O','N','D']}
+};
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function morphPoly(k){
+  const N=90,pts=[];
+  for(let i=0;i<N;i++){
+    const th=i/N*2*Math.PI-Math.PI/2;let r=1;
+    if(k){const a=Math.PI/k;const m=((th+Math.PI/2)%(2*a)+2*a)%(2*a);r=Math.cos(a)/Math.cos(m-a);}
+    pts.push(`${(50+47*r*Math.cos(th)).toFixed(1)}% ${(50+47*r*Math.sin(th)).toFixed(1)}%`);
+  }
+  return `polygon(${pts.join(',')})`;
+}
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    let saved=null; try{saved=JSON.parse(localStorage.getItem('zikirci-v1'))}catch(e){}
+    this.state=Object.assign({
+      tab:'sayac',theme:this.props.defaultTheme??'nocturne',lang:this.props.defaultLang??'tr',
+      zikirs:[
+        {id:100,name:'Zikir',target:99,count:0,cat:'daily',sound:'soft',vib:{on:true,style:'kisa',str:'orta'},pinned:true},
+        {id:1,name:'Sübhanallah',target:33,count:0,cat:'daily',sound:'soft',vib:{on:true,style:'kisa',str:'orta'}},
+        {id:2,name:'Elhamdülillah',target:33,count:0,cat:'daily',sound:'soft',vib:{on:false,style:'kisa',str:'orta'}},
+        {id:3,name:'Allahu Ekber',target:0,count:0,cat:'daily',sound:'drop',vib:{on:true,style:'cift',str:'guclu'}},
+        {id:4,name:'La ilahe illallah',target:100,count:0,cat:'prayer',sound:'beads',vib:{on:true,style:'kisa',str:'hafif'}},
+        {id:5,name:'Estağfirullah',target:2000,count:0,cat:'custom',sound:'soft',vib:{on:true,style:'kisa',str:'orta'}}],
+      activeId:100,mode:'up',showRemaining:true,
+      haptic:true,sound:true,volumeKeys:true,volume:60,clickSound:'soft',
+      milestones:{'33':true,'66':true,'99':true,'100':true,'999':true,'1000':true},
+      effect:'ring',btn:Object.assign({},PRESETS.klasik),
+      reminders:[{id:1,time:'05:45',label:'Sabah',on:true},{id:2,time:'13:30',label:'Öğle',on:true},{id:3,time:'21:00',label:'Yatsı',on:false}],
+      statRange:'daily',view:'main',modal:null,flash:null,
+      editVal:'',targetVal:'',newRemTime:'07:00',newRemLabel:'',nzName:'',nzTarget:'',nzCat:'daily',libFilter:'all',
+      zeId:null,zeName:'',zeSound:'soft',zeVibOn:true,zeStyle:'kisa',zeStr:'orta',
+      counterShape:'auto',device:'phone',appW:412,appH:800,winW:(typeof window!=='undefined'?window.innerWidth:1200),
+      layout:'normal',locked:false,logs:[],design:'klasik'
+    },saved||{});
+    if(!DEVICES[this.state.device])this.state.device='phone';
+    if(this.state.theme==='dark')this.state.theme='nocturne';
+    if(this.state.theme==='light')this.state.theme='modernist';
+    if(!THEMES.includes(this.state.theme))this.state.theme='nocturne';
+    this.state.btn=Object.assign({cw:86,ch:120,lift:0},this.state.btn);
+    this.state.compact=false;this.state.ctrlOpen=false;
+    this.morphShapes=[morphPoly(0),morphPoly(3),morphPoly(4),morphPoly(5)];
+    this.audio=null;this._flashTimer=null;this._pulse=false;this._ro=null;
+    this.appRef=el=>{
+      if(el&&!this._ro&&window.ResizeObserver){
+        this._ro=new ResizeObserver(en=>{
+          const r=en[0].contentRect,c=r.height>0&&r.height<640;
+          if(c!==this.state.compact||Math.abs(r.width-this.state.appW)>4||Math.abs(r.height-this.state.appH)>4)
+            this.setState({compact:c,ctrlOpen:false,appW:r.width,appH:r.height});
+        });
+        this._ro.observe(el);
+      }
+    };
+  }
+  persist(){const o={};PERSIST.forEach(k=>o[k]=this.state[k]);try{localStorage.setItem('zikirci-v1',JSON.stringify(o))}catch(e){}}
+  set(patch){this.setState(patch,()=>this.persist())}
+  active(){return this.state.zikirs.find(z=>z.id===this.state.activeId)||this.state.zikirs[0]}
+  updActive(patch){this.set({zikirs:this.state.zikirs.map(z=>z.id===this.active().id?Object.assign({},z,patch):z)})}
+  beep(freq,dur,type,vol){
+    if(!this.state.sound)return;
+    try{
+      const ctx=this.audio||(this.audio=new (window.AudioContext||window.webkitAudioContext)());
+      if(ctx.state==='suspended')ctx.resume();
+      const o=ctx.createOscillator(),g=ctx.createGain();
+      o.type=type||'sine';o.frequency.value=freq;
+      g.gain.value=(this.state.volume/100)*(vol||0.15);
+      g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+dur);
+      o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+dur);
+    }catch(e){}
+  }
+  // Play one of the named click sounds directly (used for settings preview and taps).
+  playClick(kind){
+    if(kind==='none')return;
+    if(kind==='drop'){this.beep(920,0.10,'sine',0.16);setTimeout(()=>this.beep(560,0.08,'sine',0.12),40);}
+    else if(kind==='beads'){this.beep(1700,0.02,'square',0.08);setTimeout(()=>this.beep(1250,0.03,'square',0.06),28);}
+    else if(kind==='wood'){this.beep(300,0.06,'triangle',0.2);}
+    else if(kind==='bell'){this.beep(1320,0.18,'sine',0.14);setTimeout(()=>this.beep(1980,0.16,'sine',0.08),20);}
+    else this.beep(640,0.05,'triangle',0.12); // soft
+  }
+  vibScale(){const z=this.active(),v=z.vib||{};return v.str==='hafif'?0.5:v.str==='guclu'?2:1}
+  vibrate(base){
+    const z=this.active(),v=z.vib||{on:true};
+    if(!this.state.haptic||!v.on||!navigator.vibrate)return;
+    const k=this.vibScale();
+    navigator.vibrate(base.map(x=>Math.round(x*k)));
+  }
+  clickFx(){
+    const z=this.active(),v=z.vib||{on:true,style:'kisa'};
+    // zikir-specific sound overrides the global click sound; 'none' silences it
+    const s=(z.sound&&z.sound!=='')?z.sound:this.state.clickSound;
+    this.playClick(s);
+    const pat=v.style==='cift'?[8,40,8]:v.style==='uzun'?[26]:[8];
+    this.vibrate(pat);
+  }
+  logEvent(zid){
+    // record one tap [timestamp, zikirId] for real statistics; cap history size
+    const logs=this.state.logs||(this.state.logs=[]);
+    logs.push([Date.now(),zid]);
+    if(logs.length>8000)logs.splice(0,logs.length-8000);
+    this.persist();
+  }
+  togglePin(id){this.set({zikirs:this.state.zikirs.map(z=>z.id===id?Object.assign({},z,{pinned:!z.pinned}):z)})}
+  removeZikir(id){
+    const zs=this.state.zikirs.filter(z=>z.id!==id);
+    if(!zs.length)return; // keep at least one
+    let a=this.state.activeId; if(a===id)a=zs[0].id;
+    this.set({zikirs:zs,activeId:a});
+  }
+  // swipe: left = delete, right = pin (touch)
+  swStart(id,e){this._swStart=(e.touches&&e.touches[0]?e.touches[0].clientX:0);this._swId=id;this._swMoved=false;}
+  swMove(id,e){if(this._swId!==id||this._swStart==null)return;const x=(e.touches&&e.touches[0]?e.touches[0].clientX:0);const dx=x-this._swStart;if(Math.abs(dx)>6)this._swMoved=true;this.setState({swipeId:id,swipeDx:dx});}
+  swEnd(id){if(this._swId!==id)return;const dx=this.state.swipeDx||0;this._swId=null;this._swStart=null;this.setState({swipeId:null,swipeDx:0});if(dx<=-90)this.removeZikir(id);else if(dx>=90)this.togglePin(id);}
+  milestoneFor(c){
+    if(c<=0)return null;
+    if(c%1000===0)return'1000';
+    if(c%1000===999)return'999';
+    if(c%100===0)return'100';
+    const m=c%100;
+    if(m===33)return'33';if(m===66)return'66';if(m===99)return'99';
+    return null;
+  }
+  flash(label){
+    clearTimeout(this._flashTimer);
+    this.setState({flash:label});
+    this._flashTimer=setTimeout(()=>this.setState({flash:null}),950);
+  }
+  tap=()=>{
+    const z=this.active(),t=L[this.state.lang]||L.tr;
+    if(z.target&&z.count>=z.target){
+      if(this.state.haptic&&navigator.vibrate)navigator.vibrate([200,90,200]);
+      this.beep(300,0.3,'sine',0.2);
+      this.flash(t.hedefTamam+' ✓');
+      return;
+    }
+    const c=z.count+1;
+    this._pulse=!this._pulse;
+    this.updActive({count:c,lastUsed:Date.now()});
+    this.logEvent(z.id);
+    this.clickFx();
+    const m=this.milestoneFor(c);
+    if(m&&this.state.milestones[m]){
+      if(this.state.haptic&&navigator.vibrate)navigator.vibrate(m==='1000'||m==='999'?[130,70,130]:[70]);
+      this.beep(m==='1000'?520:440,0.25,'sine',0.2);setTimeout(()=>this.beep(m==='1000'?780:660,0.3,'sine',0.2),140);
+      const th=Math.floor(c/1000);
+      this.flash(m==='1000'?(this.state.lang==='en'?`${th}${t.bin} ${t.tamamlandi} ✦`:`${th===1?'':th+' '}${t.bin} ${t.tamamlandi} ✦`):`${c%1000===999?999:(c%100===0?c%1000||1000:c%100)} ✦`);
+    }
+    if(z.target&&c===z.target){
+      this.flash(t.hedefTamam+' ✓');
+      if(this.state.haptic&&navigator.vibrate)navigator.vibrate([160,80,160,80,240]);
+      this.beep(523,0.2,'sine',0.22);setTimeout(()=>this.beep(659,0.2,'sine',0.22),160);setTimeout(()=>this.beep(784,0.35,'sine',0.22),320);
+    }
+  }
+  seg(opts,cur,apply){
+    // clearer, button-like segments: unselected get a subtle filled surface +
+    // visible border; selected gets an accent tint. Used app-wide.
+    return opts.map(o=>({label:o[1],
+      bd:o[0]===cur?'var(--color-accent)':'color-mix(in srgb, var(--color-text) 20%, transparent)',
+      bg:o[0]===cur?'color-mix(in srgb, var(--color-accent) 18%, transparent)':'color-mix(in srgb, var(--color-text) 6%, transparent)',
+      fg:o[0]===cur?'var(--color-accent)':'color-mix(in srgb, var(--color-text) 82%, transparent)',
+      pick:()=>apply(o[0])}));
+  }
+  tgl(on,fn){
+    const dark=THEME_META[this.state.theme].dark;
+    return {bg:on?'var(--color-accent)':(dark?'var(--color-neutral-800)':'var(--color-neutral-300)'),
+      knob:dark?'var(--color-bg)':'#fff',tx:on?'translateX(20px)':'translateX(0)',pick:fn};
+  }
+  fmt(n){return n.toLocaleString(this.state.lang==='en'?'en-US':'tr-TR')}
+  targetLabel(tg,t){
+    if(!tg)return t.serbest;
+    if(tg>=1000&&tg%1000===0)return`${t.hedef}: ${tg/1000} ${t.bin}`;
+    return`${t.hedef}: ${this.fmt(tg)}`;
+  }
+  componentDidMount(){this._onWin=()=>this.setState({winW:window.innerWidth});window.addEventListener('resize',this._onWin);this._onWin()}
+  componentWillUnmount(){clearTimeout(this._flashTimer);if(this._ro)this._ro.disconnect();if(this._onWin)window.removeEventListener('resize',this._onWin)}
+  renderVals(){
+    const s=this.state,t=L[s.lang]||L.tr,meta=THEME_META[s.theme],dark=meta.dark,z=this.active();
+    const count=z.count,thousands=Math.floor(count/1000),disp=count%1000;
+    const pct=z.target?Math.min(100,count/z.target*100):0;
+    const done=!!(z.target&&count>=z.target);
+    const bigCount=s.mode==='down'&&z.target?this.fmt(Math.max(0,z.target-count)):this.fmt(disp);
+    const remainLine=done?t.hedefTamam+' ✓':(z.target?(s.mode==='down'?`${this.fmt(count)} / ${this.fmt(z.target)} · %${Math.round(pct)}`:`${t.kalan}: ${this.fmt(Math.max(0,z.target-count))} · %${Math.round(pct)}`):'');
+    const C=2*Math.PI*104;
+    // ---- real statistics computed from tap logs (logs = [[ts, zikirId], ...]) ----
+    const logs=Array.isArray(s.logs)?s.logs:[];
+    const dayMs=86400000;
+    const startOfDay=ms=>{const x=new Date(ms);x.setHours(0,0,0,0);return x.getTime();};
+    const nowMs=Date.now(),todayStart=startOfDay(nowMs),d0=new Date(nowMs);
+    const monDow=(d0.getDay()+6)%7; // Mon=0
+    const heatPalette=dark
+      ?['color-mix(in srgb, var(--color-text) 7%, transparent)','var(--color-accent-900)','var(--color-accent-700)','var(--color-accent-500)','var(--color-accent-300)']
+      :['var(--color-neutral-200)','var(--color-accent-200)','var(--color-accent-400)','var(--color-accent-600)','var(--color-accent-800)'];
+    const dayCount={};logs.forEach(e=>{const ds=startOfDay(e[0]);dayCount[ds]=(dayCount[ds]||0)+1;});
+    let hmax=1;Object.keys(dayCount).forEach(k=>{if(dayCount[k]>hmax)hmax=dayCount[k];});
+    const lvlOf=v=>v<=0?0:v<hmax*0.25?1:v<hmax*0.5?2:v<hmax*0.8?3:4;
+    const fmtDate=ms=>{const x=new Date(ms);return x.getDate()+'.'+(x.getMonth()+1);};
+    const heatCells=[];const WEEKS=27;
+    for(let w=0;w<WEEKS;w++)for(let d=0;d<7;d++){
+      const daysAgo=(WEEKS-1-w)*7+(monDow-d);
+      const ds=todayStart-daysAgo*dayMs,cnt=dayCount[ds]||0;
+      heatCells.push({x:22+w*11,y:16+d*11,f:heatPalette[lvlOf(cnt)],
+        pick:()=>this.setState({statSel:{label:fmtDate(ds),v:cnt}})});
+    }
+    // month labels along the top axis, day initials down the left axis
+    const heatMonths=[];let lastM=-1;
+    for(let w=0;w<WEEKS;w++){
+      const ds=todayStart-((WEEKS-1-w)*7+monDow)*dayMs,m=new Date(ds).getMonth();
+      if(m!==lastM){heatMonths.push({x:22+w*11,label:t.mLabels[m]});lastM=m;}
+    }
+    const heatDays=t.wLabels.map((l,d)=>({y:16+d*11+7,label:(l||'').charAt(0)}));
+    let vals,labels;
+    if(s.statRange==='daily'){
+      vals=Array.from({length:24},()=>0);
+      logs.forEach(e=>{if(e[0]>=todayStart)vals[new Date(e[0]).getHours()]++;});
+      labels=[0,6,12,18,23].map((i,idx)=>({i,label:t.dLabels[idx]}));
+    }else if(s.statRange==='weekly'){
+      vals=Array.from({length:7},()=>0);
+      const weekStart=todayStart-monDow*dayMs;
+      logs.forEach(e=>{const idx=Math.round((startOfDay(e[0])-weekStart)/dayMs);if(idx>=0&&idx<7)vals[idx]++;});
+      labels=t.wLabels.map((l,i)=>({i,label:l}));
+    }else{
+      vals=Array.from({length:12},()=>0);const yr=d0.getFullYear();
+      logs.forEach(e=>{const dt=new Date(e[0]);if(dt.getFullYear()===yr)vals[dt.getMonth()]++;});
+      labels=t.mLabels.map((l,i)=>({i,label:l}));
+    }
+    const rangeLabelFor=i=>{const L2=labels.find(x=>x.i===i);return L2?L2.label:String(i);};
+    const maxV=Math.max(1,...vals),n=vals.length,slot=322/n,bw=Math.min(22,slot*0.62);
+    const selIdx=s.statSel&&s.statSel.bar!==undefined?s.statSel.bar:-1;
+    const bars=vals.map((v,i)=>{const h=Math.max(v>0?6:2,v/maxV*104);return{x:(slot*i+(slot-bw)/2).toFixed(1),y:(120-h).toFixed(1),w:bw.toFixed(1),h:h.toFixed(1),
+      fill:i===selIdx?'var(--color-accent-300)':'var(--color-accent-500)',
+      lx:(slot*i+slot/2).toFixed(1),vy:Math.max(9,120-h-3).toFixed(1),val:v,showVal:v>0,
+      pick:()=>this.setState({statSel:{bar:i,label:rangeLabelFor(i),v:v}})};});
+    const barLabels=labels.map(l=>({x:(slot*l.i+slot/2).toFixed(1),label:l.label}));
+    // distribution: real per-zikir tap totals (fallback to current counts if no logs)
+    const perZikir={};logs.forEach(e=>{perZikir[e[1]]=(perZikir[e[1]]||0)+1;});
+    const totals=s.zikirs.map(x=>({name:x.name,v:logs.length?(perZikir[x.id]||0):Math.max(0,x.count)}));
+    const totSum=totals.reduce((a,b)=>a+b.v,0);
+    const sum=totSum>0?totSum:1,DC2=2*Math.PI*50;
+    const palette=['var(--color-accent-500)','var(--color-accent-300)','var(--color-accent-700)','var(--color-neutral-500)','var(--color-accent-2-400)'];
+    let acc=0;
+    const donutSegs=totals.map((x,i)=>{
+      const len=x.v/sum*DC2,seg={name:x.name,color:palette[i%5],dash:`${Math.max(0,len-2).toFixed(1)} ${(DC2-len+2).toFixed(1)}`,off:(-acc).toFixed(1),pctLabel:'%'+Math.round(x.v/sum*100),
+        pick:()=>this.setState({statSel:{label:x.name,v:x.v}})};
+      acc+=len;return seg;});
+    // KPI values from logs
+    const totalCount=s.zikirs.reduce((a,z)=>a+Math.max(0,z.count),0);
+    const todayCount=logs.filter(e=>e[0]>=todayStart).length;
+    const weekCount=logs.filter(e=>e[0]>=todayStart-6*dayMs).length;
+    const activeDays=Object.keys(dayCount).length;
+    const avgDaily=activeDays?Math.round(logs.length/activeDays):0;
+    let streak=0,sk=(dayCount[todayStart]?0:1);while(dayCount[todayStart-sk*dayMs]){streak++;sk++;}
+    const minSet={};logs.forEach(e=>{minSet[Math.floor(e[0]/60000)]=1;});
+    const activeMin=Object.keys(minSet).length,hoursSpent=(activeMin/60);
+    const sizes={s:'120px',m:'168px',l:'208px',xl:'300px',bar:'100%',custom:s.btn.cw+'%'};
+    const radii={circle:'50%',soft:'32px',square:'var(--radius-md)'};
+    const isBar=s.btn.size==='bar',isCustom=s.btn.size==='custom';
+    const bShape=s.btn.shape==='auto'?meta.shape:s.btn.shape;
+    const cShape=s.counterShape==='auto'?meta.shape:s.counterShape;
+    const isLand=s.appW>s.appH;
+    const wide=s.appW>680;
+    const centerMode=s.layout==='center'&&!isLand; // tap button centered on screen
+    const locked=!!s.locked;
+    // controls collapse to a single button when compact, in center mode, or when locked
+    const collapsed=(s.compact||centerMode)&&!s.ctrlOpen;
+    const visPx=centerMode?(s.appH<640?120:150):(s.appH<460?126:s.appH<520?140:s.appH<660?180:240);
+    // ---- counter design (klasik = ring/effects; birlesik = one big button; tespih = beads) ----
+    const design=s.design||'klasik';
+    const isKlasik=design==='klasik',isBirlesik=design==='birlesik',isTespih=design==='tespih';
+    const uniSizes={s:'190px',m:'250px',l:'300px',xl:'360px',bar:'92%',custom:s.btn.cw+'%'};
+    const uniW=uniSizes[s.btn.size]||uniSizes.m;
+    const uniH=(s.btn.size==='custom')?(s.btn.ch+'px'):(s.btn.size==='bar'?'260px':uniW);
+    const tespihBtnMap={s:'38%',m:'46%',l:'54%',xl:'62%',bar:'50%',custom:Math.max(30,Math.min(72,s.btn.cw))+'%'};
+    const tespihBtnW=tespihBtnMap[s.btn.size]||tespihBtnMap.m;
+    // tespih beads around the perimeter; fill up with progress toward target
+    const beads=[];
+    if(isTespih){
+      // bead count follows the target (traditional 33/66/99); very large targets
+      // are capped so beads stay legible. Radius scales with count so beads never overlap.
+      const bt=z.target>0?z.target:33, beadN=Math.max(3,Math.min(bt,120));
+      const lap=z.target>0?(count%z.target):count, lapT=z.target>0?z.target:beadN;
+      const filled=z.target>0?((count>0&&lap===0)?beadN:Math.round(lap/lapT*beadN)):(count%beadN);
+      const R=45, spacing=(2*Math.PI*R)/beadN;      // arc length between bead centers
+      const rr=Math.max(0.8,Math.min(3.0,spacing*0.30)); // base bead (room left for markers)
+      const sw=Math.max(0.35,rr*0.28);
+      for(let i=0;i<beadN;i++){
+        const ang=(i/beadN)*2*Math.PI-Math.PI/2, on=i<filled;
+        // tespih divider beads: every 33rd bead (33rd, 66th, 99th…) is larger and
+        // pushed slightly outward so the 33/66/99 sections are clearly separable.
+        const isMarker=((i+1)%33===0);
+        const r=isMarker?rr*1.5:rr, cr=isMarker?R+r*0.85:R;
+        beads.push({cx:(50+cr*Math.cos(ang)).toFixed(2),cy:(50+(cr+0.5)*Math.sin(ang)).toFixed(2),r:r.toFixed(2),
+          sw:(isMarker?sw*1.5:sw).toFixed(2),
+          fill:on?'var(--color-accent)':'transparent',
+          stroke:on?'var(--color-accent)':'color-mix(in srgb,var(--color-text) 32%,transparent)'});
+      }
+    }
+    const devDims=DEVICES[s.device]||DEVICES.phone;
+    const deskSc=Math.min(1,(s.winW-56)/(devDims[0]+16));
+    const btnColors={
+      accent:dark?{bg:'color-mix(in srgb, var(--color-accent) 16%, transparent)',bd:'var(--color-accent)',fg:'var(--color-accent-300)'}:{bg:'var(--color-accent)',bd:'var(--color-accent)',fg:'#fff'},
+      neutral:{bg:'var(--color-surface)',bd:dark?'var(--color-neutral-700)':'var(--color-neutral-400)',fg:'var(--color-text)'},
+      ink:dark?{bg:'var(--color-neutral-200)',bd:'var(--color-neutral-200)',fg:'#161826'}:{bg:'#201e1d',bd:'#201e1d',fg:'#f3f2f2'}
+    };
+    const bc=btnColors[s.btn.color]||btnColors.accent;
+    const stage=Math.floor(count/100)%4;
+    const shapeClip=s.effect==='morph'?this.morphShapes[stage]:'none';
+    const shapeRadius=s.effect==='morph'?'0':(cShape==='circle'?'50%':cShape==='soft'?'40px':'var(--radius-md)');
+    const ml=['33','66','99','100','999','1000'];
+    const pillOn=k=>s.milestones[k];
+    const btnEq=cfg=>['color','shape','size','pos'].every(k=>cfg[k]===s.btn[k]);
+    const presetDefs=[['klasik',t.klasik,'ph-circle'],['tam',t.tamG,'ph-rectangle'],['mini',t.mini,'ph-dot-outline'],['solak',t.solak,'ph-arrow-line-left'],['saglak',t.saglak,'ph-arrow-line-right']];
+    return {
+      isDark:dark,appClass:meta.cls,t,lang:s.lang,appRef:this.appRef,
+      contentOverflow:s.tab==='sayac'?'hidden':'auto',
+      themeName:s.lang==='en'?meta.en:meta.tr,
+      toggleTheme:()=>{if(s.locked)return;this.set({theme:THEMES[(THEMES.indexOf(s.theme)+1)%THEMES.length]})},
+      isSayac:s.tab==='sayac',isKutup:s.tab==='kutup',isStat:s.tab==='stat',isAyar:s.tab==='ayar',
+      notReminders:s.view!=='reminders',isReminders:s.view==='reminders',
+      navItems:[['sayac','ph-hand-tap',t.sayac],['kutup','ph-books',t.libNav],['stat','ph-chart-bar',t.statNav],['ayar','ph-gear',t.ayar]].map(nv=>({
+        icon:nv[1],label:nv[2],
+        fg:s.tab===nv[0]?'var(--color-accent)':'color-mix(in srgb, var(--color-text) 50%, transparent)',
+        bg:s.tab===nv[0]?'color-mix(in srgb, var(--color-accent) 10%, transparent)':'transparent',
+        pick:()=>{if(s.locked)return;this.set({tab:nv[0],view:'main'})}})),
+      locked:locked,
+      activeName:z.name,targetChip:this.targetLabel(z.target,t),
+      hasThousand:thousands>0,
+      thousandLabel:s.lang==='en'?`${thousands}${t.bin}`:(thousands===1?t.bin:`${thousands} ${t.bin}`),
+      ctrlBtns:(locked?[
+        {icon:'ph-lock-key',tip:t.kilitli,pick:()=>this.set({locked:false}),on:true}
+      ]:collapsed?[
+        {icon:'ph-dots-three-outline',tip:'',pick:()=>this.setState({ctrlOpen:true})},
+        {icon:'ph-lock-simple-open',tip:t.kilit,pick:()=>this.set({locked:true})}
+      ]:[
+        {icon:'ph-arrow-counter-clockwise',tip:t.sifirla,pick:()=>this.updActive({count:0})},
+        {icon:'ph-pencil-simple',tip:t.duzenle,pick:()=>this.set({modal:'edit',editVal:String(count)})},
+        {icon:'ph-target',tip:t.hedefBtn,pick:()=>this.set({modal:'target',targetVal:z.target?String(z.target):''})},
+        {icon:s.haptic?'ph-vibrate':'ph-bell-slash',tip:t.haptik,pick:()=>this.set({haptic:!s.haptic}),on:s.haptic},
+        {icon:'ph-lock-simple-open',tip:t.kilit,pick:()=>this.set({locked:true})},
+        {icon:'ph-sliders',tip:t.ozellestir,pick:()=>this.set({tab:'ayar',view:'main'})},
+        ...((s.compact||centerMode)?[{icon:'ph-x',tip:'',pick:()=>this.setState({ctrlOpen:false})}]:[])
+      ]).map(b=>({icon:b.icon,tip:b.tip,pick:b.pick,on:b.on,
+        bd:b.on===undefined?'var(--color-divider)':(b.on?'var(--color-accent)':'var(--color-divider)'),
+        fg:b.on?'var(--color-accent)':'color-mix(in srgb, var(--color-text) 70%, transparent)',
+        bg:b.on?'color-mix(in srgb, var(--color-accent) 12%, transparent)':'color-mix(in srgb, var(--color-surface) 80%, transparent)'})),
+      effIsRing:isKlasik&&s.effect==='ring',effIsShape:isKlasik&&s.effect!=='ring',effIsWave:s.effect==='wave',
+      isKlasik,isBirlesik,isTespih,beads,tespihBtnW,
+      tespihPx:Math.min(s.appW-36,(s.appH||800)*0.58,380)+'px',
+      // which settings apply per design (others render dimmed/disabled)
+      dimEffectSty:(!isKlasik)?'opacity:.38;pointer-events:none':'',
+      dimShapeSty:(!isKlasik)?'opacity:.38;pointer-events:none':'',
+      dimLayoutSty:(!isKlasik)?'opacity:.38;pointer-events:none':'',
+      dimPosSty:isTespih?'opacity:.38;pointer-events:none':'',
+      uniW,uniH,uniRadius:s.btn.shape==='circle'||(s.btn.shape==='auto'&&meta.shape==='circle')?'50%':(s.btn.shape==='square'?'var(--radius-md)':'40px'),
+      ringDash:`${pct.toFixed(1)} 100`,
+      ringIsCircle:cShape==='circle',ringIsRect:cShape!=='circle',
+      ringRx:cShape==='soft'?36:6,ringRxIn:cShape==='soft'?28:4,
+      cShapeSeg:this.seg([['auto',t.temaOto],['circle',t.daire],['soft',t.yumKare],['square',t.kare]],s.counterShape,v=>this.set({counterShape:v})),
+      sayacDir:isLand?'row':'column',
+      sayacJustify:isLand?'center':(centerMode?'center':'space-between'),
+      sayacGap:isLand?'48px':(centerMode?'34px':'0px'),
+      btnWrapW:isLand?'42%':'100%',
+      contentMax:s.tab==='sayac'?'100%':(wide?'660px':'100%'),
+      kpiCols:wide?'repeat(4,1fr)':'repeat(2,1fr)',
+      libCols:wide?'repeat(2,1fr)':'1fr',
+      deviceSeg:[['phone','ph-device-mobile',t.telefon],['phoneL','ph-device-mobile-camera',t.telefonY],['tabletP','ph-device-tablet',t.tabletT],['tabletL','ph-device-tablet-camera',t.tabletY]].map(d=>({
+        label:d[2],icon:d[1],
+        bd:s.device===d[0]?'#8b93c9':'rgba(255,255,255,.16)',
+        bg:s.device===d[0]?'rgba(145,132,217,.16)':'transparent',
+        fg:s.device===d[0]?'#dfe3ff':'rgba(255,255,255,.55)',
+        pick:()=>this.set({device:d[0]})})),
+      devW:devDims[0],devH:devDims[1],
+      deskT:`scale(${deskSc.toFixed(3)})`,
+      deskW:Math.round((devDims[0]+16)*deskSc)+'px',
+      deskH:Math.round((devDims[1]+16)*deskSc)+'px',
+      ringPx:visPx+'px',shapePx:(visPx-8)+'px',
+      countFs:visPx<200?'38px':'60px',
+      ctrlMy:s.compact?'6px 0 8px':'14px 0 18px',
+      trackColor:dark?'color-mix(in srgb, var(--color-text) 10%, transparent)':'var(--color-neutral-300)',
+      ringTrack:dark?'rgba(255,255,255,0.12)':'rgba(0,0,0,0.10)',
+      shapeTrack:dark?'rgba(255,255,255,0.08)':'rgba(0,0,0,0.06)',
+      shapeClip,shapeRadius,pctStr:(z.target?pct:Math.min(100,disp/10)).toFixed(1)+'%',
+      bigCount,showRemainLine:!!(s.showRemaining&&z.target),remainLine,
+      remainColor:done?'var(--color-accent)':'color-mix(in srgb,var(--color-text) 60%, transparent)',
+      countAnim:this._pulse?'zkNumA .22s ease':'zkNumB .22s ease',
+      flashOn:!!s.flash,flashLabel:s.flash||'',
+      tap:this.tap,tapIcon:done?'ph-check-circle':'ph-hand-tap',
+      btnPx:(centerMode&&!isCustom&&!isBar)?Math.min(s.appW-52,320)+'px':(sizes[s.btn.size]||sizes.m),
+      btnHpx:isBar?'110px':isCustom?s.btn.ch+'px':((centerMode)?Math.min(s.appW-52,320)+'px':(sizes[s.btn.size]||sizes.m)),
+      btnRadius:isBar?(bShape==='circle'?'55px':radii[bShape]):isCustom?(bShape==='circle'?Math.round(s.btn.ch/2)+'px':radii[bShape]):(radii[bShape]||'50%'),
+      btnLiftPx:(6+(isCustom?s.btn.lift:0))+'px',
+      showCustom:isCustom,btnCw:s.btn.cw,btnCh:s.btn.ch,btnLift:s.btn.lift,
+      setBtnCw:e=>this.set({btn:Object.assign({},s.btn,{cw:+e.target.value})}),
+      setBtnCh:e=>this.set({btn:Object.assign({},s.btn,{ch:+e.target.value})}),
+      setBtnLift:e=>this.set({btn:Object.assign({},s.btn,{lift:+e.target.value})}),
+      btnJustify:s.btn.pos==='sol'?'flex-start':s.btn.pos==='sag'?'flex-end':'center',
+      btnBg:bc.bg,btnBd:bc.bd,btnFg:bc.fg,btnOpacity:done?'0.62':'1',
+      openNew:()=>this.set({modal:'new',nzName:'',nzTarget:'',nzCat:'daily'}),
+      catSeg:this.seg([['all',t.hepsi],['daily',t.gunlukK],['prayer',t.namaz],['custom',t.ozel]],s.libFilter,v=>this.set({libFilter:v})),
+      zikirCards:[...s.zikirs].sort((a,b)=>{const pa=a.pinned?1:0,pb=b.pinned?1:0;if(pa!==pb)return pb-pa;return (b.lastUsed||0)-(a.lastUsed||0);})
+        .filter(x=>s.libFilter==='all'||x.cat===s.libFilter).map(x=>{
+        const hasT=!!x.target,p=hasT?Math.min(100,x.count/x.target*100):0;
+        const sndL={none:t.hicSes,soft:t.yumusak,drop:t.damla,beads:t.tespih,wood:t.tahta,bell:t.can}[x.sound]||t.yumusak;
+        const isA=x.id===s.activeId,dx=(s.swipeId===x.id)?(s.swipeDx||0):0;
+        return {name:x.name,targetLabel:this.targetLabel(x.target,t),countFmt:this.fmt(x.count),soundLabel:sndL,
+          pctLabel:hasT?'%'+Math.round(p):t.serbest,
+          cardBg:hasT?`linear-gradient(90deg, color-mix(in srgb,var(--color-accent) 24%, var(--color-surface)) ${p.toFixed(1)}%, var(--color-surface) ${p.toFixed(1)}%)`:'var(--color-surface)',
+          bd:isA?'var(--color-accent)':'var(--color-divider)',
+          ctaBg:isA?'var(--color-accent)':'color-mix(in srgb,var(--color-accent) 12%, transparent)',
+          ctaFg:isA?'#fff':'var(--color-accent)',
+          ctaBd:isA?'var(--color-accent)':'color-mix(in srgb,var(--color-accent) 40%, transparent)',
+          cta:x.count>0?t.devam:t.basla,
+          pinned:!!x.pinned,dx:dx,
+          pinBg:x.pinned?'color-mix(in srgb,var(--color-accent) 18%,transparent)':'transparent',
+          pinFg:x.pinned?'var(--color-accent)':'color-mix(in srgb,var(--color-text) 55%,transparent)',
+          pinBd:x.pinned?'var(--color-accent)':'var(--color-divider)',
+          onStart:e=>this.swStart(x.id,e),onMove:e=>this.swMove(x.id,e),onEnd:()=>this.swEnd(x.id),
+          pin:e=>{e.stopPropagation();this.togglePin(x.id)},
+          edit:e=>{e.stopPropagation();const v=x.vib||{on:true,style:'kisa',str:'orta'};this.setState({modal:'zedit',zeId:x.id,zeName:x.name,zeSound:x.sound||'soft',zeVibOn:v.on,zeStyle:v.style,zeStr:v.str})},
+          pick:()=>{if(this._swMoved){this._swMoved=false;return;}this.set({activeId:x.id,tab:'sayac'})}};}),
+      rangeSeg:this.seg([['daily',t.gunluk],['weekly',t.haftalik],['monthly',t.aylik]],s.statRange,v=>this.set({statRange:v})),
+      heatCells,heatMonths,heatDays,legendCells:heatPalette.map(f=>({f})),
+      mutedFill:'color-mix(in srgb, var(--color-text) 45%, transparent)',
+      axisFill:'color-mix(in srgb, var(--color-text) 70%, transparent)',
+      accentSubColor:dark?'var(--color-accent-300)':'var(--color-accent-700)',
+      dayL1:t.dayRows[0],dayL2:t.dayRows[1],dayL3:t.dayRows[2],
+      statCards:[
+        {label:t.toplam,icon:'ph-fingerprint',value:this.fmt(totalCount),unit:'',sub:'+'+this.fmt(weekCount)+' · '+t.haftalik},
+        {label:t.ort,icon:'ph-chart-line-up',value:this.fmt(avgDaily),unit:'',sub:t.istikrar},
+        {label:t.seri,icon:'ph-flame',value:String(streak),unit:t.gun,sub:streak>0?t.aktifSeri:'—'},
+        {label:t.sure,icon:'ph-clock',value:hoursSpent.toFixed(1),unit:t.saat,sub:'+'+this.fmt(todayCount)+' · '+t.gunluk}],
+      bars,barLabels,donutSegs,
+      statSelLabel:s.statSel?(s.statSel.label+': '+this.fmt(s.statSel.v)):'',
+      statSelOn:!!s.statSel,
+      themeSwatches:THEMES.map(k=>{const m=THEME_META[k];return{
+        label:s.lang==='en'?m.en:m.tr,
+        swatch:`linear-gradient(90deg,${m.bg} 0%,${m.bg} 50%,${m.ac} 50%,${m.ac} 100%)`,
+        ring:k===s.theme?'var(--color-accent)':'var(--color-divider)',
+        glow:k===s.theme?'0 0 0 3px color-mix(in srgb, var(--color-accent) 25%, transparent)':'none',
+        fg:k===s.theme?'var(--color-accent)':'color-mix(in srgb, var(--color-text) 60%, transparent)',
+        pick:()=>this.set({theme:k})}}),
+      setLang:e=>this.set({lang:e.target.value}),
+      masterToggles:[
+        Object.assign({label:t.sesli,desc:t.sesliDesc},this.tgl(s.sound,()=>this.set({sound:!s.sound}))),
+        Object.assign({label:t.titresim,desc:t.titresimDesc},this.tgl(s.haptic,()=>this.set({haptic:!s.haptic}))),
+        Object.assign({label:t.ekranKapali,desc:t.ekranKapaliDesc},this.tgl(s.volumeKeys,()=>this.set({volumeKeys:!s.volumeKeys})))],
+      volumePct:s.volume,setVolume:e=>this.set({volume:+e.target.value}),
+      clickSeg:this.seg([['none',t.hicSes],['soft',t.yumusak],['drop',t.damla],['beads',t.tespih],['wood',t.tahta],['bell',t.can]],s.clickSound,v=>{this.set({clickSound:v});this.playClick(v);}),
+      milestonePills:ml.map(k=>({label:k,icon:pillOn(k)?'ph-bell-ringing':'ph-bell-slash',
+        bd:pillOn(k)?'var(--color-accent)':'var(--color-divider)',
+        bg:pillOn(k)?'color-mix(in srgb, var(--color-accent) 13%, transparent)':'transparent',
+        fg:pillOn(k)?'var(--color-accent)':'color-mix(in srgb, var(--color-text) 50%, transparent)',
+        pick:()=>this.set({milestones:Object.assign({},s.milestones,{[k]:!s.milestones[k]})})})),
+      presetSeg:[...presetDefs.map(p=>({label:p[1],icon:p[2],
+        bd:btnEq(PRESETS[p[0]])?'var(--color-accent)':'var(--color-divider)',
+        bg:btnEq(PRESETS[p[0]])?'color-mix(in srgb, var(--color-accent) 13%, transparent)':'transparent',
+        fg:btnEq(PRESETS[p[0]])?'var(--color-accent)':'color-mix(in srgb, var(--color-text) 65%, transparent)',
+        pick:()=>this.set({btn:Object.assign({},s.btn,PRESETS[p[0]])})})),
+        {label:t.sifirlaA,icon:'ph-arrow-counter-clockwise',bd:'var(--color-divider)',bg:'transparent',
+        fg:'color-mix(in srgb, var(--color-text) 65%, transparent)',pick:()=>this.set({btn:Object.assign({cw:86,ch:120,lift:0},PRESETS.klasik)})}],
+      effectSeg:this.seg([['ring',t.halka],['wave',t.dalga],['fill',t.dolum],['morph',t.sekilM]],s.effect,v=>this.set({effect:v})),
+      designSeg:this.seg([['klasik',t.dKlasik],['birlesik',t.dBirlesik],['tespih',t.dTespih]],s.design,v=>this.set({design:v})),
+      layoutSeg:this.seg([['normal',t.normal],['merkez',t.merkez]],s.layout,v=>this.set({layout:v})),
+      colorSeg:this.seg([['accent',t.vurgu],['neutral',t.notr],['ink',t.murekkep]],s.btn.color,v=>this.set({btn:Object.assign({},s.btn,{color:v})})),
+      shapeSeg:this.seg([['auto',t.temaOto],['circle',t.daire],['soft',t.yumKare],['square',t.kare]],s.btn.shape,v=>this.set({btn:Object.assign({},s.btn,{shape:v})})),
+      sizeSeg:this.seg([['s','S'],['m','M'],['l','L'],['xl','XL'],['bar',t.tamG],['custom',t.ozelT]],s.btn.size,v=>this.set({btn:Object.assign({},s.btn,{size:v})})),
+      posSeg:this.seg([['sol',t.sol],['orta',t.orta],['sag',t.sag]],s.btn.pos,v=>this.set({btn:Object.assign({},s.btn,{pos:v})})),
+      openReminders:()=>this.set({view:'reminders'}),closeReminders:()=>this.set({view:'main'}),
+      reminderSummary:`${s.reminders.filter(r=>r.on).length} ${t.aktifHatir}`,
+      reminderRows:s.reminders.map(r=>Object.assign({time:r.time,label:r.label,
+        remove:e=>{e.stopPropagation();this.set({reminders:s.reminders.filter(x=>x.id!==r.id)})}},
+        this.tgl(r.on,()=>this.set({reminders:s.reminders.map(x=>x.id===r.id?Object.assign({},x,{on:!x.on}):x)})))),
+      newRemTime:s.newRemTime,onRemTime:e=>this.setState({newRemTime:e.target.value}),
+      newRemLabel:s.newRemLabel,onRemLabel:e=>this.setState({newRemLabel:e.target.value}),
+      addReminder:()=>{if(!s.newRemTime)return;this.set({reminders:[...s.reminders,{id:Date.now(),time:s.newRemTime,label:s.newRemLabel||'—',on:true}],newRemLabel:''})},
+      modalOn:!!s.modal,modalIsEdit:s.modal==='edit',modalIsTarget:s.modal==='target',modalIsNew:s.modal==='new',modalIsZedit:s.modal==='zedit',
+      closeModal:()=>this.setState({modal:null}),stopProp:e=>e.stopPropagation(),
+      editVal:s.editVal,onEditVal:e=>this.setState({editVal:e.target.value}),
+      saveEdit:()=>{const v=parseInt(s.editVal,10);if(!isNaN(v)&&v>=0)this.updActive({count:v});this.setState({modal:null})},
+      targetVal:s.targetVal,onTargetVal:e=>this.setState({targetVal:e.target.value}),
+      modeSeg:this.seg([['up',t.yukari],['down',t.geriSay]],s.mode,v=>this.set({mode:v})),
+      toggleRemain:()=>this.set({showRemaining:!s.showRemaining}),
+      remainCheckIcon:s.showRemaining?'ph-check-square':'ph-square',
+      saveTarget:()=>{const v=parseInt(s.targetVal,10);this.updActive({target:isNaN(v)||v<0?0:v});this.setState({modal:null})},
+      nzName:s.nzName,onNzName:e=>this.setState({nzName:e.target.value}),
+      nzTarget:s.nzTarget,onNzTarget:e=>this.setState({nzTarget:e.target.value}),
+      nzCatSeg:this.seg([['daily',t.gunlukK],['prayer',t.namaz],['custom',t.ozel]],s.nzCat,v=>this.setState({nzCat:v})),
+      saveNew:()=>{if(!s.nzName.trim())return;const tg=parseInt(s.nzTarget,10);
+        const nz={id:Date.now(),name:s.nzName.trim(),target:isNaN(tg)?0:tg,count:0,cat:s.nzCat,sound:'soft',vib:{on:true,style:'kisa',str:'orta'}};
+        this.set({zikirs:[...s.zikirs,nz],activeId:nz.id,modal:null,tab:'sayac'})},
+      zeName:s.zeName!==undefined?s.zeName:((s.zikirs.find(x=>x.id===s.zeId)||{}).name||''),
+      onZeName:e=>this.setState({zeName:e.target.value}),
+      zeSoundSeg:this.seg([['none',t.hicSes],['soft',t.yumusak],['drop',t.damla],['beads',t.tespih],['wood',t.tahta],['bell',t.can]],s.zeSound,v=>{this.setState({zeSound:v});this.playClick(v);}),
+      zeVibToggle:()=>this.setState({zeVibOn:!s.zeVibOn}),
+      zeVibBg:s.zeVibOn?'var(--color-accent)':(dark?'var(--color-neutral-800)':'var(--color-neutral-300)'),
+      zeVibKnob:dark?'var(--color-bg)':'#fff',
+      zeVibTx:s.zeVibOn?'translateX(20px)':'translateX(0)',
+      zeStyleSeg:this.seg([['kisa',t.kisa],['cift',t.cift],['uzun',t.uzun]],s.zeStyle,v=>this.setState({zeStyle:v})),
+      zeStrSeg:this.seg([['hafif',t.hafif],['orta',t.ortaSid],['guclu',t.guclu]],s.zeStr,v=>this.setState({zeStr:v})),
+      saveZedit:()=>{const nm=(s.zeName||'').trim();this.set({zikirs:s.zikirs.map(x=>x.id===s.zeId?Object.assign({},x,{name:nm||x.name,sound:s.zeSound,vib:{on:s.zeVibOn,style:s.zeStyle,str:s.zeStr}}):x),modal:null})}
+    };
+  }
+}
+</script>
+</body>
+</html>

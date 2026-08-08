@@ -1,0 +1,8 @@
+<resources>
+    <color name="zk_bg">#161826</color>
+    <color name="zk_surface">#1f2233</color>
+    <color name="zk_accent">#9184d9</color>
+    <color name="zk_text">#ECEBF5</color>
+    <color name="zk_muted">#8A88A0</color>
+    <color name="ic_launcher_background">#161826</color>
+</resources>

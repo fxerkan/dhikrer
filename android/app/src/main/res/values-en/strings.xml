@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Dhikrer</string>
+    <string name="free">Free</string>
+    <string name="reminder_title">Time for dhikr</string>
+    <string name="reminder_text">Would you like to continue your dhikr?</string>
+    <string name="svc_title">Dhikrer counter active</string>
+    <string name="svc_text">Count with the volume keys</string>
+    <string name="widget_desc">Dhikr counter</string>
+</resources>

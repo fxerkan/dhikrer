@@ -1,0 +1,31 @@
+# ── Secrets & signing (never commit) ──────────────────────────────
+_credentials/
+*.jks
+*.keystore
+keystore.properties
+!keystore.properties.template
+# Google Play / Cloud console artifacts that may land here later
+*service-account*.json
+*play-console*.json
+google-services.json
+api-*.json
+*.p8
+*.p12
+*.pem
+*.der
+secrets.properties
+
+# ── Local machine config ──────────────────────────────────────────
+local.properties
+.vscode/
+
+# ── Build output ──────────────────────────────────────────────────
+.gradle/
+.kotlin/
+build/
+android/build/
+android/app/build/
+
+# ── OS ────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db

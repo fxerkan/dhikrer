@@ -1,0 +1,11 @@
+# secrets & signing
+keystore.properties
+*.jks
+*.keystore
+# build output
+.gradle/
+build/
+app/build/
+local.properties
+# os
+.DS_Store

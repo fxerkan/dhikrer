@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Zikirci</string>
+    <string name="free">Serbest</string>
+    <string name="reminder_title">Zikir vakti</string>
+    <string name="reminder_text">Zikrine devam etmek ister misin?</string>
+    <string name="svc_title">Zikirci sayaç aktif</string>
+    <string name="svc_text">Ses tuşlarıyla sayabilirsin</string>
+    <string name="widget_desc">Zikir sayacı</string>
+</resources>
