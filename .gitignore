@@ -29,3 +29,8 @@ android/app/build/
 # ── OS ────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+
+
+webapp-handoff/
+device-tests/
+

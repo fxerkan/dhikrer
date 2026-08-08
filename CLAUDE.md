@@ -1,9 +1,9 @@
 # Zikirci / Dhikrer
 
-Dhikr counter Android app: native Kotlin shell hosting the Claude Design handoff web app
-(`handoff/Zikirci.dc.html`) in a fullscreen WebView. See
-`tools/gen_app.mjs` for the handoff→assets pipeline; re-run `node tools/gen_app.mjs .`
-after editing the handoff or `tools/langs.js`, then rebuild.
+Dhikr counter Android app: native Kotlin shell hosting the web UI
+(`webapp/Zikirci.dc.html`, a self-rendering React app) in a fullscreen WebView. See
+`tools/gen_app.mjs` for the webapp→assets pipeline; re-run `node tools/gen_app.mjs .`
+after editing `webapp/Zikirci.dc.html` or `tools/langs.js`, then rebuild.
 
 ## Versioning
 
@@ -20,7 +20,7 @@ Rules:
 - Current: `1.0.4` / code `5`. History `1.0`–`1.4` (old 2-part scheme) maps to `1.0.0`–`1.0.4`.
 - Name release APKs `Zikirci-Dhikrer-<versionName>.apk`.
 - The settings footer version (`t.dev`) is **auto-stamped** by `tools/gen_app.mjs` from
-  `versionName` on every regen — don't hand-edit `v…` in `langs.js`/handoff `t.dev`;
+  `versionName` on every regen — don't hand-edit `v…` in `langs.js`/`webapp` `t.dev`;
   bump `build.gradle.kts` and re-run `node tools/gen_app.mjs .`.
 
 ## Build
