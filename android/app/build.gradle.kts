@@ -23,8 +23,8 @@ android {
         targetSdk = 35
         // versionName = MAJOR.MINOR.PATCH (see CLAUDE.md "Versioning").
         // versionCode = monotonic build counter, +1 every release (Play Store requirement).
-        versionCode = 7
-        versionName = "1.1.0"
+        versionCode = 9
+        versionName = "1.2.1"
     }
 
     signingConfigs {
