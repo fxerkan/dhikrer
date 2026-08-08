@@ -33,4 +33,5 @@ Thumbs.db
 
 webapp-handoff/
 device-tests/
+__pycache__/
 
