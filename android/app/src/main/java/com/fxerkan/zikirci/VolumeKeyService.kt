@@ -2,9 +2,12 @@ package com.fxerkan.zikirci
 
 import android.app.PendingIntent
 import android.app.Service
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.ServiceInfo
+import android.media.MediaMetadata
 import android.media.VolumeProvider
 import android.media.session.MediaSession
 import android.media.session.PlaybackState
@@ -15,18 +18,24 @@ import android.os.Vibrator
 import androidx.core.app.NotificationCompat
 
 /**
- * Keeps a MediaSession active so hardware volume keys are routed to us as a
- * *remote* volume adjustment even while the screen is off — each press counts.
- * The session's remote VolumeProvider swallows the adjustment (stream volume is
- * untouched) and increments the active dhikr instead.
+ * Runs ONLY while the screen is off (started by MainActivity on ACTION_SCREEN_OFF
+ * when the app was in the foreground) so volume keys keep counting after the phone
+ * is locked. Keeps a MediaSession active so the hardware volume keys are routed to
+ * us as a *remote* volume adjustment; the remote VolumeProvider swallows the
+ * adjustment (stream volume untouched) and increments the active dhikr instead.
+ * Self-stops the instant the screen comes back on, so there is no lingering media
+ * control or notification during normal (screen-on) use.
  *
- * ponytail: the standard tasbih-app trick. Ceiling: some OEM battery managers
- * kill background FGS; user may need to exempt the app. Upgrade path: none
- * needed for a personal build.
+ * ponytail: the standard tasbih-app trick, scoped to screen-off. Ceiling: volume-key
+ * routing to a remote session while the screen is off is device-dependent — a few
+ * OEMs only honor it for the session that most recently played audio. Upgrade path
+ * if a device ignores us: hold transient audio focus (costs interrupting the user's
+ * Quran/music playback), so we don't do it by default.
  */
 class VolumeKeyService : Service() {
 
     private var session: MediaSession? = null
+    private var screenOn: BroadcastReceiver? = null
 
     companion object {
         private const val NOTIF_ID = 42
@@ -52,21 +61,31 @@ class VolumeKeyService : Service() {
             }
         }
 
+        val open = PendingIntent.getActivity(
+            this, 0, Intent(this, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+
         session = MediaSession(this, "ZikirVolume").apply {
+            // Clean, explicit metadata so the lock-screen control reads "Zikirci"
+            // (an empty session used to surface a stale/foreign media title).
+            setMetadata(
+                MediaMetadata.Builder()
+                    .putString(MediaMetadata.METADATA_KEY_TITLE, getString(R.string.svc_title))
+                    .putString(MediaMetadata.METADATA_KEY_ARTIST, getString(R.string.svc_text))
+                    .build()
+            )
             setPlaybackState(
                 PlaybackState.Builder()
                     .setActions(PlaybackState.ACTION_PLAY_PAUSE)
                     .setState(PlaybackState.STATE_PLAYING, 0, 1f)
                     .build()
             )
+            setSessionActivity(open)
             setPlaybackToRemote(vp)
             isActive = true
         }
 
-        val open = PendingIntent.getActivity(
-            this, 0, Intent(this, MainActivity::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
         val notif = NotificationCompat.Builder(this, Notifications.CHANNEL_SERVICE)
             .setSmallIcon(R.drawable.ic_bead)
             .setContentTitle(getString(R.string.svc_title))
@@ -81,11 +100,21 @@ class VolumeKeyService : Service() {
         } else {
             startForeground(NOTIF_ID, notif)
         }
+
+        // Self-stop the moment the screen turns on — MainActivity may already be
+        // destroyed by then, so the service owns its own teardown.
+        screenOn = object : BroadcastReceiver() {
+            override fun onReceive(c: Context?, i: Intent?) { stopSelf() }
+        }
+        registerReceiver(screenOn, IntentFilter(Intent.ACTION_SCREEN_ON))
     }
 
     private fun count() {
-        if (MainActivity.isAlive()) MainActivity.applyTaps(1)
-        else CounterRepo.incrementNative(this, 1)
+        // This service only runs while the screen is off, so the WebView is not
+        // visible and its JS is throttled — never route through applyTaps() here
+        // (it could silently drop counts). Persist natively; MainActivity.onResume
+        // reconciles the pending delta back into the web app when it returns.
+        CounterRepo.incrementNative(this, 1)
         ZikirWidget.refresh(this)
         if (CounterRepo.hapticEnabled(this)) {
             val v = getSystemService(Vibrator::class.java)
@@ -97,6 +126,8 @@ class VolumeKeyService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int = START_STICKY
 
     override fun onDestroy() {
+        screenOn?.let { try { unregisterReceiver(it) } catch (e: Exception) {} }
+        screenOn = null
         session?.isActive = false
         session?.release()
         session = null

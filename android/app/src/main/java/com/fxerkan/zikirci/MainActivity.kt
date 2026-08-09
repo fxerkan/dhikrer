@@ -1,7 +1,10 @@
 package com.fxerkan.zikirci
 
 import android.annotation.SuppressLint
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -28,6 +31,24 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var web: WebView
     private var loaded = false
+    private var resumed = false           // between onResume/onPause
+    private var leftForegroundAt = 0L     // elapsedRealtime() of last onPause
+
+    // When the screen turns off while the app is the foreground activity, spin up the
+    // volume-key service so counting continues on the lock screen. Registered for the
+    // whole activity lifetime. ACTION_SCREEN_OFF must be a runtime (not manifest) receiver.
+    // Gate: only start if we were foreground at lock time. Pressing power fires onPause
+    // and ACTION_SCREEN_OFF at ~the same moment in an unspecified order, so accept EITHER
+    // "still resumed" OR "just paused (<5s ago)"; a home-pressed app fails both → no start.
+    private val screenOff = object : BroadcastReceiver() {
+        override fun onReceive(c: Context?, i: Intent?) {
+            val recentlyForeground = resumed ||
+                android.os.SystemClock.elapsedRealtime() - leftForegroundAt < 5000
+            if (recentlyForeground && CounterRepo.volumeKeysEnabled(this@MainActivity)) {
+                VolumeKeyService.start(this@MainActivity)
+            }
+        }
+    }
 
     companion object {
         private var ref: WeakReference<MainActivity>? = null
@@ -47,6 +68,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         ref = WeakReference(this)
         Notifications.ensureChannel(this)
+        androidx.core.content.ContextCompat.registerReceiver(
+            this, screenOff, IntentFilter(Intent.ACTION_SCREEN_OFF),
+            androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED
+        )
         // targetSdk 35 draws edge-to-edge; we forward the system-bar insets to the
         // web layout (as CSS vars) so the header/nav stay inside the safe area.
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -145,9 +170,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        resumed = true
         reconcilePending()
-        // keep the screen-off volume-key service running if enabled
-        if (CounterRepo.volumeKeysEnabled(this)) VolumeKeyService.start(this)
+        // Screen is on and we're foreground → onKeyDown handles counting. Tear down
+        // any screen-off service (and its lock-screen media control / notification).
+        VolumeKeyService.stop(this)
+    }
+
+    override fun onPause() {
+        resumed = false
+        leftForegroundAt = android.os.SystemClock.elapsedRealtime()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        try { unregisterReceiver(screenOff) } catch (e: Exception) {}
+        super.onDestroy()
     }
 
     // Volume keys while app is focused (screen on) -> count.
@@ -168,8 +206,9 @@ class MainActivity : AppCompatActivity() {
             CounterRepo.saveFromWeb(this@MainActivity, json)
             ZikirWidget.refresh(this@MainActivity)
             ReminderScheduler.sync(this@MainActivity)
-            if (CounterRepo.volumeKeysEnabled(this@MainActivity)) VolumeKeyService.start(this@MainActivity)
-            else VolumeKeyService.stop(this@MainActivity)
+            // The volume-key service is started on screen-off (see screenOff receiver),
+            // not here — so no media control / notification appears during normal use.
+            if (!CounterRepo.volumeKeysEnabled(this@MainActivity)) VolumeKeyService.stop(this@MainActivity)
             // match system-bar icon color to the active theme (light icons on dark)
             val dark = try { org.json.JSONObject(json).optBoolean("dark", true) } catch (e: Exception) { true }
             runOnUiThread {
