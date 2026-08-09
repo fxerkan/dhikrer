@@ -17,7 +17,7 @@ after editing `webapp/Zikirci.dc.html` or `tools/langs.js`, then rebuild.
 Rules:
 - Bumping a higher level resets the lower ones to 0 (`1.0.9` + feature → `1.1.0`; `1.4.2` + big change → `2.0.0`).
 - `versionCode` is a separate monotonic counter — **+1 on every release**, never reset (Play Store requires it to only increase).
-- Current: `1.0.4` / code `5`. History `1.0`–`1.4` (old 2-part scheme) maps to `1.0.0`–`1.0.4`.
+- Current: `1.2.1` / code `9`. History `1.0`–`1.4` (old 2-part scheme) maps to `1.0.0`–`1.0.4`.
 - Name release APKs `Zikirci-Dhikrer-<versionName>.apk`.
 - The settings footer version (`t.dev`) is **auto-stamped** by `tools/gen_app.mjs` from
   `versionName` on every regen — don't hand-edit `v…` in `langs.js`/`webapp` `t.dev`;

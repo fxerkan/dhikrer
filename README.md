@@ -45,6 +45,7 @@ tools/gen_app.mjs  webapp → android/app/src/main/assets bundling (offline, no 
 tools/langs.js     Extra UI translations (AR/ID/HI/ZH)
 android/           Native Kotlin shell: WebView host + home widget + volume‑key service + reminders
 releases/          Published APK / AAB artifacts
+store/             Play Store listing: PLAY_RELEASE.md + screenshots (raw, framed, hero)
 ```
 
 The app is a **native Kotlin shell** that hosts the polished web UI in a fullscreen WebView,
@@ -71,8 +72,7 @@ cp android/keystore.properties.template android/keystore.properties   # then fil
 ```
 
 Artifacts are named `Zikirci-Dhikrer-<versionName>.apk`. Versioning rules are in
-[`CLAUDE.md`](CLAUDE.md); Play Store steps in [`PLAY_RELEASE.md`](PLAY_RELEASE.md);
-multi‑device testing in [`TESTING.md`](TESTING.md).
+[`CLAUDE.md`](CLAUDE.md); Play Store steps in [`store/PLAY_RELEASE.md`](store/PLAY_RELEASE.md).
 
 ## Author
 
