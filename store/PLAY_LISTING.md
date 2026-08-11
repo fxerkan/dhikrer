@@ -10,19 +10,20 @@ Play limitleri: **Başlık** ≤30, **Kısa açıklama** ≤80, **Tam açıklama
 **Uygulama adı:** `Zikirci`
 
 **Kısa açıklama** (80):
-`Reklamsız zikirmatik — ses tuşuyla say, çevrimdışı çalışır, tamamen senin.`
+`Reklamsız, tümüyle özelleştirilebilir, sade ve kolay kullanılabilir zikirmatik.`
 
 **Tam açıklama:**
+
 ```
 Zikirci — sade, hızlı ve dikkat dağıtmayan bir dijital tesbih (zikirmatik).
 
 ⭐ ÖNE ÇIKANLAR
-• Fiziksel ses tuşuyla say — ekran kapalıyken bile zikrine devam et.
 • Reklamsız. Takip yok, hesap yok — her şey cihazında, çevrimdışı çalışır.
 • Kullanımı kolay — tek dokunuşla say, sade arayüz, dağıtan hiçbir şey yok.
 • Özelleştirilebilir tasarım — 10 tema, sayaç şekilleri, tesbih/birleşik/klasik düzenler.
-• Hedef ve tesbih modları — 33 / 66 / 99 ayraçları, serbest sayım.
 • Kilit modu — cebindeyken yanlışlıkla sayımı önler.
+• Hedef ve tesbih modları — 33 / 66 / 99 ayraçları, serbest sayım.
+• Fiziksel ses tuşuyla say — ekran kapalıyken bile zikrine devam et.
 • İstatistik — ısı haritası, günlük ve haftalık ilerleme.
 • Çoklu dil ve tam sağdan-sola (RTL) desteği.
 
@@ -37,19 +38,20 @@ ister ses tuşuna bas — sen zikrine odaklan, saymayı Zikirci halletsin.
 **App name:** `Dhikrer`
 
 **Short description** (80):
-`Ad-free dhikr counter — count with volume keys, works offline, fully yours.`
+`Ad-free dhikr counter — count with volume keys, works offline, fully customizable.`
 
 **Full description:**
+
 ```
 Dhikrer — a simple, fast, distraction-free digital tasbih (dhikr counter).
 
 ⭐ HIGHLIGHTS
-• Count with the physical volume keys — keep going even with the screen off.
 • Ad-free. No tracking, no account — everything stays on your device, works offline.
 • Easy to use — one tap to count, clean UI, zero clutter.
 • Customizable design — 10 themes, counter shapes, tasbih / unified / classic layouts.
 • Goal & tasbih modes — 33 / 66 / 99 markers, or free counting.
 • Lock mode — prevents accidental counts in your pocket.
+• Count with the physical volume keys — keep going even with the screen off.
 • Statistics — heatmap, daily and weekly progress.
 • Multi-language with full right-to-left (RTL) support.
 
