@@ -64,12 +64,13 @@ def feature_1024x500():
 
     def px(v): return int(v * SS)
 
-    # diagonal gradient, lighter top-left → deep purple bottom-right (brighter so the dark logo tile pops)
+    # clean diagonal gradient, lighter top-left → deep purple bottom-right (no diamond artifact)
     tl, br = (60, 54, 96), (24, 20, 44)
-    ramp = Image.linear_gradient("L").rotate(-45, expand=True, resample=Image.BICUBIC).resize((W, H))
     lut = [tuple(int(tl[i] + (br[i] - tl[i]) * (v / 255)) for i in range(3)) for v in range(256)]
+    xr = [x / (W - 1) for x in range(W)]
     rgb = Image.new("RGB", (W, H))
-    rgb.putdata([lut[p] for p in ramp.getdata()])
+    rgb.putdata([lut[int((xf + yf) * 0.5 * 255)]
+                 for yf in (y / (H - 1) for y in range(H)) for xf in xr])
     img = rgb.convert("RGBA")
     d = ImageDraw.Draw(img)
 
@@ -90,8 +91,10 @@ def feature_1024x500():
     soft = (206, 198, 232, 255)   # subtle tone for "er"
     sub_c = (183, 169, 236, 255)
     sub_en = (150, 150, 180, 255)
+    slog_c = (201, 193, 244, 255)  # tasbih C9C1F4 accent for the slogan
     TR = "Reklamsız, dikkat dağıtmayan, özelleştirilebilir zikirmatik."
     EN = "Ad-free, Distraction-free, Customizable Dhikr counter"
+    SLOGAN = "You focus on the dhikr, let Dhikrer handle the counting."
 
     def fit(text, start, lo=16):
         for s in range(start, lo - 1, -1):
@@ -102,6 +105,7 @@ def feature_1024x500():
 
     ftitle = font(px(64))
     fs = fit(max([TR, EN], key=len), 32)
+    fslog = fit(SLOGAN, 30)
 
     # title segments so "er" gets the soft tone
     y = px(120)
@@ -111,8 +115,9 @@ def feature_1024x500():
         d.text((x, y), seg, font=ftitle, fill=col)
         x += d.textlength(seg, font=ftitle)
 
-    d.text((xtext, px(250)), TR, font=fs, fill=sub_c)
-    d.text((xtext, px(310)), EN, font=fs, fill=sub_en)
+    d.text((xtext, px(232)), TR, font=fs, fill=sub_c)
+    d.text((xtext, px(290)), EN, font=fs, fill=sub_en)
+    d.text((xtext, px(372)), SLOGAN, font=fslog, fill=slog_c)
 
     img = img.resize((1024, 500), Image.LANCZOS)
     p = os.path.join(OUT, "feature-graphic-1024x500.png")

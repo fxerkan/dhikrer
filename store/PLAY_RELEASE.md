@@ -20,9 +20,30 @@
 
 1. **İmzalama** — Play App Signing'i aç. `zikirci-release.jks` **upload key**'in olur.
    (Gerçek yayında parolaları değiştir; `keystore.properties` gizli kalsın.)
-2. **specialUse FGS onayı** — Play, `specialUse` için gerekçe formu sorar. Gerekçe:
-   *"Kullanıcı ekran kapalıyken ses tuşlarıyla zikir sayacını ilerletebilsin diye
-   MediaSession'ı canlı tutan kısa ömürlü foreground service."*
+2. **specialUse FGS onayı** — Play, `specialUse` için gerekçe formu sorar ("Ön plan
+   hizmeti izinleri" → **Diğer/Other**). Video alanı genelde opsiyonel: önce boş
+   gönder; zorunlu tutarsa ~20 sn'lik ekran kaydı (sesli tuş sayımını aç → ekran
+   kapalı → ses+ → sayaç artıyor) YouTube'a **unlisted** yükleyip linki ver.
+   İnceleyenler İngilizce okuduğu için **"İzin kullanımını açıklayın" alanına şu
+   İngilizce metni yapıştır** (kısa TR özeti: ekran kapalıyken ses tuşlarıyla zikir
+   sayacını ilerletmek için MediaSession'ı canlı tutan kısa ömürlü foreground service):
+
+   ```
+   Dhikrer/Zikirci is a dhikr (prayer) counter. A core feature lets the user
+   increment the counter with the phone's physical volume keys while the screen
+   is off or the app is in the background. To keep receiving volume/media-button
+   events in that state, the app holds an active MediaSession, which Android only
+   allows inside a foreground service. We declare FOREGROUND_SERVICE_SPECIAL_USE
+   because the service neither plays nor records media and does not fit any
+   standard FGS type — it exists solely to capture volume-key presses in real time.
+
+   Why it must start immediately and cannot be deferred, paused or restarted: the
+   user expects the very next volume-key press to be counted instantly, so the
+   MediaSession must already be live the moment the feature is enabled. Deferrable
+   APIs such as WorkManager or JobScheduler cannot handle real-time hardware key
+   input. The service is short-lived — it starts when the user begins a volume-key
+   counting session and stops when they finish. No audio is played or recorded.
+   ```
 3. **Gizlilik Politikası URL'si** — zorunlu (bildirim izni var). Basit bir sayfa yeter.
 4. **Data safety formu** — uygulama veri toplamıyor/paylaşmıyor (her şey cihazda,
    localStorage). "No data collected/shared" işaretle.
