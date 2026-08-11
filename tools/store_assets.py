@@ -61,35 +61,58 @@ def icon_512():
 def feature_1024x500():
     SS = 2
     W, H = 1024 * SS, 500 * SS
-    img = Image.new("RGBA", (W, H))
+
+    def px(v): return int(v * SS)
+
+    # diagonal gradient, lighter top-left → deep purple bottom-right (brighter so the dark logo tile pops)
+    tl, br = (60, 54, 96), (24, 20, 44)
+    ramp = Image.linear_gradient("L").rotate(-45, expand=True, resample=Image.BICUBIC).resize((W, H))
+    lut = [tuple(int(tl[i] + (br[i] - tl[i]) * (v / 255)) for i in range(3)) for v in range(256)]
+    rgb = Image.new("RGB", (W, H))
+    rgb.putdata([lut[p] for p in ramp.getdata()])
+    img = rgb.convert("RGBA")
     d = ImageDraw.Draw(img)
-    # diagonal indigo→purple gradient (hero family)
-    top, bot = (18, 20, 40), (46, 26, 66)
-    for y in range(H):
-        t = y / H
-        d.line([(0, y), (W, y)], fill=tuple(int(top[i] + (bot[i] - top[i]) * t) for i in range(3)) + (255,))
-    glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    ImageDraw.Draw(glow).ellipse([W - 720 * SS, -160 * SS, W + 160 * SS, 360 * SS], fill=(145, 132, 217, 70))
-    img.alpha_composite(glow.filter(ImageFilter.GaussianBlur(120 * SS)))
 
-    def px(v): return v * SS
-
-    # LOGO tile on the far left (looks like the app icon), then two name+subtitle blocks
-    tx, ty, ts = px(60), px(100), px(300)
-    d.rounded_rectangle([tx, ty, tx + ts, ty + ts], radius=px(60), fill=BG + (255,))
+    # LOGO tile on the far left + a soft light halo behind it so the dark tile stands out
+    ts = px(240)
+    tx, ty = px(60), (H - ts) // 2
+    halo = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(halo).ellipse([tx - px(80), ty - px(80), tx + ts + px(80), ty + ts + px(80)],
+                                 fill=(150, 138, 214, 120))
+    img.alpha_composite(halo.filter(ImageFilter.GaussianBlur(px(70))))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([tx, ty, tx + ts, ty + ts], radius=px(52), fill=BG + (255,))
     draw_beads(d, tx, ty, ts / 108)
 
-    xtext = px(410)
-    fname, fsub = font(px(78)), font(px(34), bold=False)
-    white, purple = (255, 255, 255, 255), (179, 169, 236, 255)
+    # text: title (with "er" of Dhikrer in a soft, slightly different tone) + TR + EN subtitles
+    xtext, avail = px(350), W - px(350) - px(48)
+    white = (245, 245, 250, 255)
+    soft = (206, 198, 232, 255)   # subtle tone for "er"
+    sub_c = (183, 169, 236, 255)
+    sub_en = (150, 150, 180, 255)
+    TR = "Reklamsız, dikkat dağıtmayan, özelleştirilebilir zikirmatik."
+    EN = "Ad-free, Distraction-free, Customizable Dhikr counter"
 
-    def block(name, sub, y):
-        d.text((xtext + 2, y + 3), name, font=fname, fill=(0, 0, 0, 150))
-        d.text((xtext, y), name, font=fname, fill=white)
-        d.text((xtext + 2, y + px(92)), sub, font=fsub, fill=purple)
+    def fit(text, start, lo=16):
+        for s in range(start, lo - 1, -1):
+            f = font(px(s), bold=False)
+            if d.textlength(text, font=f) <= avail:
+                return f
+        return font(px(lo), bold=False)
 
-    block("Zikirci", "Reklamsız zikirmatik", px(96))
-    block("Dhikrer", "Ad-free dhikr counter", px(276))
+    ftitle = font(px(64))
+    fs = fit(max([TR, EN], key=len), 32)
+
+    # title segments so "er" gets the soft tone
+    y = px(120)
+    x = xtext
+    for seg, col in [("Zikirci (Dhikr", white), ("er", soft), (")", white)]:
+        d.text((x + 2, y + 3), seg, font=ftitle, fill=(0, 0, 0, 150))
+        d.text((x, y), seg, font=ftitle, fill=col)
+        x += d.textlength(seg, font=ftitle)
+
+    d.text((xtext, px(250)), TR, font=fs, fill=sub_c)
+    d.text((xtext, px(310)), EN, font=fs, fill=sub_en)
 
     img = img.resize((1024, 500), Image.LANCZOS)
     p = os.path.join(OUT, "feature-graphic-1024x500.png")
