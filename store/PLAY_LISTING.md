@@ -65,14 +65,13 @@ volume key — you focus on the dhikr, let Dhikrer handle the counting.
 
 - **Feature graphic** (1024×500): ayrıca üret (yatay). Şimdilik hero'lardan biri kırpılabilir.
 - **Telefon ekran görüntüleri** (portrait) — önerilen sıra (özellik öncelikli):
-  1. `hero-volume-button-counter-hand-v3.png` — ses tuşuyla say (gerçekçi ghost el + `+1`) — **AI / nano banana**
-  2. `hero-ad-free-v1.png` — reklamsız / çevrimdışı
-  3. `hero-customize-v1.png` — 10 tema, özelleştirme
-  4. `hero-easy-v1.png` — sade, kullanımı kolay
-  5. `hero-stats-v1.png` — istatistik / ilerleme
-  6. `hero-languages-v1.png` — çoklu dil / RTL
-  7. `framed/07-istatistik-okyanus-v1.png`
-  8. `framed/06-zikirler-gece-v1.png`
+
+  1. @store/store-screenshots/hero-ad-free-v1.png
+  2. @store/store-screenshots/hero-easy-v1.png
+  3. @store/store-screenshots/hero-customize-v1.png
+  4. @store/store-screenshots/hero-volume-button-counter-hand-v3.png
+  5. @store/store-screenshots/hero-stats-v1.png
+  6. @store/store-screenshots/hero-languages-v1.png
 - **Ses tuşu hero'su (el görseli)**: yalnızca **Gemini nano banana** ile üretilir/düzeltilir —
   `NB_MODEL=gemini-3-pro-image NB_SIZE=2K python3 tools/nano_banana.py OUT.png "PROMPT" IN.png`.
   (`hero-volume-button-counter-hand-v3.png` = v1'in yazıları düzeltilmiş hâli: Sayaç/Kilitli/Sübhânallah.)

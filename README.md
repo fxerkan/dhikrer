@@ -1,8 +1,16 @@
 # Zikirci · Dhikrer
 
-A modern, distraction‑free **dhikr (zikir) counter** for Android. Count with a big
-tap button, the **volume keys** — even with the screen off — or a **home‑screen widget**.
-Beautiful, fast, and completely private.
+**English** · [Türkçe](README.tr.md) · [العربية](README.ar.md)
+
+A modern, distraction‑free **dhikr (zikir) counter** for Android.
+Count with a big tap button, the **volume keys** — even with the screen off — or a **home‑screen widget**.
+Beautiful, fast, and completely customizable.
+
+<p align="center">
+  <img src="store/store-screenshots/hero-ad-free-v1.png" width="30%" alt="Ad‑free dhikr counter">
+  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="Count with volume keys">
+  <img src="store/store-screenshots/hero-customize-v1.png" width="30%" alt="Fully customizable">
+</p>
 
 App ID `com.fxerkan.dhikrer` — named **Zikirci** in Turkish, **Dhikrer** in English.
 
@@ -37,43 +45,18 @@ App ID `com.fxerkan.dhikrer` — named **Zikirci** in Turkish, **Dhikrer** in En
 
 Runs on **Android 8.0+ (API 26)** — Android **12, 13, 14, 15, 16** are all tested and supported.
 
-## Project layout
+Current release: **1.2.3** (versionCode 11). Full history in
+[`CHANGELOG.md`](CHANGELOG.md) (English) · [`CHANGELOG.tr.md`](CHANGELOG.tr.md) (Türkçe).
 
-```
-webapp/            Web UI source of truth (self‑rendering React app)
-tools/gen_app.mjs  webapp → android/app/src/main/assets bundling (offline, no CDN)
-tools/langs.js     Extra UI translations (AR/ID/HI/ZH)
-android/           Native Kotlin shell: WebView host + home widget + volume‑key service + reminders
-releases/          Published APK / AAB artifacts
-store/             Play Store listing: PLAY_RELEASE.md + screenshots (raw, framed, hero)
-```
+## Roadmap
 
-The app is a **native Kotlin shell** that hosts the polished web UI in a fullscreen WebView,
-plus native modules for the home widget, screen‑off volume‑key counting, and reminders. All web
-assets (fonts, icons, runtime) are **bundled** — the app makes **no network requests**.
+Planned for future releases:
 
-## Build
-
-Requires **JDK 21** and the Android SDK. After editing `webapp/Zikirci.dc.html` or
-`tools/langs.js`, regenerate the bundled assets, then build:
-
-```bash
-node tools/gen_app.mjs .            # regenerate android/app/src/main/assets/app/app.html
-cd android
-./gradlew :app:assembleRelease      # signed APK  → app/build/outputs/apk/release/
-./gradlew :app:bundleRelease        # Play AAB    → app/build/outputs/bundle/release/
-```
-
-Release signing reads secrets from a gitignored `android/keystore.properties` (the keystore is
-**not** in the repo):
-
-```bash
-cp android/keystore.properties.template android/keystore.properties   # then fill in
-```
-
-Artifacts are named `Zikirci-Dhikrer-<versionName>.apk`. Versioning rules are in
-[`CLAUDE.md`](CLAUDE.md); Play Store steps in [`store/PLAY_RELEASE.md`](store/PLAY_RELEASE.md).
+- 🎧 **Bluetooth headset integration** — count and control with the buttons on Bluetooth earbuds/headphones.
+- 🔊 **Dhikr audio narration** — spoken playback of the active dhikr as you count.
+- 📊 **Statistics widget** — a home‑screen widget showing your daily count, streak, and progress.
+- 📤 **Dhikr sharing** — share your dhikrs and progress with others.
 
 ## Author
 
-Made by [@FXerkan](https://fxerkan.com).
+Developed by [@FXerkan](https://fxerkan.com) - Code more, worry less.
