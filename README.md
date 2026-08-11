@@ -8,8 +8,11 @@ Beautiful, fast, and completely customizable.
 
 <p align="center">
   <img src="store/store-screenshots/hero-ad-free-v1.png" width="30%" alt="Ad‑free dhikr counter">
-  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="Count with volume keys">
+  <img src="store/store-screenshots/hero-easy-v1.png" width="30%" alt="Simple, easy to use">
   <img src="store/store-screenshots/hero-customize-v1.png" width="30%" alt="Fully customizable">
+  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="Count with volume keys">
+  <img src="store/store-screenshots/hero-stats-v1.png" width="30%" alt="Track your progress">
+  <img src="store/store-screenshots/hero-languages-v1.png" width="30%" alt="Multi‑language & RTL">
 </p>
 
 App ID `com.fxerkan.dhikrer` — named **Zikirci** in Turkish, **Dhikrer** in English.

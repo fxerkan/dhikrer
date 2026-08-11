@@ -8,8 +8,11 @@
 
 <p align="center">
   <img src="store/store-screenshots/hero-ad-free-v1.png" width="30%" alt="عدّاد ذِكر بلا إعلانات">
-  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="عُدَّ بأزرار الصوت">
+  <img src="store/store-screenshots/hero-easy-v1.png" width="30%" alt="بسيط وسهل الاستخدام">
   <img src="store/store-screenshots/hero-customize-v1.png" width="30%" alt="قابل للتخصيص بالكامل">
+  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="عُدَّ بأزرار الصوت">
+  <img src="store/store-screenshots/hero-stats-v1.png" width="30%" alt="تابع تقدمك">
+  <img src="store/store-screenshots/hero-languages-v1.png" width="30%" alt="تعدد اللغات وRTL">
 </p>
 
 معرّف التطبيق `com.fxerkan.dhikrer` — يُسمّى **Zikirci** بالتركية و**Dhikrer** بالإنجليزية.

@@ -8,8 +8,11 @@ Büyük bir dokunma butonu, **ses tuşları** — ekran kapalıyken bile — vey
 
 <p align="center">
   <img src="store/store-screenshots/hero-ad-free-v1.png" width="30%" alt="Reklamsız zikirmatik">
-  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="Ses tuşuyla say">
+  <img src="store/store-screenshots/hero-easy-v1.png" width="30%" alt="Sade, kullanımı kolay">
   <img src="store/store-screenshots/hero-customize-v1.png" width="30%" alt="Tümüyle özelleştirilebilir">
+  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="Ses tuşuyla say">
+  <img src="store/store-screenshots/hero-stats-v1.png" width="30%" alt="İlerlemeni izle">
+  <img src="store/store-screenshots/hero-languages-v1.png" width="30%" alt="Çoklu dil ve RTL">
 </p>
 
 Uygulama kimliği `com.fxerkan.dhikrer` — Türkçede **Zikirci**, İngilizcede **Dhikrer**.
