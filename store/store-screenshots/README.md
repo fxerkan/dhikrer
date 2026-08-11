@@ -5,6 +5,15 @@ Hepsi gerçek uygulamadan (headless Chrome, WebView ile birebir render), 1350×2
 - **`*.png`** (bu dizin) — çerçevesiz ham ekran görüntüleri.
 - **`framed/*.png`** — her birinin etrafında modern Android telefon çerçevesi (sol yan **ses tuşları** + sağ güç tuşu, punch-hole kamera). Play'e doğrudan yüklenebilir.
 - **`hero-volume-keys*.png`** — "ses tuşlarıyla say" özelliğini vurgulayan tanıtım görseli (gerçek Zikirci ekranı + volume tuşuna +1 callout).
+- **`hero-<özellik>-v1.png`** — her distinguished özellik için birer tanıtım görseli (`python3 tools/hero_set.py`).
+  Her biri **farklı arka plan rengi** + çerçeveli telefon + başlık (el/parmak **çizmez**):
+  `hero-ad-free` (zümrüt) · `hero-customize` (mor) · `hero-easy` (kehribar) · `hero-stats` (okyanus) ·
+  `hero-languages` (arduvaz, RTL).
+- **`hero-volume-button-counter-hand-v3.png`** — "ses tuşuyla say" hero'su, gerçekçi ghost el + `+1`
+  + üstte diğer hero'larla aynı başlık bandı. Akış: v1 (nano banana) → **v2** yazılar düzeltildi
+  (Sayaç / Kilitli / Sübhânallah, `tools/nano_banana.py`) → **v3** başlık eklendi (`tools/hero_caption.py`,
+  sadece metin). El görselleri yalnızca **Gemini nano banana** ile; asla lokal (PIL) çizilmez.
+  Play mağaza metinleri: `store/PLAY_LISTING.md`.
 
 ## Sürümleme
 

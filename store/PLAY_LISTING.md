@@ -1,0 +1,78 @@
+# Google Play — Mağaza İçeriği / Store Listing
+
+Play limitleri: **Başlık** ≤30, **Kısa açıklama** ≤80, **Tam açıklama** ≤4000 karakter.
+İki liste yerelleştirmesi: **TR → Zikirci**, **EN → Dhikrer** (cihazdaki ad zaten locale'e göre değişir).
+
+---
+
+## 🇹🇷 Türkçe liste
+
+**Uygulama adı:** `Zikirci`
+
+**Kısa açıklama** (80):
+`Reklamsız zikirmatik — ses tuşuyla say, çevrimdışı çalışır, tamamen senin.`
+
+**Tam açıklama:**
+```
+Zikirci — sade, hızlı ve dikkat dağıtmayan bir dijital tesbih (zikirmatik).
+
+⭐ ÖNE ÇIKANLAR
+• Fiziksel ses tuşuyla say — ekran kapalıyken bile zikrine devam et.
+• Reklamsız. Takip yok, hesap yok — her şey cihazında, çevrimdışı çalışır.
+• Kullanımı kolay — tek dokunuşla say, sade arayüz, dağıtan hiçbir şey yok.
+• Özelleştirilebilir tasarım — 10 tema, sayaç şekilleri, tesbih/birleşik/klasik düzenler.
+• Hedef ve tesbih modları — 33 / 66 / 99 ayraçları, serbest sayım.
+• Kilit modu — cebindeyken yanlışlıkla sayımı önler.
+• İstatistik — ısı haritası, günlük ve haftalık ilerleme.
+• Çoklu dil ve tam sağdan-sola (RTL) desteği.
+
+Kısacası: reklamsız, gizliliğe saygılı, hızlı bir zikir sayacı. İster ekrana dokun,
+ister ses tuşuna bas — sen zikrine odaklan, saymayı Zikirci halletsin.
+```
+
+---
+
+## 🇬🇧 English listing
+
+**App name:** `Dhikrer`
+
+**Short description** (80):
+`Ad-free dhikr counter — count with volume keys, works offline, fully yours.`
+
+**Full description:**
+```
+Dhikrer — a simple, fast, distraction-free digital tasbih (dhikr counter).
+
+⭐ HIGHLIGHTS
+• Count with the physical volume keys — keep going even with the screen off.
+• Ad-free. No tracking, no account — everything stays on your device, works offline.
+• Easy to use — one tap to count, clean UI, zero clutter.
+• Customizable design — 10 themes, counter shapes, tasbih / unified / classic layouts.
+• Goal & tasbih modes — 33 / 66 / 99 markers, or free counting.
+• Lock mode — prevents accidental counts in your pocket.
+• Statistics — heatmap, daily and weekly progress.
+• Multi-language with full right-to-left (RTL) support.
+
+In short: an ad-free, privacy-respecting, fast dhikr counter. Tap the screen or press a
+volume key — you focus on the dhikr, let Dhikrer handle the counting.
+```
+
+---
+
+## Görseller / Assets
+
+- **Feature graphic** (1024×500): ayrıca üret (yatay). Şimdilik hero'lardan biri kırpılabilir.
+- **Telefon ekran görüntüleri** (portrait) — önerilen sıra (özellik öncelikli):
+  1. `hero-volume-button-counter-hand-v3.png` — ses tuşuyla say (gerçekçi ghost el + `+1`) — **AI / nano banana**
+  2. `hero-ad-free-v1.png` — reklamsız / çevrimdışı
+  3. `hero-customize-v1.png` — 10 tema, özelleştirme
+  4. `hero-easy-v1.png` — sade, kullanımı kolay
+  5. `hero-stats-v1.png` — istatistik / ilerleme
+  6. `hero-languages-v1.png` — çoklu dil / RTL
+  7. `framed/07-istatistik-okyanus-v1.png`
+  8. `framed/06-zikirler-gece-v1.png`
+- **Ses tuşu hero'su (el görseli)**: yalnızca **Gemini nano banana** ile üretilir/düzeltilir —
+  `NB_MODEL=gemini-3-pro-image NB_SIZE=2K python3 tools/nano_banana.py OUT.png "PROMPT" IN.png`.
+  (`hero-volume-button-counter-hand-v3.png` = v1'in yazıları düzeltilmiş hâli: Sayaç/Kilitli/Sübhânallah.)
+- Diğer (elsiz) hero'lar: `python3 tools/hero_set.py` — her özellik için farklı arka plan rengi +
+  çerçeveli telefon + başlık. Çıktı `store-screenshots/hero-*-v1.png`. **El/parmak çizmez.**

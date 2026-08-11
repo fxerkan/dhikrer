@@ -1,5 +1,5 @@
-// Generates the offline app.html (WebView UI) from the web source in webapp/.
-// - slices the .zk-app template + logic script out of webapp/Zikirci.dc.html
+// Generates the offline app.html (WebView UI) from the web source in webapp-handoff/.
+// - slices the .zk-app template + logic script out of webapp-handoff/Zikirci.dc.html
 // - strips the device-frame preview chrome
 // - rewrites all CDN URLs to vendored offline assets
 // - injects the native<->web bridge + tap marker
@@ -8,7 +8,7 @@ import path from 'path';
 import LANGS from './langs.js';
 
 const root = path.resolve(process.argv[2] || '.');
-const webapp = path.join(root, 'webapp');
+const webapp = path.join(root, 'webapp-handoff');
 const assets = path.join(root, 'android/app/src/main/assets/app');
 const src = fs.readFileSync(path.join(webapp, 'Zikirci.dc.html'), 'utf8');
 const lines = src.split('\n');

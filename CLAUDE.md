@@ -1,9 +1,9 @@
 # Zikirci / Dhikrer
 
 Dhikr counter Android app: native Kotlin shell hosting the web UI
-(`webapp/Zikirci.dc.html`, a self-rendering React app) in a fullscreen WebView. See
+(`webapp-handoff/Zikirci.dc.html`, a self-rendering React app) in a fullscreen WebView. See
 `tools/gen_app.mjs` for the webapp→assets pipeline; re-run `node tools/gen_app.mjs .`
-after editing `webapp/Zikirci.dc.html` or `tools/langs.js`, then rebuild.
+after editing `webapp-handoff/Zikirci.dc.html` or `tools/langs.js`, then rebuild.
 
 ## Versioning
 
