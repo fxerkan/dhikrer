@@ -45,6 +45,9 @@ Pipeline (run from repo root, after `node tools/gen_app.mjs .`):
 2. `python3 tools/frame.py` — wraps each into a phone frame → `store/<lang>/framed/`.
 3. `python3 tools/hero_set.py` — composites framed screen + headline → `store/<lang>/hero-<slug>.png`.
    Arabic headlines rely on Pillow's raqm build (`direction='rtl'`), no reshaping libs.
+4. `python3 tools/store_assets.py` — shared listing icon `store/store-icon-512.png` +
+   per-language `store/<lang>/feature-graphic-1024x500.png` (logo tile, localized
+   product name + title + slogan; Arabic lays out RTL).
 
 `tools/hero.py` / `tools/hero_caption.py` are the older TR-only / nano-banana-band
 flow, superseded by `hero_set.py` for the per-language set.

@@ -44,7 +44,7 @@ scriptBlock = scriptBlock.replace(marker, `,\n${langInjection}\n};\nfunction mul
 const gradle = fs.readFileSync(path.join(root, 'android/app/build.gradle.kts'), 'utf8');
 const ver = (gradle.match(/versionName\s*=\s*"([^"]+)"/) || [])[1] || '1.0';
 const before = scriptBlock;
-scriptBlock = scriptBlock.replace(/(Zikirci · v)[\d.]+( · )/g, `$1${ver}$2`);
+scriptBlock = scriptBlock.replace(/( · v)[\d.]+( · )/g, `$1${ver}$2`);
 if (scriptBlock === before) throw new Error('could not locate footer version (t.dev) to stamp');
 
 // --- rewrite URLs in helmet to vendored offline assets ---

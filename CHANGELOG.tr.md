@@ -19,8 +19,15 @@ Her sürümde ayrıca bir **Mağaza sürüm notu** vardır — düz metin, ≤50
   Hedef değerini doğrudan değiştirebilirsin (önceden yalnızca ad + titreşim vardı).
 - **İyileştirildi: daha temiz titreşim seçenekleri** — Titreşim Şekli ve Şiddeti yalnızca
   Titreşim açıkken görünüyor.
-- **Eklendi: Yardım ve puanlama butonları** — Ayarlar'a Yardım & Destek butonu
-  (dhikrer@gmail.com'a e-posta) ve Play Store'da Puan Ver butonu eklendi.
+- **Eklendi: Yardım ve puanlama butonları** — Ayarlar'a Yardım & Destek ve Play Store'da Puan
+  Ver butonları eklendi. Yardım & Destek, e-posta uygulamasını dile göre konu ve uygulama
+  sürümü önceden dolu olarak açar; adresi (dhikrer@fxerkan.com) doğrudan gösterir.
+- **Eklendi: "Her 100" bildirim noktası** — her yüzde bir tekrarlayan bildirim (100, 200 … 900);
+  bu nokta artık açıkça "Her 100" olarak etiketleniyor.
+- **İyileştirildi: yerelleştirilmiş footer markası** — Ayarlar footer'ı uygulama adını geçerli
+  dilde (Dhikrer / Zikirci …), "-er" vurgusuyla gösteriyor.
+- **Düzeltildi: tablette Tesbih (beads) yerleşimi** — yatay modda kısayol tuşları artık sayacın
+  üstüne binmiyor.
 - **Güncellendi:** Google Play'in hedef API düzeyi şartını karşılamak için artık Android 16
   (API 36) hedefleniyor (compile + target SDK 35 → 36).
 

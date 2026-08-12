@@ -19,8 +19,15 @@ paste into the Google Play "What's new" field and the App Store "What's New" sec
   you change the Target value directly (previously name + vibration only).
 - **Improved: cleaner vibration options** — Vibration style and strength now appear only when
   Vibration is turned on.
-- **Added: Help & rate buttons** — Settings now has a Help & Support button (emails
-  dhikrer@gmail.com) and a Rate on Play Store button.
+- **Added: Help & rate buttons** — Settings now has a Help & Support button and a Rate on Play
+  Store button. Help & Support opens your email app with a localized subject and the app version
+  pre-filled, and shows the address (dhikrer@fxerkan.com) directly.
+- **Added: "Every 100" notification point** — a recurring notification at every hundred (100,
+  200 … 900); the point is now clearly labelled "Every 100".
+- **Improved: localized footer brand** — the Settings footer now shows the app name in the
+  current language (Dhikrer / Zikirci …) with the "-er" accent.
+- **Fixed: Beads (tesbih) layout on tablets** — in landscape the shortcut controls no longer
+  overlap the counter.
 - **Updated:** now targets Android 16 (API 36) to meet Google Play's target API level
   requirement (compile + target SDK 35 → 36).
 
