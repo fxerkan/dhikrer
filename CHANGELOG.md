@@ -9,6 +9,26 @@ paste into the Google Play "What's new" field and the App Store "What's New" sec
 
 ---
 
+## [1.3.0] — 2026-08-12 · versionCode 13
+
+- **Added: durable data safety net** — your zikir library, settings and statistics are now
+  mirrored to permanent device storage and restored automatically if the app's local data is
+  ever lost (WebView eviction, reinstall, device migration). App updates already kept your data;
+  this adds a second layer so it survives more cases.
+- **Added: edit the target in the customize screen** — the per-zikir customize dialog now lets
+  you change the Target value directly (previously name + vibration only).
+- **Improved: cleaner vibration options** — Vibration style and strength now appear only when
+  Vibration is turned on.
+- **Added: Help & rate buttons** — Settings now has a Help & Support button (emails
+  dhikrer@gmail.com) and a Rate on Play Store button.
+- **Updated:** now targets Android 16 (API 36) to meet Google Play's target API level
+  requirement (compile + target SDK 35 → 36).
+
+> **Store release note (EN):**
+> Your zikirs, settings and stats are now safer — backed up on-device and auto-restored if ever
+> lost. You can now edit a zikir's target in the customize screen, and vibration style/strength
+> show only when vibration is on. Also updated to target Android 16.
+
 ## [1.2.3] — 2026-08-11 · versionCode 11
 
 Store presentation only — no changes to app behavior.

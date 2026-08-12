@@ -9,6 +9,26 @@ Her sürümde ayrıca bir **Mağaza sürüm notu** vardır — düz metin, ≤50
 
 ---
 
+## [1.3.0] — 2026-08-12 · versionCode 13
+
+- **Eklendi: kalıcı veri güvencesi** — zikir listen, ayarların ve istatistiklerin artık kalıcı
+  cihaz depolamasına da yedekleniyor ve yerel veri herhangi bir nedenle kaybolursa (WebView
+  temizliği, yeniden kurulum, cihaz değişimi) otomatik geri yükleniyor. Uygulama güncellemeleri
+  verini zaten koruyordu; bu, daha fazla durumu kapsayan ikinci bir katman ekler.
+- **Eklendi: özelleştirme ekranında hedef düzenleme** — zikir özelleştirme penceresinde artık
+  Hedef değerini doğrudan değiştirebilirsin (önceden yalnızca ad + titreşim vardı).
+- **İyileştirildi: daha temiz titreşim seçenekleri** — Titreşim Şekli ve Şiddeti yalnızca
+  Titreşim açıkken görünüyor.
+- **Eklendi: Yardım ve puanlama butonları** — Ayarlar'a Yardım & Destek butonu
+  (dhikrer@gmail.com'a e-posta) ve Play Store'da Puan Ver butonu eklendi.
+- **Güncellendi:** Google Play'in hedef API düzeyi şartını karşılamak için artık Android 16
+  (API 36) hedefleniyor (compile + target SDK 35 → 36).
+
+> **Mağaza sürüm notu (TR):**
+> Zikirlerin, ayarların ve istatistiklerin artık daha güvende — cihazda yedekleniyor ve kaybolursa
+> otomatik geri yükleniyor. Özelleştirme ekranında zikir hedefini artık değiştirebilirsin; titreşim
+> şekli/şiddeti yalnızca titreşim açıkken görünür. Ayrıca Android 16 hedeflenecek şekilde güncellendi.
+
 ## [1.2.3] — 2026-08-11 · versionCode 11
 
 Yalnızca mağaza sunumu — uygulama davranışında değişiklik yok.

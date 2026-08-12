@@ -14,17 +14,17 @@ val keystoreProps = Properties().apply {
 
 android {
     namespace = "com.fxerkan.zikirci"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         // Store/package identity is dhikrer; code namespace stays zikirci.
         applicationId = "com.fxerkan.dhikrer"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         // versionName = MAJOR.MINOR.PATCH (see CLAUDE.md "Versioning").
         // versionCode = monotonic build counter, +1 every release (Play Store requirement).
-        versionCode = 11
-        versionName = "1.2.3"
+        versionCode = 13
+        versionName = "1.3.0"
     }
 
     signingConfigs {

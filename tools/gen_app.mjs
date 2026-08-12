@@ -103,6 +103,18 @@ appTpl = appTpl
   .replace(/<option value="hi" disabled>हिन्दी · \{\{ t\.yakinda \}\}<\/option>/, '<option value="hi">हिन्दी</option>')
   .replace(/<option value="zh" disabled>中文 · \{\{ t\.yakinda \}\}<\/option>/, '<option value="zh">中文</option>');
 
+// Runs BEFORE the app script: if localStorage was lost (WebView eviction /
+// reinstall) but a native backup exists, restore it so the app boots with the
+// user's saved zikirs, settings and stats instead of defaults.
+const restore = `<script>
+(function(){ try{
+  var KEY='zikirci-v1';
+  if(!localStorage.getItem(KEY) && window.ZikirNative && ZikirNative.restore){
+    var b=ZikirNative.restore(); if(b) localStorage.setItem(KEY,b);
+  }
+}catch(e){} })();
+</script>`;
+
 // native bridge: mirror counter state to native, and let native drive taps
 const bridge = `<script>
 (function(){
@@ -124,12 +136,18 @@ const bridge = `<script>
         reminders:(s.reminders||[]).map(function(r){return {id:r.id,time:r.time,on:!!r.on,label:r.label||''};})};
     }catch(e){return null;}
   }
-  var last='';
+  var last='', lastFull='';
   function push(){
     var c=readState(); if(!c)return;
     var j=JSON.stringify(c);
     document.documentElement.dir = (c.lang==='ar') ? 'rtl' : 'ltr';
     if(j!==last){last=j; try{ if(window.ZikirNative&&ZikirNative.onState) ZikirNative.onState(j); }catch(e){} }
+    // Durable full-state backup: mirror the whole store to a native file so it
+    // survives WebView storage eviction / reinstall. localStorage already
+    // survives app updates; this is the extra safety net.
+    try{ var full=localStorage.getItem(KEY);
+      if(full && full!==lastFull){ lastFull=full; if(window.ZikirNative&&ZikirNative.backup) ZikirNative.backup(full); }
+    }catch(e){}
   }
   // native -> web: perform a real tap (fires haptics, milestones, persistence)
   window.__zikirTap=function(n){
@@ -162,6 +180,7 @@ ${fillCss}
 ${appTpl}
 </div>
 </x-dc>
+${restore}
 ${scriptBlock}
 ${bridge}
 </body>

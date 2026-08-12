@@ -25,6 +25,7 @@ import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewFeature
 import org.json.JSONArray
+import java.io.File
 import java.lang.ref.WeakReference
 
 class MainActivity : AppCompatActivity() {
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        private const val BACKUP_FILE = "zikir_backup.json"
         private var ref: WeakReference<MainActivity>? = null
         /** True when a live Activity can apply taps directly into the web app. */
         fun isAlive(): Boolean = ref?.get()?.loaded == true
@@ -241,5 +243,21 @@ class MainActivity : AppCompatActivity() {
                 }
             } catch (e: Exception) { /* ignore malformed pattern */ }
         }
+
+        /** Durable backup of the FULL web state (localStorage 'zikirci-v1'):
+         *  written to filesDir so it survives WebView storage eviction, and is
+         *  included in Android Auto Backup (reinstall / device migration).
+         *  localStorage already survives app updates; this is the extra safety net. */
+        @JavascriptInterface
+        fun backup(json: String) {
+            try { File(filesDir, BACKUP_FILE).writeText(json) } catch (e: Exception) { /* best effort */ }
+        }
+
+        /** Returns the last full-state backup, or "" if none. The web app restores
+         *  from this only when its own localStorage is empty (see gen_app.mjs). */
+        @JavascriptInterface
+        fun restore(): String =
+            try { File(filesDir, BACKUP_FILE).let { if (it.exists()) it.readText() else "" } }
+            catch (e: Exception) { "" }
     }
 }

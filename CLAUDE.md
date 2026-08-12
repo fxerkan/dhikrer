@@ -29,7 +29,32 @@ Rules:
 
 JDK 21, `./gradlew :app:assembleRelease`. Release signed with `android/zikirci-release.jks`.
 
+## Store listing images (per language: tr/en/ar)
+
+Play Store heroes + framed screenshots are generated **per language** into
+`store/<lang>/`. Each language uploads separately; the in-phone UI, brand
+(`Zikirci.` / `Dhikrer.` / `الذّاكِر.`) and dhikr names are all localized, and
+each hero carries a single-language headline (title + one subtitle).
+
+Pipeline (run from repo root, after `node tools/gen_app.mjs .`):
+1. `node tools/shots.mjs` — regenerates a throwaway `shot.html` from `app.html`
+   (adds a sync state-injector), serves it on `:8790`, and captures the 6 hero
+   screens × tr/en/ar via headless Chrome → `store/<lang>/_raw/`. `shot.html`
+   and `_shots/` are auto-cleaned (they must never ship in the APK). `all` arg
+   captures the full 15-screen gallery.
+2. `python3 tools/frame.py` — wraps each into a phone frame → `store/<lang>/framed/`.
+3. `python3 tools/hero_set.py` — composites framed screen + headline → `store/<lang>/hero-<slug>.png`.
+   Arabic headlines rely on Pillow's raqm build (`direction='rtl'`), no reshaping libs.
+
+`tools/hero.py` / `tools/hero_caption.py` are the older TR-only / nano-banana-band
+flow, superseded by `hero_set.py` for the per-language set.
+
 ## Roadmap (planned, not yet built)
 
-Bluetooth headset integration · dhikr audio narration (spoken playback) · statistics
-home-screen widget · dhikr sharing. Full list lives in `README.md`.
+Full Arabic (RTL) UI (verify + enable in the language picker) · Bluetooth headset
+integration · dhikr audio narration (spoken playback) · statistics home-screen
+widget · dhikr sharing. Full list lives in `README.md`.
+
+Note: Arabic strings exist (`tools/langs.js` `ar`) and `gen_app.mjs` already
+un-disables the `ar` option in the built `app.html`; RTL renders. What's left is
+verification/polish + enabling it in the `webapp-handoff` source.

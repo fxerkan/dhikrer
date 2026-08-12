@@ -35,3 +35,8 @@ webapp-handoff/
 device-tests/
 __pycache__/
 
+# ── Store-image pipeline scratch (tools/shots.mjs) ────────────────
+android/app/src/main/assets/app/shot.html
+android/app/src/main/assets/app/_shots/
+store/*/_raw/
+

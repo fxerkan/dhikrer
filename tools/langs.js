@@ -2,7 +2,7 @@
 // Keys mirror the handoff's tr/en dicts exactly. brand "app" stays "Zikirci".
 // Arabic is rendered RTL by the companion script (document.dir).
 export default {
-  ar: {app:'Zikirci',sayac:'العداد',kutup:'مكتبتي',stat:'الإحصائيات',ayar:'الإعدادات',
+  ar: {app:'الذّاكِر',sayac:'العداد',kutup:'مكتبتي',stat:'الإحصائيات',ayar:'الإعدادات',
     kutupSub:'اختر وأدر أذكارك',statSub:'تابع تقدمك الروحي',ayarSub:'خصّص تجربتك',
     hedef:'الهدف',kalan:'المتبقي',serbest:'حر',devam:'متابعة',basla:'ابدأ',yeni:'ذكر جديد',
     ad:'اسم الذكر',hedefPh:'الهدف (فارغ = حر)',kategori:'الفئة',sesZikir:'صوت لهذا الذكر',kaydet:'حفظ',iptal:'إلغاء',
@@ -36,7 +36,8 @@ export default {
     vibStil:'نمط الاهتزاز',kisa:'قصير',cift:'مزدوج',uzun:'طويل',
     siddet:'شدة الاهتزاز',hafif:'خفيف',guclu:'قوي',
     hedefTamam:'اكتمل الهدف',bin:'ألف',tamamlandi:'اكتمل',aktifHatir:'تذكير نشط',
-    dev:'Zikirci · v1.0 · ',
+    yardim:'المساعدة والدعم',yardimD:'راسلنا عبر البريد',puanla:'قيّم على Play Store',puanlaD:'تقييم 5 نجوم يساعدنا كثيراً',
+    dev:' · v1.0 · ',
     dayRows:['إث','أر','جم'],
     dLabels:['00','06','12','18','23'],wLabels:['إث','ثل','أر','خم','جم','سب','أح'],mLabels:['ي','ف','م','أ','م','ي','ي','أ','س','أ','ن','د']},
   id: {app:'Dhikrer',sayac:'Penghitung',kutup:'Pustaka Saya',stat:'Statistik',ayar:'Pengaturan',
@@ -73,7 +74,8 @@ export default {
     vibStil:'Gaya Getaran',kisa:'Pendek',cift:'Ganda',uzun:'Panjang',
     siddet:'Intensitas Getaran',hafif:'Ringan',guclu:'Kuat',
     hedefTamam:'Target Tercapai',bin:'rb',tamamlandi:'selesai',aktifHatir:'pengingat aktif',
-    dev:'Zikirci · v1.0 · ',
+    yardim:'Bantuan & Dukungan',yardimD:'Kirim email ke kami',puanla:'Beri Nilai di Play Store',puanlaD:'Nilai 5 bintang sangat membantu',
+    dev:' · v1.0 · ',
     dayRows:['Sen','Rab','Jum'],
     dLabels:['00','06','12','18','23'],wLabels:['Sen','Sel','Rab','Kam','Jum','Sab','Min'],mLabels:['J','F','M','A','M','J','J','A','S','O','N','D']},
   hi: {app:'Dhikrer',sayac:'काउंटर',kutup:'मेरी लाइब्रेरी',stat:'आँकड़े',ayar:'सेटिंग्स',
@@ -110,7 +112,8 @@ export default {
     vibStil:'कंपन शैली',kisa:'छोटा',cift:'दोहरा',uzun:'लंबा',
     siddet:'कंपन तीव्रता',hafif:'हल्का',guclu:'तेज़',
     hedefTamam:'लक्ष्य पूर्ण',bin:'हज़ार',tamamlandi:'पूर्ण',aktifHatir:'रिमाइंडर सक्रिय',
-    dev:'Zikirci · v1.0 · ',
+    yardim:'सहायता और समर्थन',yardimD:'हमें ईमेल भेजें',puanla:'Play Store पर रेटिंग दें',puanlaD:'5-स्टार रेटिंग बहुत मदद करती है',
+    dev:' · v1.0 · ',
     dayRows:['सोम','बुध','शुक्र'],
     dLabels:['00','06','12','18','23'],wLabels:['सोम','मंगल','बुध','गुरु','शुक्र','शनि','रवि'],mLabels:['ज','फ','मा','अ','म','जू','जु','अ','सि','अ','न','दि']},
   zh: {app:'Dhikrer',sayac:'计数器',kutup:'我的库',stat:'统计',ayar:'设置',
@@ -147,7 +150,8 @@ export default {
     vibStil:'震动样式',kisa:'短',cift:'双',uzun:'长',
     siddet:'震动强度',hafif:'轻',guclu:'强',
     hedefTamam:'目标完成',bin:'千',tamamlandi:'完成',aktifHatir:'个提醒已启用',
-    dev:'Zikirci · v1.0 · ',
+    yardim:'帮助与支持',yardimD:'给我们发邮件',puanla:'在 Play Store 评分',puanlaD:'五星好评对我们帮助很大',
+    dev:' · v1.0 · ',
     dayRows:['一','三','五'],
     dLabels:['00','06','12','18','23'],wLabels:['一','二','三','四','五','六','日'],mLabels:['1','2','3','4','5','6','7','8','9','10','11','12']}
 };

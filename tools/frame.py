@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Wrap each app screenshot in a clean modern Android phone frame (with visible
-volume + power side buttons). Output: store-screenshots/framed/<name>.png (alpha)."""
-import os, sys, glob
+volume + power side buttons). Runs per language: reads store/<lang>/_raw/*.png,
+writes store/<lang>/framed/<name>.png (alpha)."""
+import os, glob
 from PIL import Image, ImageDraw, ImageFilter
 
-SRC = "store-screenshots"
-OUT = os.path.join(SRC, "framed")
-os.makedirs(OUT, exist_ok=True)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LANGS = ["tr", "en", "ar"]
 
 BEZEL = 26          # black border around the screen
 RIM = 8             # metal rim outside the bezel
@@ -28,7 +28,7 @@ def rr_mask(size, rad):
     return m
 
 
-def frame(path):
+def frame(path, out_dir):
     shot = Image.open(path).convert("RGBA")
     sw, sh = shot.size
     # inner (screen) box within the body
@@ -80,15 +80,20 @@ def frame(path):
     d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=HOLE)
     d.ellipse([cx - r + 3, cy - r + 3, cx + r - 3, cy + r - 3], outline=(40, 44, 70, 255), width=2)
 
-    canvas.save(os.path.join(OUT, os.path.basename(path)))
+    canvas.save(os.path.join(out_dir, os.path.basename(path)))
 
 
 def main():
-    files = sorted(glob.glob(os.path.join(SRC, "*.png")))
-    for f in files:
-        frame(f)
-        print("  framed", os.path.basename(f))
-    print("done →", OUT)
+    for lang in LANGS:
+        src = os.path.join(ROOT, "store", lang, "_raw")
+        out = os.path.join(ROOT, "store", lang, "framed")
+        if not os.path.isdir(src):
+            continue
+        os.makedirs(out, exist_ok=True)
+        for f in sorted(glob.glob(os.path.join(src, "*.png"))):
+            frame(f, out)
+            print(f"  framed {lang}/{os.path.basename(f)}")
+    print("done →", os.path.join(ROOT, "store", "<lang>", "framed"))
 
 
 if __name__ == "__main__":

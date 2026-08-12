@@ -7,12 +7,12 @@ Count with a big tap button, the **volume keys** — even with the screen off �
 Beautiful, fast, and completely customizable.
 
 <p align="center">
-  <img src="store/store-screenshots/hero-ad-free-v1.png" width="30%" alt="Ad‑free dhikr counter">
-  <img src="store/store-screenshots/hero-easy-v1.png" width="30%" alt="Simple, easy to use">
-  <img src="store/store-screenshots/hero-customize-v1.png" width="30%" alt="Fully customizable">
-  <img src="store/store-screenshots/hero-volume-button-counter-hand-v3.png" width="30%" alt="Count with volume keys">
-  <img src="store/store-screenshots/hero-stats-v1.png" width="30%" alt="Track your progress">
-  <img src="store/store-screenshots/hero-languages-v1.png" width="30%" alt="Multi‑language & RTL">
+  <img src="store/en/hero-ad-free.png" width="30%" alt="Ad‑free dhikr counter">
+  <img src="store/en/hero-easy.png" width="30%" alt="Simple, easy to use">
+  <img src="store/en/hero-customize.png" width="30%" alt="Fully customizable">
+  <img src="store/en/hero-volume.png" width="30%" alt="Count with volume keys">
+  <img src="store/en/hero-stats.png" width="30%" alt="Track your progress">
+  <img src="store/en/hero-languages.png" width="30%" alt="Multi‑language & RTL">
 </p>
 
 App ID `com.fxerkan.dhikrer` — named **Zikirci** in Turkish, **Dhikrer** in English.
@@ -55,6 +55,7 @@ Current release: **1.2.3** (versionCode 11). Full history in
 
 Planned for future releases:
 
+- 🌍 **Full Arabic (RTL) UI** — complete right‑to‑left Arabic localization, verified and enabled in the language picker.
 - 🎧 **Bluetooth headset integration** — count and control with the buttons on Bluetooth earbuds/headphones.
 - 🔊 **Dhikr audio narration** — spoken playback of the active dhikr as you count.
 - 📊 **Statistics widget** — a home‑screen widget showing your daily count, streak, and progress.
