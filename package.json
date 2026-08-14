@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ios:web": "rm -rf www && mkdir -p www && cp -R android/app/src/main/assets/app/. www/ && rm -f www/shot.html && rm -rf www/_shots && cp www/app.html www/index.html"
+    "ios:web": "rm -rf www && mkdir -p www && cp -R android/app/src/main/assets/app/. www/ && rm -f www/shot.html && rm -rf www/_shots && cat www/app.html tools/ios-shim.html > www/index.html"
   },
   "repository": {
     "type": "git",

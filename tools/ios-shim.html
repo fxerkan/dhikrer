@@ -1,0 +1,32 @@
+<!-- iOS-only shim. Appended to the Capacitor index.html by `npm run ios:web`.
+     NEVER injected into the Android app.html — keeps the Android build untouched. -->
+<style>
+/* Android sets --zk-sat/sab/sal/sar natively via WindowInsets; on iOS map them to
+   the platform's env() safe-area insets so the header clears the status bar and the
+   bottom nav clears the home indicator. viewport-fit=cover is already set in <head>. */
+#zk-root{
+  --zk-sat:env(safe-area-inset-top);
+  --zk-sab:env(safe-area-inset-bottom);
+  --zk-sal:env(safe-area-inset-left);
+  --zk-sar:env(safe-area-inset-right);
+}
+</style>
+<script>
+/* The themed --color-bg lives on .zk-app, not on <body>, so the WKWebView safe-area
+   strips (behind the status bar / home indicator) would show through as white.
+   Mirror the active theme's background onto <html>/<body> so those strips blend in.
+   ponytail: 600ms poll — theme changes are rare; swap for a MutationObserver only if
+   it ever shows a visible lag. */
+(function(){
+  function sync(){
+    var el=document.querySelector('.zk-app')||document.getElementById('zk-root');
+    if(!el)return;
+    var bg=getComputedStyle(el).backgroundColor;
+    if(bg && bg!=='rgba(0, 0, 0, 0)'){
+      document.documentElement.style.background=bg;
+      document.body.style.background=bg;
+    }
+  }
+  setInterval(sync,600); setTimeout(sync,300);
+})();
+</script>
