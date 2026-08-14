@@ -7,12 +7,12 @@
 أنيق وسريع وقابل للتخصيص بالكامل.
 
 <p align="center">
-  <img src="store/ar/hero-ad-free.png" width="30%" alt="عدّاد ذِكر بلا إعلانات">
-  <img src="store/ar/hero-easy.png" width="30%" alt="بسيط وسهل الاستخدام">
-  <img src="store/ar/hero-customize.png" width="30%" alt="قابل للتخصيص بالكامل">
-  <img src="store/ar/hero-volume.png" width="30%" alt="عُدَّ بأزرار الصوت">
-  <img src="store/ar/hero-stats.png" width="30%" alt="تابع تقدمك">
-  <img src="store/ar/hero-languages.png" width="30%" alt="تعدد اللغات وRTL">
+  <img src="store/android/ar/hero-ad-free.png" width="30%" alt="عدّاد ذِكر بلا إعلانات">
+  <img src="store/android/ar/hero-easy.png" width="30%" alt="بسيط وسهل الاستخدام">
+  <img src="store/android/ar/hero-customize.png" width="30%" alt="قابل للتخصيص بالكامل">
+  <img src="store/android/ar/hero-volume.png" width="30%" alt="عُدَّ بأزرار الصوت">
+  <img src="store/android/ar/hero-stats.png" width="30%" alt="تابع تقدمك">
+  <img src="store/android/ar/hero-languages.png" width="30%" alt="تعدد اللغات وRTL">
 </p>
 
 معرّف التطبيق `com.fxerkan.dhikrer` — يُسمّى **Zikirci** بالتركية و**Dhikrer** بالإنجليزية.

@@ -7,12 +7,12 @@ Büyük bir dokunma butonu, **ses tuşları** — ekran kapalıyken bile — vey
 Şık, hızlı ve tümüyle özelleştirilebilir.
 
 <p align="center">
-  <img src="store/tr/hero-ad-free.png" width="30%" alt="Reklamsız zikirmatik">
-  <img src="store/tr/hero-easy.png" width="30%" alt="Sade, kullanımı kolay">
-  <img src="store/tr/hero-customize.png" width="30%" alt="Tümüyle özelleştirilebilir">
-  <img src="store/tr/hero-volume.png" width="30%" alt="Ses tuşuyla say">
-  <img src="store/tr/hero-stats.png" width="30%" alt="İlerlemeni izle">
-  <img src="store/tr/hero-languages.png" width="30%" alt="Çoklu dil ve RTL">
+  <img src="store/android/tr/hero-ad-free.png" width="30%" alt="Reklamsız zikirmatik">
+  <img src="store/android/tr/hero-easy.png" width="30%" alt="Sade, kullanımı kolay">
+  <img src="store/android/tr/hero-customize.png" width="30%" alt="Tümüyle özelleştirilebilir">
+  <img src="store/android/tr/hero-volume.png" width="30%" alt="Ses tuşuyla say">
+  <img src="store/android/tr/hero-stats.png" width="30%" alt="İlerlemeni izle">
+  <img src="store/android/tr/hero-languages.png" width="30%" alt="Çoklu dil ve RTL">
 </p>
 
 Uygulama kimliği `com.fxerkan.dhikrer` — Türkçede **Zikirci**, İngilizcede **Dhikrer**.

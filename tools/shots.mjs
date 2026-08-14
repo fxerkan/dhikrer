@@ -1,13 +1,16 @@
-// Captures Play Store screenshots of the app, PER LANGUAGE, via headless Chrome.
-// Self-contained: regenerates the shot.html capture page from the built app.html
-// (app.html + a synchronous state-injector), starts a static server on :8790,
-// then renders each config in every language.
+// Captures app store screenshots of the app, PER LANGUAGE + PER PLATFORM, via
+// headless Chrome. Self-contained: regenerates the shot.html capture page from the
+// built app.html (app.html + a synchronous state-injector), starts a static server
+// on :8790, then renders each config in every language.
 //
-//   node tools/shots.mjs            # capture the 6 hero screens × [tr,en,ar]
-//   node tools/shots.mjs all        # capture all 15 gallery screens × langs
-//   node tools/shots.mjs <substr>   # only configs whose name includes <substr>
+//   node tools/shots.mjs                    # hero screens for PLATFORM (default android) × [tr,en,ar]
+//   PLATFORM=ios node tools/shots.mjs       # the iOS hero set (drops volume, adds lock)
+//   node tools/shots.mjs all                # all 15 gallery screens × langs
+//   node tools/shots.mjs <substr>           # only configs whose name includes <substr>
 //
-// Output → store/<lang>/_raw/<name>.png  (unframed; frame.py wraps them next).
+// Which hero screens belong to a platform is read from store/shared/copy.json
+// (the single source of truth), so nothing about the copy is duplicated here.
+// Output → store/<platform>/<lang>/_raw/<name>.png  (unframed; frame.py wraps them next).
 import { execFile } from 'child_process';
 import http from 'http';
 import fs from 'fs';
@@ -20,17 +23,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ASSETS = path.join(ROOT, 'android/app/src/main/assets/app');
 const STATE_DIR = path.join(ASSETS, '_shots');
 const LANGS = ['tr', 'en', 'ar'];
+const PLATFORM = process.env.PLATFORM || 'android';
 
+const COPY = JSON.parse(fs.readFileSync(path.join(ROOT, 'store/shared/copy.json'), 'utf8'));
 // Default dhikr NAMES are user content, not UI strings — so the app never
-// translates them. Localize them here so each language's screenshots read native.
-const NAMES = {
-  100: { tr: 'Sübhânallah', en: 'Subhanallah', ar: 'سبحان الله' },
-  1: { tr: 'Elhamdülillah', en: 'Alhamdulillah', ar: 'الحمد لله' },
-  2: { tr: 'Allâhu Ekber', en: 'Allahu Akbar', ar: 'الله أكبر' },
-  3: { tr: 'Estağfirullah', en: 'Astaghfirullah', ar: 'أستغفر الله' },
-  4: { tr: 'Lâ ilâhe illallah', en: 'La ilaha illallah', ar: 'لا إله إلا الله' },
-  5: { tr: 'Lâ havle', en: 'La hawla', ar: 'لا حول ولا قوة إلا بالله' },
-};
+// translates them; localized in copy.json so each language's screenshots read native.
+const NAMES = COPY.names;
 const nm = (id, lang) => (NAMES[id] ? NAMES[id][lang] : undefined);
 
 const mkZikirs = (lang) => [
@@ -84,9 +82,11 @@ const configs = [
   ['14-ayarlar-gece', { theme: 'nocturne', tab: 'ayar' }],
   ['15-tespih-gul-33', { theme: 'gul', tab: 'sayac', design: 'tespih', activeId: 1 }],
 ];
-// The 6 screens the hero set composites — the default capture set.
-const HERO_SCREENS = ['01-sayac-klasik-gece', '02-tespih-zumrut', '03-birlesik-gul',
-  '06-zikirler-gece', '07-istatistik-okyanus', '08-ayarlar-lavanta'];
+// The screens this PLATFORM's hero set composites — derived from copy.json so the
+// android/ios difference (android→volume, ios→lock) lives in one place only.
+const HERO_SCREENS = Object.values(COPY.heroes)
+  .filter((h) => h.platforms.includes(PLATFORM))
+  .map((h) => h.screen);
 
 function buildState(extra, lang) {
   const heavy = extra.heavy;
@@ -144,7 +144,7 @@ async function main() {
   const srv = await serve(8790);
 
   for (const lang of LANGS) {
-    const out = path.join(ROOT, 'store', lang, '_raw');
+    const out = path.join(ROOT, 'store', PLATFORM, lang, '_raw');
     fs.mkdirSync(out, { recursive: true });
     for (const [name, extra] of wanted) {
       const key = `${lang}-${name}`;
@@ -170,7 +170,7 @@ async function main() {
   // assets dir — remove them so they never bloat or ship in the APK.
   fs.rmSync(path.join(ASSETS, 'shot.html'), { force: true });
   fs.rmSync(STATE_DIR, { recursive: true, force: true });
-  console.log('done →', path.join(ROOT, 'store', '<lang>', '_raw'));
+  console.log('done →', path.join(ROOT, 'store', PLATFORM, '<lang>', '_raw'));
 }
 
 main();

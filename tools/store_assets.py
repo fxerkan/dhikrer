@@ -1,37 +1,32 @@
 #!/usr/bin/env python3
-"""Play Store brand assets from the REAL app icon vector — no new art, no hands.
+"""Store brand assets from the REAL app icon vector — no new art, no hands.
 Renders (4x/2x supersampled → downscaled for crisp edges):
-  store/store-icon-512.png                    512x512  hi-res listing icon (shared)
-  store/<lang>/feature-graphic-1024x500.png   per-language feature graphic
-Each feature graphic shows: the tasbih logo tile, the localized product name
-(Zikirci./Dhikrer./الذّاكِر.), a title line and the slogan as subtitle. Arabic
-lays out RTL (logo right, text right-aligned).
-Source of truth = android/.../ic_launcher_foreground.xml (tasbih beads) + colors.xml bg.
+  store/shared/store-icon-512.png             512x512  listing icon (Google Play)
+  store/shared/store-icon-1024.png            1024x1024 marketing icon (App Store, no alpha)
+  store/android/<lang>/feature-graphic-1024x500.png   per-language feature graphic (Play only)
+The feature graphic (Google Play–only asset; the App Store has no equivalent) shows the
+tasbih logo tile, the localized product name (Zikirci./Dhikrer./الذّاكِر.), a title line
+and the slogan as subtitle. Arabic lays out RTL (logo right, text right-aligned).
+All copy is read from store/shared/copy.json (single source of truth).
+Icon source = android/.../ic_launcher_foreground.xml (tasbih beads) + colors.xml bg.
 Run:  python3 tools/store_assets.py
 """
+import json
 import os
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "store")
+SHARED = os.path.join(ROOT, "store", "shared")
 BG = (0x16, 0x18, 0x26)               # ic_launcher_background #161826
 LANGS = ["tr", "en", "ar"]
 
-# Product name (brand), title line, and slogan (shown as subtitle) — per language.
-BRAND = {"tr": "Zikirci", "en": "Dhikrer", "ar": "الذّاكِر"}
+COPY = json.load(open(os.path.join(SHARED, "copy.json"), encoding="utf8"))
+BRAND = COPY["brand"]
 # Brand rule: names ending in "er" (Dhikrer) always render the "er" in a distinct
 # accent tone wherever the product name appears. (base, "er") per such language.
-BRAND_HI = {"en": ("Dhikr", "er")}
-TITLE = {
-    "tr": "Reklamsız, dikkat dağıtmayan, özelleştirilebilir zikirmatik.",
-    "en": "Ad-free, distraction-free, customizable dhikr counter.",
-    "ar": "عدّاد ذِكر بلا إعلانات، بلا تشتيت، وقابل للتخصيص.",
-}
-SLOGAN = {
-    "tr": "Sen zikrine odaklan, saymayı Zikirci'ye bırak.",
-    "en": "You focus on the dhikr, let Dhikrer handle the counting.",
-    "ar": "ركّز على ذِكرك، ودَع الذّاكِر يتكفّل بالعدّ.",
-}
+BRAND_HI = {k: tuple(v) for k, v in COPY["brand_hi"].items()}
+TITLE = COPY["feature_graphic"]["title"]
+SLOGAN = COPY["feature_graphic"]["slogan"]
 
 # tasbih beads from ic_launcher_foreground.xml, viewport 108 → (cx, cy, r, hexfill)
 BEADS = [
@@ -70,16 +65,15 @@ def draw_beads(d, ox, oy, scale):
         d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=hx(fill) + (255,))
 
 
-def icon_512():
+def icon(size):
     SS = 4
-    W = 512 * SS
+    W = size * SS
     img = Image.new("RGBA", (W, W), BG + (255,))
-    d = ImageDraw.Draw(img)
-    # map 108 viewport to full 512 square (matches launcher foreground framing)
-    draw_beads(d, 0, 0, W / 108)
-    img = img.resize((512, 512), Image.LANCZOS)
-    p = os.path.join(OUT, "store-icon-512.png")
-    img.convert("RGB").save(p)
+    # map 108 viewport to the full square (matches launcher foreground framing)
+    draw_beads(ImageDraw.Draw(img), 0, 0, W / 108)
+    img = img.resize((size, size), Image.LANCZOS)
+    p = os.path.join(SHARED, f"store-icon-{size}.png")
+    img.convert("RGB").save(p)   # RGB → no alpha (App Store icon requirement)
     print("wrote", os.path.relpath(p, ROOT), img.size)
 
 
@@ -170,13 +164,14 @@ def feature_1024x500(lang):
         draw_ltr(xtext, px(348), fslog, brand_segments(SLOGAN[lang], slog_c))
 
     img = img.resize((1024, 500), Image.LANCZOS)
-    p = os.path.join(OUT, lang, "feature-graphic-1024x500.png")
+    p = os.path.join(ROOT, "store", "android", lang, "feature-graphic-1024x500.png")
     os.makedirs(os.path.dirname(p), exist_ok=True)
     img.convert("RGB").save(p)
     print("wrote", os.path.relpath(p, ROOT), img.size)
 
 
 if __name__ == "__main__":
-    icon_512()
-    for lang in LANGS:
+    icon(512)    # Google Play listing icon
+    icon(1024)   # App Store marketing icon (no alpha)
+    for lang in LANGS:              # feature graphic is a Google Play–only asset
         feature_1024x500(lang)

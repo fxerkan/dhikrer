@@ -7,12 +7,12 @@ Count with a big tap button, the **volume keys** — even with the screen off �
 Beautiful, fast, and completely customizable.
 
 <p align="center">
-  <img src="store/en/hero-ad-free.png" width="30%" alt="Ad‑free dhikr counter">
-  <img src="store/en/hero-easy.png" width="30%" alt="Simple, easy to use">
-  <img src="store/en/hero-customize.png" width="30%" alt="Fully customizable">
-  <img src="store/en/hero-volume.png" width="30%" alt="Count with volume keys">
-  <img src="store/en/hero-stats.png" width="30%" alt="Track your progress">
-  <img src="store/en/hero-languages.png" width="30%" alt="Multi‑language & RTL">
+  <img src="store/android/en/hero-ad-free.png" width="30%" alt="Ad‑free dhikr counter">
+  <img src="store/android/en/hero-easy.png" width="30%" alt="Simple, easy to use">
+  <img src="store/android/en/hero-customize.png" width="30%" alt="Fully customizable">
+  <img src="store/android/en/hero-volume.png" width="30%" alt="Count with volume keys">
+  <img src="store/android/en/hero-stats.png" width="30%" alt="Track your progress">
+  <img src="store/android/en/hero-languages.png" width="30%" alt="Multi‑language & RTL">
 </p>
 
 App ID `com.fxerkan.dhikrer` — named **Zikirci** in Turkish, **Dhikrer** in English.

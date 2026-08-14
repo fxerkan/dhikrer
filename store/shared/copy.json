@@ -1,0 +1,137 @@
+{
+  "_note": "SINGLE SOURCE OF TRUTH for all localized store copy. Read by tools/shots.mjs, hero_set.py, store_assets.py. Edit text HERE, then regenerate assets. Platform-neutral; each hero/listing tags which platforms it applies to.",
+
+  "brand": { "tr": "Zikirci", "en": "Dhikrer", "ar": "الذّاكِر" },
+  "brand_hi": { "en": ["Dhikr", "er"] },
+
+  "names": {
+    "100": { "tr": "Sübhânallah", "en": "Subhanallah", "ar": "سبحان الله" },
+    "1": { "tr": "Elhamdülillah", "en": "Alhamdulillah", "ar": "الحمد لله" },
+    "2": { "tr": "Allâhu Ekber", "en": "Allahu Akbar", "ar": "الله أكبر" },
+    "3": { "tr": "Estağfirullah", "en": "Astaghfirullah", "ar": "أستغفر الله" },
+    "4": { "tr": "Lâ ilâhe illallah", "en": "La ilaha illallah", "ar": "لا إله إلا الله" },
+    "5": { "tr": "Lâ havle", "en": "La hawla", "ar": "لا حول ولا قوة إلا بالله" }
+  },
+
+  "feature_graphic": {
+    "title": {
+      "tr": "Reklamsız, dikkat dağıtmayan, özelleştirilebilir zikirmatik.",
+      "en": "Ad-free, distraction-free, customizable dhikr counter.",
+      "ar": "عدّاد ذِكر بلا إعلانات، بلا تشتيت، وقابل للتخصيص."
+    },
+    "slogan": {
+      "tr": "Sen zikrine odaklan, saymayı Zikirci'ye bırak.",
+      "en": "You focus on the dhikr, let Dhikrer handle the counting.",
+      "ar": "ركّز على ذِكرك، ودَع الذّاكِر يتكفّل بالعدّ."
+    }
+  },
+
+  "heroes": {
+    "volume": {
+      "platforms": ["android"], "screen": "01-sayac-klasik-gece",
+      "bg_top": [22, 24, 38], "bg_bot": [38, 28, 62], "accent": [145, 132, 217], "accent_hi": [183, 169, 236], "callout": true,
+      "text": {
+        "tr": ["Ses tuşlarıyla say", "Ekran kapalıyken bile zikrine devam et."],
+        "en": ["Count with volume keys", "Keep your dhikr going — even with the screen off."],
+        "ar": ["عُدّ بأزرار الصوت", "تابع ذكرك حتى والشاشة مغلقة."]
+      }
+    },
+    "ad-free": {
+      "platforms": ["android", "ios"], "screen": "02-tespih-zumrut",
+      "bg_top": [10, 34, 28], "bg_bot": [10, 52, 40], "accent": [46, 200, 150], "accent_hi": [150, 235, 205], "callout": false,
+      "text": {
+        "tr": ["Reklamsız. Çevrimdışı.", "Reklam yok, takip yok — her şey cihazında."],
+        "en": ["Ad-free. Offline.", "No ads, no tracking — everything on your device."],
+        "ar": ["بلا إعلانات. دون اتصال.", "لا إعلانات ولا تتبّع — كل شيء على جهازك."]
+      }
+    },
+    "customize": {
+      "platforms": ["android", "ios"], "screen": "08-ayarlar-lavanta",
+      "bg_top": [40, 22, 52], "bg_bot": [62, 26, 66], "accent": [214, 140, 214], "accent_hi": [238, 190, 236], "callout": false,
+      "text": {
+        "tr": ["Tasarımı sana göre", "10+ tema, 30+ şekil ve özelleştirilebilir sayaç."],
+        "en": ["Made your way", "10+ themes, 30+ shapes & a customizable counter."],
+        "ar": ["بتصميم يناسبك", "10+ سمة و30+ شكل وعدّاد قابل للتخصيص."]
+      }
+    },
+    "easy": {
+      "platforms": ["android", "ios"], "screen": "03-birlesik-gul",
+      "bg_top": [46, 30, 20], "bg_bot": [62, 40, 22], "accent": [240, 176, 92], "accent_hi": [250, 214, 160], "callout": false,
+      "text": {
+        "tr": ["Sade, kullanımı kolay", "Dikkat dağıtan öğeler olmadan — tek dokunuşla say."],
+        "en": ["Simple & easy to use", "Count with one tap — no distractions."],
+        "ar": ["بسيط وسهل الاستخدام", "عُدّ بلمسة واحدة — دون أي تشتيت."]
+      }
+    },
+    "stats": {
+      "platforms": ["android", "ios"], "screen": "07-istatistik-okyanus",
+      "bg_top": [10, 30, 44], "bg_bot": [12, 46, 60], "accent": [86, 182, 216], "accent_hi": [168, 224, 244], "callout": false,
+      "text": {
+        "tr": ["İlerlemeni izle", "Isı haritası, günlük ve haftalık istatistik."],
+        "en": ["Track your progress", "Heatmap, daily & weekly stats."],
+        "ar": ["تابع تقدّمك", "خريطة حرارية وإحصاءات يومية وأسبوعية."]
+      }
+    },
+    "languages": {
+      "platforms": ["android", "ios"], "screen": "06-zikirler-gece", "screen_lang": "ar",
+      "bg_top": [24, 26, 38], "bg_bot": [30, 36, 52], "accent": [150, 164, 192], "accent_hi": [206, 214, 232], "callout": false,
+      "text": {
+        "tr": ["Kendi dilinde zikret", "Çoklu dil ve tam sağdan-sola (RTL) desteği."],
+        "en": ["Dhikr in your language", "Multi-language with full RTL support."],
+        "ar": ["اذكر بلغتك", "لغات متعددة ودعم كامل للكتابة من اليمين لليسار."]
+      }
+    },
+    "lock": {
+      "platforms": ["ios"], "screen": "04-kilit-kehribar",
+      "bg_top": [46, 34, 14], "bg_bot": [60, 44, 16], "accent": [232, 188, 96], "accent_hi": [250, 224, 168], "callout": false,
+      "text": {
+        "tr": ["Cebinde bile güvende", "Kilit modu yanlışlıkla sayımı önler."],
+        "en": ["Safe in your pocket", "Lock mode prevents accidental counts."],
+        "ar": ["آمن حتى في جيبك", "وضع القفل يمنع العدّ غير المقصود."]
+      }
+    }
+  },
+
+  "listing": {
+    "android": {
+      "tr": {
+        "name": "Zikirci",
+        "short": "Reklamsız, tümüyle özelleştirilebilir, sade ve kolay kullanılabilir zikirmatik.",
+        "full": "Zikirci — sade, hızlı ve dikkat dağıtmayan bir dijital tesbih (zikirmatik).\n\n⭐ ÖNE ÇIKANLAR\n• Reklamsız. Takip yok, hesap yok — her şey cihazında, çevrimdışı çalışır.\n• Kullanımı kolay — tek dokunuşla say, sade arayüz, dağıtan hiçbir şey yok.\n• Özelleştirilebilir tasarım — 10 tema, sayaç şekilleri, tesbih/birleşik/klasik düzenler.\n• Kilit modu — cebindeyken yanlışlıkla sayımı önler.\n• Hedef ve tesbih modları — 33 / 66 / 99 ayraçları, serbest sayım.\n• Fiziksel ses tuşuyla say — ekran kapalıyken bile zikrine devam et.\n• İstatistik — ısı haritası, günlük ve haftalık ilerleme.\n• Çoklu dil ve tam sağdan-sola (RTL) desteği.\n\nKısacası: reklamsız, gizliliğe saygılı, hızlı bir zikir sayacı. İster ekrana dokun, ister ses tuşuna bas — sen zikrine odaklan, saymayı Zikirci halletsin."
+      },
+      "en": {
+        "name": "Dhikrer",
+        "short": "Ad-free dhikr counter — volume-key count, offline, fully customizable.",
+        "full": "Dhikrer — a simple, fast, distraction-free digital tasbih (dhikr counter).\n\n⭐ HIGHLIGHTS\n• Ad-free. No tracking, no account — everything stays on your device, works offline.\n• Easy to use — one tap to count, clean UI, zero clutter.\n• Customizable design — 10 themes, counter shapes, tasbih / unified / classic layouts.\n• Lock mode — prevents accidental counts in your pocket.\n• Goal & tasbih modes — 33 / 66 / 99 markers, or free counting.\n• Count with the physical volume keys — keep going even with the screen off.\n• Statistics — heatmap, daily and weekly progress.\n• Multi-language with full right-to-left (RTL) support.\n\nIn short: an ad-free, privacy-respecting, fast dhikr counter. Tap the screen or press a volume key — you focus on the dhikr, let Dhikrer handle the counting."
+      },
+      "ar": {
+        "name": "الذّاكِر",
+        "short": "عدّاد ذِكر بلا إعلانات — يعمل دون اتصال وقابل للتخصيص بالكامل.",
+        "full": "الذّاكِر — مسبحة رقمية (عدّاد ذِكر) بسيطة وسريعة وخالية من التشتيت.\n\n⭐ أبرز المزايا\n• بلا إعلانات. لا تتبّع ولا حساب — كل شيء على جهازك ويعمل دون اتصال.\n• سهل الاستخدام — عُدّ بلمسة واحدة، واجهة نظيفة دون أي تشتيت.\n• تصميم قابل للتخصيص — 10 سمات وأشكال عدّاد وتخطيطات (مسبحة/موحّد/كلاسيكي).\n• وضع القفل — يمنع العدّ غير المقصود في جيبك.\n• أوضاع الهدف والمسبحة — علامات 33 / 66 / 99 أو عدّ حر.\n• العدّ بأزرار الصوت الفعلية — تابع حتى والشاشة مغلقة.\n• إحصاءات — خريطة حرارية وتقدّم يومي وأسبوعي.\n• لغات متعددة ودعم كامل للكتابة من اليمين لليسار (RTL).\n\nباختصار: عدّاد ذِكر سريع بلا إعلانات ويحترم خصوصيتك. ركّز على ذِكرك ودَع الذّاكِر يتكفّل بالعدّ."
+      }
+    },
+    "ios": {
+      "tr": {
+        "name": "Zikirci",
+        "subtitle": "Reklamsız, sade zikirmatik",
+        "promo": "Sen zikrine odaklan, saymayı Zikirci'ye bırak. Reklamsız, çevrimdışı, tümüyle özelleştirilebilir.",
+        "keywords": "zikir,tesbih,zikirmatik,tespih,dua,namaz,sayaç,dhikr,islam,müslüman",
+        "full": "Zikirci — sade, hızlı ve dikkat dağıtmayan bir dijital tesbih (zikirmatik).\n\n⭐ ÖNE ÇIKANLAR\n• Reklamsız. Takip yok, hesap yok — her şey cihazında, çevrimdışı çalışır.\n• Kullanımı kolay — tek dokunuşla say, sade arayüz, dağıtan hiçbir şey yok.\n• Özelleştirilebilir tasarım — 10 tema, sayaç şekilleri, tesbih/birleşik/klasik düzenler.\n• Dokunsal geri bildirim — her sayımda ve hedefe ulaşınca hafif titreşim.\n• Kilit modu — cebindeyken yanlışlıkla sayımı önler.\n• Hedef ve tesbih modları — 33 / 66 / 99 ayraçları, serbest sayım.\n• Hatırlatıcılar — günlük zikir bildirimleri.\n• İstatistik — ısı haritası, günlük ve haftalık ilerleme.\n• Çoklu dil ve tam sağdan-sola (RTL) desteği.\n\nKısacası: reklamsız, gizliliğe saygılı, hızlı bir zikir sayacı. Sen zikrine odaklan, saymayı Zikirci halletsin."
+      },
+      "en": {
+        "name": "Dhikrer",
+        "subtitle": "Ad-free, simple dhikr counter",
+        "promo": "You focus on the dhikr, let Dhikrer handle the counting. Ad-free, offline, fully customizable.",
+        "keywords": "dhikr,tasbih,tasbeeh,counter,zikr,islam,muslim,prayer,rosary,misbaha",
+        "full": "Dhikrer — a simple, fast, distraction-free digital tasbih (dhikr counter).\n\n⭐ HIGHLIGHTS\n• Ad-free. No tracking, no account — everything stays on your device, works offline.\n• Easy to use — one tap to count, clean UI, zero clutter.\n• Customizable design — 10 themes, counter shapes, tasbih / unified / classic layouts.\n• Haptic feedback — a gentle buzz on every count and when you reach your goal.\n• Lock mode — prevents accidental counts in your pocket.\n• Goal & tasbih modes — 33 / 66 / 99 markers, or free counting.\n• Reminders — daily dhikr notifications.\n• Statistics — heatmap, daily and weekly progress.\n• Multi-language with full right-to-left (RTL) support.\n\nIn short: an ad-free, privacy-respecting, fast dhikr counter. You focus on the dhikr, let Dhikrer handle the counting."
+      },
+      "ar": {
+        "name": "الذّاكِر",
+        "subtitle": "عدّاد ذِكر بسيط بلا إعلانات",
+        "promo": "ركّز على ذِكرك ودَع الذّاكِر يتكفّل بالعدّ. بلا إعلانات، دون اتصال، وقابل للتخصيص بالكامل.",
+        "keywords": "ذكر,تسبيح,مسبحة,عداد,دعاء,صلاة,مسلم,اسلام,سبحة",
+        "full": "الذّاكِر — مسبحة رقمية (عدّاد ذِكر) بسيطة وسريعة وخالية من التشتيت.\n\n⭐ أبرز المزايا\n• بلا إعلانات. لا تتبّع ولا حساب — كل شيء على جهازك ويعمل دون اتصال.\n• سهل الاستخدام — عُدّ بلمسة واحدة، واجهة نظيفة دون أي تشتيت.\n• تصميم قابل للتخصيص — 10 سمات وأشكال عدّاد وتخطيطات (مسبحة/موحّد/كلاسيكي).\n• اهتزاز لمسي — اهتزازة خفيفة مع كل عدّة وعند بلوغ هدفك.\n• وضع القفل — يمنع العدّ غير المقصود في جيبك.\n• أوضاع الهدف والمسبحة — علامات 33 / 66 / 99 أو عدّ حر.\n• تذكيرات — إشعارات ذِكر يومية.\n• إحصاءات — خريطة حرارية وتقدّم يومي وأسبوعي.\n• لغات متعددة ودعم كامل للكتابة من اليمين لليسار (RTL).\n\nباختصار: عدّاد ذِكر سريع بلا إعلانات ويحترم خصوصيتك. ركّز على ذِكرك ودَع الذّاكِر يتكفّل بالعدّ."
+      }
+    }
+  }
+}

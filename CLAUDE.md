@@ -29,28 +29,40 @@ Rules:
 
 JDK 21, `./gradlew :app:assembleRelease`. Release signed with `android/zikirci-release.jks`.
 
-## Store listing images (per language: tr/en/ar)
+## Store assets (per platform × per language: tr/en/ar)
 
-Play Store heroes + framed screenshots are generated **per language** into
-`store/<lang>/`. Each language uploads separately; the in-phone UI, brand
-(`Zikirci.` / `Dhikrer.` / `الذّاكِر.`) and dhikr names are all localized, and
-each hero carries a single-language headline (title + one subtitle).
+`store/` is split by platform, with a single-source shared layer:
 
-Pipeline (run from repo root, after `node tools/gen_app.mjs .`):
-1. `node tools/shots.mjs` — regenerates a throwaway `shot.html` from `app.html`
-   (adds a sync state-injector), serves it on `:8790`, and captures the 6 hero
-   screens × tr/en/ar via headless Chrome → `store/<lang>/_raw/`. `shot.html`
-   and `_shots/` are auto-cleaned (they must never ship in the APK). `all` arg
-   captures the full 15-screen gallery.
-2. `python3 tools/frame.py` — wraps each into a phone frame → `store/<lang>/framed/`.
-3. `python3 tools/hero_set.py` — composites framed screen + headline → `store/<lang>/hero-<slug>.png`.
-   Arabic headlines rely on Pillow's raqm build (`direction='rtl'`), no reshaping libs.
-4. `python3 tools/store_assets.py` — shared listing icon `store/store-icon-512.png` +
-   per-language `store/<lang>/feature-graphic-1024x500.png` (logo tile, localized
-   product name + title + slogan; Arabic lays out RTL).
+```
+store/shared/copy.json   ← ALL localized copy (brand, dhikr names, hero headlines,
+                            feature-graphic text, both stores' listing text). Edit HERE.
+store/shared/store-icon-{512,1024}.png   ← icon: 512 (Play), 1024 no-alpha (App Store)
+store/android/<lang>/    heroes + framed + feature-graphic-1024x500.png · LISTING.md · RELEASE.md
+store/ios/<lang>/        heroes + framed · LISTING.md · RELEASE.md
+store/watchos/           placeholder (future — mirror ios/ layout)
+```
 
-`tools/hero.py` / `tools/hero_caption.py` are the older TR-only / nano-banana-band
-flow, superseded by `hero_set.py` for the per-language set.
+Rule: shared/edit-once copy lives in `copy.json`; platform-specific output (frames,
+dimensions, feature graphic) lives under its platform. Adding Huawei = a new
+`store/huawei/` reusing android assets + `copy.json`. **iOS differs from Android:** no
+hardware volume-key counting (`docs/ios.md`) → iOS drops the volume hero, adds a lock
+hero; no feature graphic (Play-only); iPhone frame; App Store 6.9" size (1290×2796).
+
+Pipeline (from repo root, after `node tools/gen_app.mjs .`). `PLATFORM` env selects
+android (default) or ios; each writes under `store/<platform>/<lang>/`:
+1. `[PLATFORM=ios] node tools/shots.mjs` — throwaway `shot.html` from `app.html`, served
+   on `:8790`, captures each platform's hero screens × tr/en/ar via headless Chrome →
+   `_raw/`. Which screens per platform is read from `copy.json`. `shot.html`/`_shots/`
+   auto-cleaned (never ship in the APK). `all` arg captures the full 15-screen gallery.
+2. `[PLATFORM=ios] python3 tools/frame.py` — wraps each in a phone frame → `framed/`
+   (Android punch-hole+rocker, or iPhone Dynamic Island).
+3. `[PLATFORM=ios] python3 tools/hero_set.py` — composites framed screen + headline →
+   `hero-<slug>.png`. Arabic headlines use Pillow's raqm (`direction='rtl'`), no reshaping.
+4. `python3 tools/store_assets.py` — icons (both sizes) + per-language Play feature
+   graphics (logo tile, localized name + title + slogan; Arabic RTL). Reads `copy.json`.
+
+`tools/hero.py` / `tools/hero_caption.py` are the older TR-only / nano-banana-band flow,
+superseded by `hero_set.py`. Legacy Play screenshots sit in `store/android/_legacy-screenshots/`.
 
 ## Roadmap (planned, not yet built)
 
