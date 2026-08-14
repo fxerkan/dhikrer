@@ -46,3 +46,48 @@ navigator.vibrate=function(p){
   return true;
 };
 </script>
+<script>
+/* Reminders. Android mirrors the web reminder list into daily AlarmManager alarms;
+   on iOS mirror them into @capacitor/local-notifications with a native daily-repeating
+   trigger. Text is baked at schedule time from the in-app language (matching Android's
+   "Zikir vakti" / "Time for dhikr"). Re-syncs only when the reminder set changes. */
+(function(){
+  var KEY='zikirci-v1', BASE=1000, lastSig='', asked=false;
+  var I18N={
+    tr:['Zikir vakti','Zikrine devam etmek ister misin?'],
+    en:['Time for dhikr','Would you like to continue your dhikr?'],
+    ar:['وقت الذِّكر','هل تريد متابعة ذِكرك؟'],
+    id:['Waktunya berzikir','Ingin melanjutkan zikirmu?'],
+    hi:['ज़िक्र का समय','क्या आप अपना ज़िक्र जारी रखना चाहेंगे?'],
+    zh:['记念时间','要继续你的记念吗？']
+  };
+  function LN(){ return window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.LocalNotifications; }
+  function read(){
+    try{ var s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      return {lang:s.lang||'tr', list:(s.reminders||[]).filter(function(r){return r&&r.on&&r.time;})};
+    }catch(e){ return {lang:'tr',list:[]}; }
+  }
+  async function reconcile(){
+    var ln=LN(); if(!ln) return;
+    var st=read(), sig=JSON.stringify(st);
+    if(sig===lastSig) return;          // nothing changed
+    lastSig=sig;
+    // cancel our previous set (ids BASE..BASE+999)
+    try{ var pend=await ln.getPending();
+      var ours=(pend.notifications||[]).filter(function(n){return n.id>=BASE&&n.id<BASE+1000;});
+      if(ours.length) await ln.cancel({notifications:ours.map(function(n){return {id:n.id};})});
+    }catch(e){}
+    if(!st.list.length) return;        // no enabled reminders → no prompt, nothing to schedule
+    if(!asked){ asked=true; try{ await ln.requestPermissions(); }catch(e){} }
+    var t=I18N[st.lang]||I18N.en;
+    var notifs=st.list.map(function(r,i){
+      var hm=String(r.time).split(':');
+      return { id:BASE+i, title:t[0],
+        body:(r.label&&String(r.label).trim())?String(r.label):t[1],
+        schedule:{ on:{hour:parseInt(hm[0],10),minute:parseInt(hm[1],10)}, allowWhileIdle:true, repeats:true } };
+    }).filter(function(n){return !isNaN(n.schedule.on.hour)&&!isNaN(n.schedule.on.minute);});
+    if(notifs.length){ try{ await ln.schedule({notifications:notifs}); }catch(e){} }
+  }
+  setInterval(reconcile,1500); setTimeout(reconcile,1200);
+})();
+</script>

@@ -95,14 +95,18 @@ Settings → General → VPN & Device Management → *Apple Development: <your A
 | Haptics (buzz on tap + milestones) | ✅ works | `@capacitor/haptics`, routed via the shim |
 | App icon = store icon | ✅ works | 1024×1024, no alpha |
 | Localized home-screen name | ✅ works | Per device language (see above) |
+| Reminders / local notifications | ✅ works | `@capacitor/local-notifications`, daily-repeating; text baked per in-app language |
 | Backup / restore to native file | ⚪ no-ops | Not needed — localStorage persists |
-| Local notifications / reminders | 🟡 not ported | Needs `@capacitor/local-notifications` |
 | Home-screen widget | ❌ out of scope | iOS needs a separate WidgetKit extension |
 | Volume-key counting | ❌ impossible | iOS doesn't hand hardware volume keys to apps |
 
+Reminders: the iOS shim mirrors the web reminder list (`{time, on, label}` in
+localStorage) into daily-repeating local notifications, reconciling whenever the set
+changes and asking for notification permission only once a reminder is enabled.
+
 **MVP result:** the core dhikr experience — count, haptics, themes, languages,
-persistence, layout, icon, localized name — is at full parity on iOS, verified on
-device. Notifications are the next increment; widget + volume-keys are out of scope.
+persistence, layout, icon, localized name, reminders — is at full parity on iOS,
+verified on device. Widget + volume-keys are the only out-of-scope pieces.
 
 ## Before App Store submission (not done here)
 
