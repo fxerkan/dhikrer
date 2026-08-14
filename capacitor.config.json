@@ -1,0 +1,8 @@
+{
+  "appId": "com.fxerkan.dhikrer",
+  "appName": "Zikirci",
+  "webDir": "www",
+  "ios": {
+    "contentInset": "always"
+  }
+}

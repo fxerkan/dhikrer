@@ -1,0 +1,31 @@
+{
+  "name": "dhikrer-ios",
+  "version": "1.0.0",
+  "description": "[English](README.md) · **Türkçe** · [العربية](README.ar.md)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ios:web": "rm -rf www && mkdir -p www && cp -R android/app/src/main/assets/app/. www/ && rm -f www/shot.html && rm -rf www/_shots && cp www/app.html www/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fxerkan/dhikrer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/fxerkan/dhikrer/issues"
+  },
+  "homepage": "https://github.com/fxerkan/dhikrer#readme",
+  "private": "true",
+  "dependencies": {
+    "@capacitor/cli": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/ios": "^8.5.0"
+  }
+}

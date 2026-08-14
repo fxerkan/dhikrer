@@ -40,3 +40,12 @@ android/app/src/main/assets/app/shot.html
 android/app/src/main/assets/app/_shots/
 store/*/_raw/
 
+
+# ── Capacitor / iOS (MVP port) ────────────────────────────────────
+node_modules/
+www/
+ios/App/Pods/
+ios/App/App/public/
+ios/App/App/capacitor.config.json
+ios/App/App/config.xml
+.DS_Store
