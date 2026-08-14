@@ -14,6 +14,14 @@
    rubber-band overscroll. (#zk-root is already position:fixed, so the document itself
    doesn't scroll — inner panels keep their own scroll.) */
 html{ touch-action:manipulation; -webkit-text-size-adjust:100%; overscroll-behavior:none; }
+/* The counter tab uses a fixed, non-scrolling layout. In "locked" mode the 76px lock
+   indicator replaces the 42px toolbar row; on iOS's shorter usable height (safe-area
+   insets) that extra height overflows and clips the zikir name / tap button. Shrink the
+   lock indicator to ~toolbar height so locked mode fits. The 76px box is unique to the
+   lock circle (framework normalizes inline styles with spaces, e.g. `width: 76px`), so
+   this only touches locked mode; normal mode is untouched. */
+.zk-app [style*="width: 76px"][style*="height: 76px"]{ width:44px !important; height:44px !important; box-shadow:none !important; }
+.zk-app [style*="width: 76px"][style*="height: 76px"] > i{ font-size:24px !important; }
 </style>
 <script>
 /* Belt-and-suspenders zoom lock for WKWebView: tighten the viewport and swallow the
