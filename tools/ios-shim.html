@@ -10,7 +10,22 @@
   --zk-sal:env(safe-area-inset-left);
   --zk-sar:env(safe-area-inset-right);
 }
+/* This is an app, not a web page: kill double-tap zoom, iOS text auto-inflation, and
+   rubber-band overscroll. (#zk-root is already position:fixed, so the document itself
+   doesn't scroll — inner panels keep their own scroll.) */
+html{ touch-action:manipulation; -webkit-text-size-adjust:100%; overscroll-behavior:none; }
 </style>
+<script>
+/* Belt-and-suspenders zoom lock for WKWebView: tighten the viewport and swallow the
+   WebKit pinch-gesture events (preventing gesturestart kills pinch-zoom). */
+(function(){
+  var vp=document.querySelector('meta[name=viewport]');
+  if(vp) vp.setAttribute('content','width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover');
+  ['gesturestart','gesturechange','gestureend'].forEach(function(ev){
+    document.addEventListener(ev,function(e){ e.preventDefault(); },{passive:false});
+  });
+})();
+</script>
 <script>
 /* The themed --color-bg lives on .zk-app, not on <body>, so the WKWebView safe-area
    strips (behind the status bar / home indicator) would show through as white.
@@ -84,6 +99,7 @@ navigator.vibrate=function(p){
       var hm=String(r.time).split(':');
       return { id:BASE+i, title:t[0],
         body:(r.label&&String(r.label).trim())?String(r.label):t[1],
+        sound:'beep.wav',
         schedule:{ on:{hour:parseInt(hm[0],10),minute:parseInt(hm[1],10)}, allowWhileIdle:true, repeats:true } };
     }).filter(function(n){return !isNaN(n.schedule.on.hour)&&!isNaN(n.schedule.on.minute);});
     if(notifs.length){ try{ await ln.schedule({notifications:notifs}); }catch(e){} }
