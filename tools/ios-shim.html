@@ -30,3 +30,19 @@
   setInterval(sync,600); setTimeout(sync,300);
 })();
 </script>
+<script>
+/* navigator.vibrate is a no-op in iOS WKWebView (no Vibration API), so route haptics
+   through @capacitor/haptics. On Android this path is unused — its native bridge
+   overrides navigator.vibrate first (ZikirNative exists), so this override never runs.
+   The web app calls vibrate([70]) per tap and multi-element patterns on milestones. */
+navigator.vibrate=function(p){
+  var H=window.Capacitor&&Capacitor.Plugins&&Capacitor.Plugins.Haptics;
+  if(!H)return true;
+  var arr=Array.isArray(p)?p:[p];
+  try{
+    if(arr.length<=1) H.impact({style:'MEDIUM'});
+    else H.notification({type:'SUCCESS'});
+  }catch(e){}
+  return true;
+};
+</script>
