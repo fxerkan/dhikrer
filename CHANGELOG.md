@@ -9,6 +9,23 @@ paste into the Google Play "What's new" field and the App Store "What's New" sec
 
 ---
 
+## [1.3.1] — 2026-08-14 · versionCode 14
+
+- **Fixed: widget counted past the target when the app was closed** — tapping the home-screen
+  widget after the app was fully closed could push the count beyond its target (e.g. 33 → 45).
+  Native taps (widget and screen-off volume keys) now stop exactly at the target, just like the
+  app itself.
+- **Added: attention-grabbing "target completed" feedback for native taps** — reaching the target
+  from the widget or the lock screen now triggers a distinct, stronger vibration pattern and a
+  notification tone, clearly different from an ordinary tap, so you notice you're done.
+
+**Store release note:** Bug fix: the home-screen widget no longer counts past your target when
+the app is closed — native taps now stop exactly at the goal, matching the app. Completing a
+target from the widget or lock screen now gives a distinct, stronger vibration and sound so you
+clearly notice you're done.
+
+---
+
 ## [1.3.0] — 2026-08-12 · versionCode 13
 
 - **Added: durable data safety net** — your zikir library, settings and statistics are now

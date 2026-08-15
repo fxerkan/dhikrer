@@ -44,12 +44,26 @@ object CounterRepo {
     fun reminders(c: Context): JSONArray =
         try { JSONArray(p(c).getString("reminders", "[]")) } catch (e: Exception) { JSONArray() }
 
-    /** Native increment while app is not in foreground: bump mirror + queue delta. */
-    fun incrementNative(c: Context, by: Int = 1) {
+    /** Outcome of a native tap, so callers can pick the right feedback. */
+    enum class Tick { COUNTED, COMPLETED, AT_TARGET }
+
+    /**
+     * Native increment while app is not in foreground: bump mirror + queue delta.
+     * Clamped to the target so the widget / volume-keys stop exactly where the
+     * running app would (the web app is the source of truth and refuses taps at
+     * target). Without this clamp a closed-app widget counts past 33 → 45.
+     */
+    fun incrementNative(c: Context, by: Int = 1): Tick {
+        val target = target(c)
+        val cur = count(c)
+        if (target > 0 && cur >= target) return Tick.AT_TARGET
+        val next = if (target > 0) minOf(cur + by, target) else cur + by
+        val applied = next - cur
         p(c).edit()
-            .putInt("count", count(c) + by)
-            .putInt("pendingDelta", pendingDelta(c) + by)
+            .putInt("count", next)
+            .putInt("pendingDelta", pendingDelta(c) + applied)
             .apply()
+        return if (target > 0 && next >= target) Tick.COMPLETED else Tick.COUNTED
     }
 
     fun pendingDelta(c: Context): Int = p(c).getInt("pendingDelta", 0)
