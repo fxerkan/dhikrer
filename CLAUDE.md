@@ -17,7 +17,11 @@ after editing `webapp-handoff/Zikirci.dc.html` or `tools/langs.js`, then rebuild
 Rules:
 - Bumping a higher level resets the lower ones to 0 (`1.0.9` + feature → `1.1.0`; `1.4.2` + big change → `2.0.0`).
 - `versionCode` is a separate monotonic counter — **+1 on every release**, never reset (Play Store requires it to only increase).
-- Current: `1.2.3` / code `11`. History `1.0`–`1.5` (old 2-part scheme) maps to `1.0.0`–`1.0.5`.
+- **All platforms share ONE version per release** — same semver name and the same build counter. Bump together:
+  - `android/app/build.gradle.kts` → `versionName` + `versionCode`
+  - `ios/App/App.xcodeproj/project.pbxproj` → `MARKETING_VERSION` (= `versionName`) + `CURRENT_PROJECT_VERSION` (= `versionCode`), in **both** Debug and Release configs
+  - `package.json` → `version` (= `versionName`)
+- Current: `1.3.1` / code `14`. History `1.0`–`1.5` (old 2-part scheme) maps to `1.0.0`–`1.0.5`.
 - Name release APKs `Zikirci-Dhikrer-<versionName>.apk`.
 - On every release, add the entry to `CHANGELOG.md` (EN) **and** `CHANGELOG.tr.md` (TR),
   including the ≤500-char Play Store / App Store "What's new" note.

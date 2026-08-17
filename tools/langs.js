@@ -1,7 +1,9 @@
 // Additional UI translations injected into the app's L{} table by gen_app.mjs.
 // Keys mirror the handoff's tr/en dicts exactly. brand "app" stays "Zikirci".
 // Arabic is rendered RTL by the companion script (document.dir).
-export default {
+// ponytail: module.exports (not `export default`) because root package.json is type:commonjs;
+// gen_app.mjs imports this via ESM→CJS interop. Keeps the .js filename CLAUDE.md references.
+module.exports = {
   ar: {app:'الذّاكِر',sayac:'العداد',kutup:'مكتبتي',stat:'الإحصائيات',ayar:'الإعدادات',
     kutupSub:'اختر وأدر أذكارك',statSub:'تابع تقدمك الروحي',ayarSub:'خصّص تجربتك',
     hedef:'الهدف',kalan:'المتبقي',serbest:'حر',devam:'متابعة',basla:'ابدأ',yeni:'ذكر جديد',
