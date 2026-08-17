@@ -13,8 +13,6 @@ import android.media.session.MediaSession
 import android.media.session.PlaybackState
 import android.os.Build
 import android.os.IBinder
-import android.os.VibrationEffect
-import android.os.Vibrator
 import androidx.core.app.NotificationCompat
 
 /**
@@ -114,13 +112,9 @@ class VolumeKeyService : Service() {
         // visible and its JS is throttled — never route through applyTaps() here
         // (it could silently drop counts). Persist natively; MainActivity.onResume
         // reconciles the pending delta back into the web app when it returns.
-        CounterRepo.incrementNative(this, 1)
+        val tick = CounterRepo.incrementNative(this, 1)
         ZikirWidget.refresh(this)
-        if (CounterRepo.hapticEnabled(this)) {
-            val v = getSystemService(Vibrator::class.java)
-            if (Build.VERSION.SDK_INT >= 26) v.vibrate(VibrationEffect.createOneShot(20, VibrationEffect.DEFAULT_AMPLITUDE))
-            else @Suppress("DEPRECATION") v.vibrate(20)
-        }
+        NativeFeedback.tap(this, tick)  // clamps at target + distinct completion feedback
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int = START_STICKY

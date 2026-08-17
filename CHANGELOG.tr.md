@@ -9,6 +9,23 @@ Her sürümde ayrıca bir **Mağaza sürüm notu** vardır — düz metin, ≤50
 
 ---
 
+## [1.3.1] — 2026-08-14 · versionCode 14
+
+- **Düzeltildi: uygulama kapalıyken widget hedefi aşıyordu** — uygulama tamamen kapatıldıktan
+  sonra ana ekran widget'ına dokunmak sayacı hedefin ötesine taşıyabiliyordu (ör. 33 → 45).
+  Yerel dokunuşlar (widget ve ekran kapalıyken ses tuşları) artık tıpkı uygulamanın kendisi gibi
+  tam hedefte duruyor.
+- **Eklendi: yerel dokunuşlar için dikkat çeken "hedef tamamlandı" bildirimi** — hedefe widget'tan
+  veya kilit ekranından ulaşıldığında artık normal bir dokunuştan belirgin biçimde farklı, daha
+  güçlü bir titreşim deseni ve bir bildirim sesi çalıyor; böylece bitirdiğini fark ediyorsun.
+
+**Mağaza sürüm notu:** Hata düzeltmesi: uygulama kapalıyken ana ekran widget'ı artık hedefi
+aşmıyor — yerel dokunuşlar tıpkı uygulamadaki gibi tam hedefte duruyor. Hedefi widget'tan veya
+kilit ekranından tamamlamak artık belirgin, daha güçlü bir titreşim ve ses veriyor; böylece
+bitirdiğini net şekilde fark ediyorsun.
+
+---
+
 ## [1.3.0] — 2026-08-12 · versionCode 13
 
 - **Eklendi: kalıcı veri güvencesi** — zikir listen, ayarların ve istatistiklerin artık kalıcı

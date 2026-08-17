@@ -58,7 +58,7 @@ class ZikirWidget : AppWidgetProvider() {
         super.onReceive(c, intent)
         if (intent.action == ACTION_TAP) {
             if (MainActivity.isAlive()) MainActivity.applyTaps(1)
-            else CounterRepo.incrementNative(c, 1)
+            else NativeFeedback.tap(c, CounterRepo.incrementNative(c, 1))
             refresh(c)
         }
     }
