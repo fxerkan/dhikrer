@@ -1,10 +1,10 @@
 # Privacy Policy — Zikirci / Dhikrer
 
-_Last updated: 2026-08-11_
+_Last updated: 2026-08-17_
 
 **English** · [Türkçe below](#gizlilik-politikası--zikirci--dhikrer)
 
-Zikirci (Dhikrer) is an offline dhikr (zikir) counter for Android.
+Zikirci (Dhikrer) is an offline dhikr (zikir) counter for Android and iOS.
 
 ## We collect nothing
 
@@ -19,9 +19,10 @@ removes this data. We have no servers and no copy of it.
 
 ## Permissions
 
-- **Notifications** (`POST_NOTIFICATIONS`) — only to show the daily reminders you set. No data leaves the device.
-- **Foreground service** (`FOREGROUND_SERVICE_SPECIAL_USE`) — keeps a lightweight media session
+- **Notifications** — only to show the daily reminders you set. No data leaves the device. Granted only if you enable a reminder.
+- **Foreground service** (Android only) — keeps a lightweight media session
   alive so the **volume keys can count with the screen off**. Nothing is recorded or played.
+  iOS does not offer volume-key counting and uses no such service.
 
 The app requests no location, contacts, camera, microphone, or storage access.
 
@@ -41,9 +42,9 @@ Questions: **fxerkan@gmail.com**
 
 # Gizlilik Politikası — Zikirci / Dhikrer
 
-_Son güncelleme: 2026-08-11_
+_Son güncelleme: 2026-08-17_
 
-Zikirci (Dhikrer), Android için çevrimdışı bir zikir (dhikr) sayacıdır.
+Zikirci (Dhikrer), Android ve iOS için çevrimdışı bir zikir (dhikr) sayacıdır.
 
 ## Hiçbir şey toplamıyoruz
 
@@ -58,9 +59,10 @@ kaldırmak bu veriyi siler. Sunucumuz ve verinizin bir kopyası yoktur.
 
 ## İzinler
 
-- **Bildirimler** (`POST_NOTIFICATIONS`) — yalnızca kurduğunuz günlük hatırlatıcıları göstermek için. Veri cihazdan çıkmaz.
-- **Ön plan hizmeti** (`FOREGROUND_SERVICE_SPECIAL_USE`) — **ekran kapalıyken ses tuşlarıyla
+- **Bildirimler** — yalnızca kurduğunuz günlük hatırlatıcıları göstermek için. Veri cihazdan çıkmaz. Yalnızca bir hatırlatıcı açtığınızda istenir.
+- **Ön plan hizmeti** (yalnızca Android) — **ekran kapalıyken ses tuşlarıyla
   sayabilmeniz** için hafif bir medya oturumunu canlı tutar. Hiçbir şey kaydedilmez/oynatılmaz.
+  iOS'ta ses tuşuyla sayım yoktur ve böyle bir hizmet kullanılmaz.
 
 Uygulama konum, kişiler, kamera, mikrofon veya depolama izni istemez.
 
