@@ -25,6 +25,13 @@ Rules:
 - Name release APKs `Zikirci-Dhikrer-<versionName>.apk`.
 - On every release, add the entry to `CHANGELOG.md` (EN) **and** `CHANGELOG.tr.md` (TR),
   including the ≤500-char Play Store / App Store "What's new" note.
+- **App Store submissions (Apple Guideline 2.1):** the **App Review Information → Notes**
+  field is MANDATORY — paste `store/ios/APP_REVIEW_NOTES.md` verbatim and attach a
+  screen recording made on a *physical* iPhone. An empty/thin Notes field is why our
+  first submission was rejected ("Information Needed"). Keep that file in sync each
+  release. Only request permissions the app actually uses (Dhikrer = notifications
+  only, on reminder-enable); never add unused `NS*UsageDescription` keys to
+  `ios/App/App/Info.plist` — an unused purpose string is a 5.1.1 rejection.
 - The settings footer version (`t.dev`) is **auto-stamped** by `tools/gen_app.mjs` from
   `versionName` on every regen — don't hand-edit `v…` in `langs.js`/`webapp` `t.dev`;
   bump `build.gradle.kts` and re-run `node tools/gen_app.mjs .`.

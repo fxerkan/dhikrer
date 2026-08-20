@@ -93,11 +93,32 @@ App Store Connect → uygulaman → **App Store** sekmesi → sürüm. Her dil i
 ## 8. Gönder ve incelet
 
 - Sürüme yüklediğin **Build**'i seç.
-- **App Review Information:** iletişim + (gerekirse) not. Uygulama giriş/hesap istemez;
-  "sign-in gerektirmez" işaretle.
+- **App Review Information → Notes (ZORUNLU):** `store/ios/APP_REVIEW_NOTES.md`
+  içindeki hazır metni **olduğu gibi** yapıştır. Boş/zayıf Notes = yeni uygulamada
+  neredeyse kesin **Guideline 2.1 "Information Needed"** reddi (ilk reddimizin sebebi
+  buydu — kod hatası değil). Metin Apple'ın 7 sorusunu sırayla yanıtlar: ne yaptığı +
+  hedef kitle, kurulum/erişim (giriş yok), harici servis yok, bölgesel fark yok,
+  regüle sektör değil.
+- **Demo hesabı:** yok — uygulama giriş/hesap istemez; "sign-in required = No" işaretle.
+- **Ekran kaydı (gönderiye ekle):** GERÇEK bir iPhone'da (simülatör değil, en güncel iOS)
+  `APP_REVIEW_NOTES.md`'deki shot-list akışını kaydet ve Resolution Center yanıtına ekle.
 - **Save → Add for Review → Submit**. Apple incelemesi tipik **~24–48 saat**.
 - Onay sonrası: manuel yayın veya otomatik. Reddedilirse Resolution Center'daki gerekçeye
   göre düzelt, yeniden gönder.
+
+### Reddi önleme kontrol listesi (Apple review videolarından)
+
+- **Notes + ekran kaydı** her yeni uygulama/major güncellemede hazır olsun (bkz. yukarı).
+- **Purpose string'ler (5.1.1):** yalnızca gerçekten kullanılan izin için string olsun,
+  *neden + örnek* içersin. Dhikrer sadece **bildirim** izni ister (günlük hatırlatıcı
+  açılınca) — konum/kamera/kişiler/foto/ATT izni İSTEME, `Info.plist`'e o
+  `NS*UsageDescription` anahtarlarını EKLEME (kullanılmayan string = 5.1.1 reddi).
+- **Veri minimizasyonu:** uygulama hiçbir veri toplamaz; App Privacy = "Data Not
+  Collected". Yeni bir izin/SDK eklenmeden önce "bu veri gerçekten gerekli mi?" diye sor.
+- **İzin reddi:** kullanıcı bildirime izin vermezse uygulama sorunsuz çalışmalı; "fikrini
+  değiştir" baskısı YAPMA.
+- **Ekran görüntüleri (2.3.3):** uygulamayı gerçek kullanımda göster (splash/logo değil) —
+  mevcut hero'lar zaten sayaç/ayar ekranlarını gösteriyor.
 
 ## 9. Her sürümde
 
