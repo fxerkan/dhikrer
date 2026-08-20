@@ -1,94 +1,235 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — Zikirci / Dhikrer</title>
+<title>Privacy Policy — Dhikrer · Zikirci</title>
+<meta name="description" content="Dhikrer (Zikirci) privacy policy for Android and iOS. No account, no analytics, no tracking — everything stays on your device.">
+<link rel="icon" href="assets/icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Amiri:wght@400;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: dark; }
-  body { margin:0; background:#161826; color:#e9e8f2;
-         font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:760px; margin:0 auto; padding:56px 22px 80px; }
-  h1 { font-size:1.7rem; margin:0 0 4px; }
-  h2 { font-size:1.15rem; margin:2em 0 .4em; color:#b3a9ec; }
-  .meta { color:#8f8bb0; font-size:.9rem; margin-bottom:2em; }
-  hr { border:0; border-top:1px solid #2a2c40; margin:3em 0; }
-  a { color:#9184d9; }
-  code { background:#22243a; padding:1px 6px; border-radius:5px; font-size:.9em; }
-  ul { padding-left:1.2em; }
+:root{
+  --bg:#101120; --bg2:#161826; --surface:#20222f; --surface2:#282a3a;
+  --line:rgba(233,233,237,.10); --line2:rgba(233,233,237,.18);
+  --txt:#e9e9ed; --mut:#9fa2ba; --faint:#6f7290;
+  --acc:#9184d9; --acc2:#b5abfc; --glow:rgba(145,132,217,.30);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+   radial-gradient(900px 480px at 50% -10%, color-mix(in srgb,var(--acc) 20%,transparent), transparent 60%),
+   var(--bg);
+  color:var(--txt);font-family:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.62;-webkit-font-smoothing:antialiased}
+html[lang="ar"] body{font-family:"Noto Kufi Arabic","Archivo",system-ui,sans-serif}
+a{color:var(--acc2);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:var(--acc);color:#fff}
+.wrap{max-width:780px;margin:0 auto;padding:0 22px}
+.brand{font-weight:900;letter-spacing:-.03em;display:inline-flex;align-items:center;color:var(--txt);font-size:20px}
+.brand img{height:1.35em;width:1.35em;border-radius:9px;box-shadow:0 4px 14px var(--glow);margin-inline-end:.5rem}
+.brand .bx{color:var(--acc)}
+header.bar{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);
+  background:color-mix(in srgb,var(--bg) 80%,transparent);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:14px;height:62px}
+.bar nav{margin-inline-start:auto;display:flex;align-items:center;gap:8px}
+.bar a.lnk{color:var(--mut);font-weight:700;font-size:14px;padding:8px 13px;border-radius:9px}
+.bar a.lnk:hover{color:var(--txt);background:var(--surface);text-decoration:none}
+.langpick{display:inline-flex;border:1px solid var(--line2);border-radius:9px;overflow:hidden}
+.langpick button{border:0;background:var(--surface);color:var(--mut);font-family:inherit;font-weight:700;
+  font-size:13px;padding:8px 12px;cursor:pointer}
+.langpick button.on{background:var(--acc);color:#fff}
+main{padding:52px 0 90px}
+.doc{display:none}
+.doc.on{display:block}
+h1{font-size:clamp(30px,5vw,42px);letter-spacing:-.03em;margin:0 0 6px}
+.meta{color:var(--faint);font-size:14px;margin-bottom:34px}
+h2{font-size:20px;letter-spacing:-.01em;margin:36px 0 10px;color:var(--acc2)}
+p{margin:0 0 12px;color:var(--mut)}
+p strong,li strong{color:var(--txt);font-weight:700}
+.lead{font-size:18px;color:var(--txt)}
+.plat{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0 6px}
+@media(max-width:620px){.plat{grid-template-columns:1fr}}
+.plat .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px}
+.plat .card h3{margin:0 0 12px;font-size:16px;display:flex;align-items:center;gap:9px}
+.plat .card h3 svg{width:19px;height:19px;color:var(--acc2)}
+.plat .card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.plat .card li{color:var(--mut);font-size:14.5px;padding-inline-start:16px;position:relative}
+.plat .card li::before{content:"";position:absolute;inset-inline-start:0;top:9px;width:6px;height:6px;
+  border-radius:50%;background:var(--acc)}
+.note{border:1px solid var(--line2);background:var(--bg2);border-radius:14px;padding:16px 18px;color:var(--txt);
+  font-weight:600;margin:18px 0}
+footer{border-top:1px solid var(--line);color:var(--faint);font-size:14px;padding:26px 0;margin-top:20px;
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+footer a{color:var(--mut)}
 </style>
 </head>
 <body>
-<div class="wrap">
-<h1>Privacy Policy — Zikirci / Dhikrer</h1>
-<p class="meta">Last updated: 2026-08-17</p>
 
-<p>Zikirci (Dhikrer) is an offline dhikr (zikir) counter for Android and iOS.</p>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="index.html"><img src="assets/icon-512.png" alt=""><span class="pre">Dhikr</span><span class="bx sfx">er</span></a>
+  <nav>
+    <a class="lnk" href="index.html" id="homelnk">← Home</a>
+    <span class="langpick">
+      <button data-l="en" class="on">EN</button><button data-l="tr">TR</button><button data-l="ar">AR</button>
+    </span>
+  </nav>
+</div></header>
 
-<h2>We collect nothing</h2>
-<p>The app has <strong>no account, no sign-up, and no analytics</strong>. It does
-<strong>not collect, transmit, or share any personal data</strong>. There are no ads and no
-third-party trackers or SDKs.</p>
+<main class="wrap">
 
-<h2>Your data stays on your device</h2>
-<p>Everything you create — counts, saved dhikrs, settings, statistics, and reminder times — is
-stored <strong>only on your device</strong> (local storage). It never leaves the phone.
-Uninstalling the app removes this data. We have no servers and no copy of it.</p>
+<!-- ================= EN ================= -->
+<article class="doc on" data-doc="en">
+  <h1>Privacy Policy</h1>
+  <p class="meta">Dhikrer · Zikirci — Android &amp; iOS · Last updated 2026-08-17</p>
+  <p class="lead">Dhikrer (Zikirci) is an offline dhikr counter. It has no account, no analytics, and no ads — and it collects nothing.</p>
 
-<h2>Permissions</h2>
-<ul>
-  <li><strong>Notifications</strong> — only to show the daily reminders you set. No data leaves the
-      device. Granted only if you enable a reminder.</li>
-  <li><strong>Foreground service</strong> (Android only) — keeps a lightweight media session alive
-      so the <strong>volume keys can count with the screen off</strong>. Nothing is recorded or
-      played. iOS does not offer volume-key counting and uses no such service.</li>
-</ul>
-<p>The app requests no location, contacts, camera, microphone, or storage access.</p>
+  <h2>We collect nothing</h2>
+  <p>The app has <strong>no account, no sign-up, and no analytics</strong>. It does <strong>not collect, transmit, or share any personal data</strong>. There are no ads and no third-party trackers or SDKs.</p>
 
-<h2>Children</h2>
-<p>The app is safe for all ages and collects no data from anyone, including children.</p>
+  <h2>Your data stays on your device</h2>
+  <p>Everything you create — counts, saved dhikrs, settings, statistics, and reminder times — is stored <strong>only on your device</strong> (local storage). It never leaves the phone. Uninstalling the app removes this data. We have no servers and no copy of it.</p>
 
-<h2>Changes</h2>
-<p>If this policy changes, the updated version will be posted at this URL with a new date.</p>
+  <h2>Permissions</h2>
+  <div class="plat">
+    <div class="card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 6.5 12 3l7 3.5M5 6.5v11L12 21l7-3.5v-11M5 6.5 12 10m7-3.5L12 10m0 11V10"/></svg>Android</h3>
+      <ul>
+        <li><strong>Notifications</strong> — only to show the daily reminders you set. Requested solely when you enable a reminder.</li>
+        <li><strong>Foreground service</strong> — keeps a lightweight media session alive so the <strong>volume keys can count with the screen off</strong>. Nothing is recorded or played.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 5h2"/></svg>iOS</h3>
+      <ul>
+        <li><strong>Notifications</strong> — only to show the daily reminders you set. Requested solely when you enable a reminder.</li>
+        <li><strong>No volume-key counting</strong> — iOS does not offer it, so no background media service is used.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">The app requests no location, contacts, camera, microphone, or storage access — on either platform.</p>
 
-<h2>Contact</h2>
-<p>Questions: <a href="mailto:fxerkan@gmail.com">fxerkan@gmail.com</a></p>
+  <h2>Children</h2>
+  <p>The app is safe for all ages and collects no data from anyone, including children.</p>
 
-<hr>
+  <h2>Changes</h2>
+  <p>If this policy changes, the updated version will be posted at this URL with a new date.</p>
 
-<h1>Gizlilik Politikası — Zikirci / Dhikrer</h1>
-<p class="meta">Son güncelleme: 2026-08-17</p>
+  <h2>Contact</h2>
+  <p>Questions: <a href="mailto:dhikrer@fxerkan.com">dhikrer@fxerkan.com</a></p>
+</article>
 
-<p>Zikirci (Dhikrer), Android ve iOS için çevrimdışı bir zikir (dhikr) sayacıdır.</p>
+<!-- ================= TR ================= -->
+<article class="doc" data-doc="tr">
+  <h1>Gizlilik Politikası</h1>
+  <p class="meta">Zikirci · Dhikrer — Android &amp; iOS · Son güncelleme 2026-08-17</p>
+  <p class="lead">Zikirci (Dhikrer) çevrimdışı bir zikir sayacıdır. Hesap yok, analitik yok, reklam yok — ve hiçbir şey toplamaz.</p>
 
-<h2>Hiçbir şey toplamıyoruz</h2>
-<p>Uygulamada <strong>hesap, kayıt ve analitik yoktur</strong>. Hiçbir <strong>kişisel veriyi
-toplamaz, iletmez veya paylaşmaz</strong>. Reklam yoktur; üçüncü taraf izleyici veya SDK
-yoktur.</p>
+  <h2>Hiçbir şey toplamıyoruz</h2>
+  <p>Uygulamada <strong>hesap, kayıt ve analitik yoktur</strong>. Hiçbir <strong>kişisel veriyi toplamaz, iletmez veya paylaşmaz</strong>. Reklam yoktur; üçüncü taraf izleyici veya SDK yoktur.</p>
 
-<h2>Verileriniz cihazınızda kalır</h2>
-<p>Oluşturduğunuz her şey — sayımlar, kayıtlı zikirler, ayarlar, istatistikler ve hatırlatıcı
-saatleri — <strong>yalnızca cihazınızda</strong> (yerel depolama) saklanır. Telefondan hiç
-çıkmaz. Uygulamayı kaldırmak bu veriyi siler. Sunucumuz ve verinizin bir kopyası yoktur.</p>
+  <h2>Verileriniz cihazınızda kalır</h2>
+  <p>Oluşturduğunuz her şey — sayımlar, kayıtlı zikirler, ayarlar, istatistikler ve hatırlatıcı saatleri — <strong>yalnızca cihazınızda</strong> (yerel depolama) saklanır. Telefondan hiç çıkmaz. Uygulamayı kaldırmak bu veriyi siler. Sunucumuz ve verinizin bir kopyası yoktur.</p>
 
-<h2>İzinler</h2>
-<ul>
-  <li><strong>Bildirimler</strong> — yalnızca kurduğunuz günlük hatırlatıcıları göstermek için.
-      Veri cihazdan çıkmaz. Yalnızca bir hatırlatıcı açtığınızda istenir.</li>
-  <li><strong>Ön plan hizmeti</strong> (yalnızca Android) — ekran kapalıyken <strong>ses tuşlarıyla
-      sayabilmeniz</strong> için hafif bir medya oturumunu canlı tutar. Hiçbir şey
-      kaydedilmez/oynatılmaz. iOS'ta ses tuşuyla sayım yoktur ve böyle bir hizmet kullanılmaz.</li>
-</ul>
-<p>Uygulama konum, kişiler, kamera, mikrofon veya depolama izni istemez.</p>
+  <h2>İzinler</h2>
+  <div class="plat">
+    <div class="card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 6.5 12 3l7 3.5M5 6.5v11L12 21l7-3.5v-11M5 6.5 12 10m7-3.5L12 10m0 11V10"/></svg>Android</h3>
+      <ul>
+        <li><strong>Bildirimler</strong> — yalnızca kurduğunuz günlük hatırlatıcıları göstermek için. Sadece bir hatırlatıcı açtığınızda istenir.</li>
+        <li><strong>Ön plan hizmeti</strong> — ekran kapalıyken <strong>ses tuşlarıyla sayabilmeniz</strong> için hafif bir medya oturumunu canlı tutar. Hiçbir şey kaydedilmez/oynatılmaz.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 5h2"/></svg>iOS</h3>
+      <ul>
+        <li><strong>Bildirimler</strong> — yalnızca kurduğunuz günlük hatırlatıcıları göstermek için. Sadece bir hatırlatıcı açtığınızda istenir.</li>
+        <li><strong>Ses tuşuyla sayım yok</strong> — iOS bunu sunmaz; bu nedenle arka planda medya hizmeti kullanılmaz.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">Uygulama, her iki platformda da konum, kişiler, kamera, mikrofon veya depolama izni istemez.</p>
 
-<h2>Çocuklar</h2>
-<p>Uygulama her yaş için güvenlidir ve çocuklar dâhil hiç kimseden veri toplamaz.</p>
+  <h2>Çocuklar</h2>
+  <p>Uygulama her yaş için güvenlidir ve çocuklar dâhil hiç kimseden veri toplamaz.</p>
 
-<h2>Değişiklikler</h2>
-<p>Bu politika değişirse, güncel sürüm yeni bir tarihle bu adreste yayımlanır.</p>
+  <h2>Değişiklikler</h2>
+  <p>Bu politika değişirse, güncel sürüm yeni bir tarihle bu adreste yayımlanır.</p>
 
-<h2>İletişim</h2>
-<p>Sorular: <a href="mailto:fxerkan@gmail.com">fxerkan@gmail.com</a></p>
-</div>
+  <h2>İletişim</h2>
+  <p>Sorular: <a href="mailto:dhikrer@fxerkan.com">dhikrer@fxerkan.com</a></p>
+</article>
+
+<!-- ================= AR ================= -->
+<article class="doc" data-doc="ar">
+  <h1>سياسة الخصوصية</h1>
+  <p class="meta">الذّاكِر · Zikirci — أندرويد و iOS · آخر تحديث 2026-08-17</p>
+  <p class="lead">الذّاكِر عدّاد ذِكر يعمل دون اتصال. بلا حساب، بلا تحليلات، بلا إعلانات — ولا يجمع شيئاً.</p>
+
+  <h2>لا نجمع شيئاً</h2>
+  <p>التطبيق <strong>بلا حساب ولا تسجيل ولا تحليلات</strong>. وهو <strong>لا يجمع أو يرسل أو يشارك أي بيانات شخصية</strong>. لا إعلانات ولا متتبّعات أو حزم تطوير من طرف ثالث.</p>
+
+  <h2>بياناتك تبقى على جهازك</h2>
+  <p>كل ما تنشئه — العدّات والأذكار المحفوظة والإعدادات والإحصاءات وأوقات التذكير — يُخزَّن <strong>على جهازك فقط</strong> (تخزين محلي). لا يغادر الهاتف أبداً. وإلغاء تثبيت التطبيق يحذف هذه البيانات. ليست لدينا خوادم ولا نسخة منها.</p>
+
+  <h2>الأذونات</h2>
+  <div class="plat">
+    <div class="card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 6.5 12 3l7 3.5M5 6.5v11L12 21l7-3.5v-11M5 6.5 12 10m7-3.5L12 10m0 11V10"/></svg>أندرويد</h3>
+      <ul>
+        <li><strong>الإشعارات</strong> — فقط لعرض التذكيرات اليومية التي تضبطها. تُطلَب حصراً عند تفعيلك لتذكير.</li>
+        <li><strong>خدمة الواجهة الأمامية</strong> — تُبقي جلسة وسائط خفيفة نشطة كي تتمكّن من <strong>العدّ بأزرار الصوت والشاشة مغلقة</strong>. لا يُسجَّل شيء ولا يُشغَّل.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 5h2"/></svg>iOS</h3>
+      <ul>
+        <li><strong>الإشعارات</strong> — فقط لعرض التذكيرات اليومية التي تضبطها. تُطلَب حصراً عند تفعيلك لتذكير.</li>
+        <li><strong>لا عدّ بأزرار الصوت</strong> — نظام iOS لا يوفّره، لذا لا تُستخدَم خدمة وسائط في الخلفية.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">لا يطلب التطبيق الوصول إلى الموقع أو جهات الاتصال أو الكاميرا أو الميكروفون أو التخزين — على أيّ من النظامين.</p>
+
+  <h2>الأطفال</h2>
+  <p>التطبيق آمن لكل الأعمار ولا يجمع أي بيانات من أحد، بمن فيهم الأطفال.</p>
+
+  <h2>التغييرات</h2>
+  <p>إذا تغيّرت هذه السياسة، ستُنشر النسخة المحدَّثة على هذا العنوان بتاريخ جديد.</p>
+
+  <h2>التواصل</h2>
+  <p>للأسئلة: <a href="mailto:dhikrer@fxerkan.com">dhikrer@fxerkan.com</a></p>
+</article>
+
+<footer class="wrap">
+  <span class="brand" style="font-size:16px"><span class="pre">Dhikr</span><span class="bx sfx">er</span></span>
+  <span>·</span> <a href="index.html" id="homelnk2">Home</a>
+</footer>
+</main>
+
+<script>
+const docs = document.querySelectorAll('.doc');
+const btns = document.querySelectorAll('.langpick button');
+const html = document.documentElement;
+const PRE = {en:'Dhikr', tr:'Zikir', ar:'الذّاكِر'};
+const SFX = {en:'er', tr:'ci', ar:''};
+const HOME = {en:'← Home', tr:'← Ana sayfa', ar:'الرئيسية ←'};
+function setLang(l){
+  docs.forEach(d=>d.classList.toggle('on', d.dataset.doc===l));
+  btns.forEach(b=>b.classList.toggle('on', b.dataset.l===l));
+  html.setAttribute('lang', l);
+  html.setAttribute('dir', l==='ar'?'rtl':'ltr');
+  document.querySelectorAll('.brand .pre').forEach(e=>e.textContent=PRE[l]);
+  document.querySelectorAll('.brand .sfx').forEach(e=>e.textContent=SFX[l]);
+  document.getElementById('homelnk').textContent=HOME[l];
+  document.getElementById('homelnk2').textContent=HOME[l].replace(/[←→]/g,'').trim();
+  localStorage.setItem('dhikrer_lang', l);
+}
+btns.forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+const saved = localStorage.getItem('dhikrer_lang');
+setLang(['en','tr','ar'].includes(saved)?saved:'en');
+</script>
 </body>
 </html>
