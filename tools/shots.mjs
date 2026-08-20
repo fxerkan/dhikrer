@@ -24,6 +24,11 @@ const ASSETS = path.join(ROOT, 'android/app/src/main/assets/app');
 const STATE_DIR = path.join(ASSETS, '_shots');
 const LANGS = ['tr', 'en', 'ar'];
 const PLATFORM = process.env.PLATFORM || 'android';
+// IPAD=1 → capture at 13" iPad size (1024×1366 CSS × scale 2 = 2048×2732) into _ipad/.
+const IPAD = !!process.env.IPAD;
+const RAWDIR = IPAD ? '_ipad' : '_raw';
+const WIN = IPAD ? '1024,1366' : '540,1170';
+const SCALE = IPAD ? '2' : '2.5';
 
 const COPY = JSON.parse(fs.readFileSync(path.join(ROOT, 'store/shared/copy.json'), 'utf8'));
 // Default dhikr NAMES are user content, not UI strings — so the app never
@@ -144,7 +149,7 @@ async function main() {
   const srv = await serve(8790);
 
   for (const lang of LANGS) {
-    const out = path.join(ROOT, 'store', PLATFORM, lang, '_raw');
+    const out = path.join(ROOT, 'store', PLATFORM, lang, RAWDIR);
     fs.mkdirSync(out, { recursive: true });
     for (const [name, extra] of wanted) {
       const key = `${lang}-${name}`;
@@ -157,7 +162,7 @@ async function main() {
       await capture([
         '--headless=new', '--disable-gpu', '--hide-scrollbars', '--no-sandbox',
         '--no-first-run', '--no-default-browser-check', `--user-data-dir=${udd}`,
-        '--force-device-scale-factor=2.5', '--window-size=540,1170',
+        `--force-device-scale-factor=${SCALE}`, `--window-size=${WIN}`,
         '--virtual-time-budget=6000', `--screenshot=${file}`,
         `http://localhost:8790/shot.html?st=${key}`,
       ]);
