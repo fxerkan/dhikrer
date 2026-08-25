@@ -57,7 +57,8 @@ Rule: shared/edit-once copy lives in `copy.json`; platform-specific output (fram
 dimensions, feature graphic) lives under its platform. Adding Huawei = a new
 `store/huawei/` reusing android assets + `copy.json`. **iOS differs from Android:** no
 hardware volume-key counting (`docs/ios.md`) → iOS drops the volume hero, adds a lock
-hero; no feature graphic (Play-only); iPhone frame; App Store 6.9" size (1290×2796).
+hero; no feature graphic (Play-only); iPhone frame; App Store 6.5" size (1284×2778 —
+the 6.5" slot rejects 6.9" 1290×2796; accepted sizes are 1242×2688 / 1284×2778).
 
 Pipeline (from repo root, after `node tools/gen_app.mjs .`). `PLATFORM` env selects
 android (default) or ios; each writes under `store/<platform>/<lang>/`:

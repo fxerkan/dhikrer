@@ -42,7 +42,7 @@
       "text": {
         "tr": ["Reklamsız. Çevrimdışı.", "Reklam yok, takip yok — her şey cihazında."],
         "en": ["Ad-free. Offline.", "No ads, no tracking — everything on your device."],
-        "ar": ["بلا إعلانات. دون اتصال.", "لا إعلانات ولا تتبّع — كل شيء على جهازك."]
+        "ar": ["بلا إعلانات. دون اتصال.", "لا إعلانات ولا تتبّع، كل شيء على جهازك."]
       }
     },
     "customize": {
@@ -51,7 +51,7 @@
       "text": {
         "tr": ["Tasarımı sana göre", "10+ tema, 30+ şekil ve özelleştirilebilir sayaç."],
         "en": ["Made your way", "10+ themes, 30+ shapes & a customizable counter."],
-        "ar": ["بتصميم يناسبك", "10+ سمة و30+ شكل وعدّاد قابل للتخصيص."]
+        "ar": ["بتصميم يناسبك", "أكثر من ١٠ سمة و٣٠ شكل وعدّاد قابل للتخصيص."]
       }
     },
     "easy": {
@@ -60,7 +60,7 @@
       "text": {
         "tr": ["Sade, kullanımı kolay", "Dikkat dağıtan öğeler olmadan — tek dokunuşla say."],
         "en": ["Simple & easy to use", "Count with one tap — no distractions."],
-        "ar": ["بسيط وسهل الاستخدام", "عُدّ بلمسة واحدة — دون أي تشتيت."]
+        "ar": ["بسيط وسهل الاستخدام", "عُدّ بلمسة واحدة، دون أي تشتيت."]
       }
     },
     "stats": {

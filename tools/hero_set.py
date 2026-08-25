@@ -25,9 +25,10 @@ LANGS = ["tr", "en", "ar"]
 PLATFORM = os.environ.get("PLATFORM", "android")
 COPY = json.load(open(os.path.join(ROOT, "store/shared/copy.json"), encoding="utf8"))
 
-# App-store canvas per platform. iOS must be an EXACT App Store size — 1290x2796 is
-# the 6.9" iPhone portrait size that covers every current iPhone.
-CANVAS = {"android": (1562, 3113), "ios": (1290, 2796)}
+# App-store canvas per platform. iOS must be an EXACT App Store slot size. The
+# 6.5" iPhone slot (this app's set) accepts only 1242x2688 or 1284x2778 — NOT the
+# 6.9" 1290x2796. Use 1284x2778 (closest aspect to 6.9", minimal layout shift).
+CANVAS = {"android": (1562, 3113), "ios": (1284, 2778)}
 W, H = CANVAS.get(PLATFORM, CANVAS["android"])
 
 SHADOW = 60          # must match frame.py (used to locate the volume button)

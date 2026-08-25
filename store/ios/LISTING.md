@@ -47,7 +47,7 @@ App Store'un feature-graphic'i **yoktur** (o Google Play'e özgü). Gerekenler:
 - **Uygulama ikonu (1024×1024, alpha'sız):** `store/shared/store-icon-1024.png`.
   Not: App Store Connect ikonu genelde build'in asset kataloğundan (`AppIcon`) alır;
   bu dosya yedek/pazarlama kopyasıdır.
-- **iPhone 6.9" ekran görüntüleri (1290×2796, portrait)** — dil başına 6 hero, önerilen sıra
+- **iPhone 6.5" ekran görüntüleri (1284×2778, portrait)** — dil başına 6 hero, önerilen sıra
   (özellik öncelikli). `<lang>` = tr/en/ar:
 
   1. `store/ios/<lang>/hero-easy.png` — Sade, kullanımı kolay
@@ -57,13 +57,13 @@ App Store'un feature-graphic'i **yoktur** (o Google Play'e özgü). Gerekenler:
   5. `store/ios/<lang>/hero-languages.png` — Çoklu dil + RTL
   6. `store/ios/<lang>/hero-lock.png` — Kilit modu
 
-  Tek bir 6.9" seti tüm iPhone'ları kapsar (App Store artık daha küçük boyutları
-  6.9"'dan ölçekler). iPad'i ayrıca yayınlamak istersen 13" (2064×2752) seti gerekir.
+  6.5" slotu yalnızca 1242×2688 veya 1284×2778 kabul eder — 6.9" (1290×2796) bu slotta
+  reddedilir. iPad'i ayrıca yayınlamak istersen 13" (2064×2752) seti gerekir.
 
 Üretim (repo kökünden, `node tools/gen_app.mjs .` sonrası):
 ```bash
 PLATFORM=ios node tools/shots.mjs      # store/ios/<lang>/_raw/  (6 ekran × tr/en/ar)
 PLATFORM=ios python3 tools/frame.py    # → framed/ (iPhone Dynamic Island çerçevesi)
-PLATFORM=ios python3 tools/hero_set.py # → store/ios/<lang>/hero-*.png (1290×2796)
+PLATFORM=ios python3 tools/hero_set.py # → store/ios/<lang>/hero-*.png (1284×2778)
 ```
 Süreç ve gönderim adımları: `store/ios/RELEASE.md`.

@@ -104,12 +104,16 @@ def _status_bar(d, x0, y0, sw, strip_h, bg):
     wcx = bx1 - bw - gap - wr
     wcy = cy + wr * 0.55
     d.pieslice([wcx - wr, wcy - wr, wcx + wr, wcy + wr], 230, 310, fill=fg + (255,))
-    # cellular: four ascending dots left of the wifi
-    dr = strip_h * 0.05
-    dx = wcx - wr - gap
-    for i in range(4):
-        cxi = dx - i * dr * 3
-        d.ellipse([cxi - dr, cy - dr, cxi + dr, cy + dr], fill=fg + (210,))
+    # cellular: four ascending signal bars (iOS 11+ style — Apple flags dots as
+    # a non-iOS status bar under Guideline 2.3.10). Tallest bar nearest the wifi.
+    bar_w = strip_h * 0.06
+    bar_gap = bar_w * 0.7
+    base_y = cy + strip_h * 0.15                 # bars share a common baseline
+    rx = wcx - wr - gap                          # right edge of the bar group
+    for i in range(4):                           # i=0 = rightmost = tallest
+        h = strip_h * (0.30 - i * 0.055)
+        x1 = rx - i * (bar_w + bar_gap)
+        d.rounded_rectangle([x1 - bar_w, base_y - h, x1, base_y], bar_w * 0.35, fill=fg + (255,))
 
 
 def frame_ios(shot):
@@ -126,15 +130,18 @@ def frame_ios(shot):
     sw, sh = shot.size
 
     # Build the on-glass "screen" = status-bar strip (blended) + the real screenshot.
-    strip_h = int(sw * 0.105)
+    strip_h = int(sw * 0.12)
     bg = _avg_top(shot)
     screen = Image.new("RGBA", (sw, strip_h + sh), bg + (255,))
     screen.paste(shot, (0, strip_h))
     sd = ImageDraw.Draw(screen)
     _status_bar(sd, 0, 0, sw, strip_h, bg)
-    iw, ih = int(sw * 0.30), int(strip_h * 0.46)          # Dynamic Island
+    # Dynamic Island: real iPhone 15/16/17 Pro pill is ~3.4:1 (≈122×37pt), not a
+    # thin slit. Width ~0.30·screen, height ~0.30·width → a fat rounded pill.
+    iw = int(sw * 0.30)
+    ih = int(iw * 0.30)
     ix = (sw - iw) // 2
-    iy = int(strip_h * 0.30)
+    iy = int(strip_h * 0.16)
     sd.rounded_rectangle([ix, iy, ix + iw, iy + ih], ih // 2, fill=ISLAND)
     sw2, sh2 = screen.size
 

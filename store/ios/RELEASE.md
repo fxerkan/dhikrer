@@ -72,7 +72,7 @@ gönderimde Xcode Organizer GUI'si daha kolay.)
 App Store Connect → uygulaman → **App Store** sekmesi → sürüm. Her dil için metinler
 `store/shared/copy.json → listing.ios.<lang>` (özet: `store/ios/LISTING.md`):
 - Name, Subtitle, Promotional Text, Keywords, Description.
-- **Screenshots (6.9" iPhone, 1290×2796):** `store/ios/<lang>/hero-*.png` — LISTING.md'deki
+- **Screenshots (6.5" iPhone, 1284×2778):** `store/ios/<lang>/hero-*.png` — LISTING.md'deki
   önerilen 6'lı sıra. App Store'un **feature graphic'i yoktur**.
 - **App icon:** build'in asset kataloğundan gelir (1024×1024, alpha'sız — `docs/ios.md`).
 
