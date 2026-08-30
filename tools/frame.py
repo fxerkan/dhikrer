@@ -98,18 +98,15 @@ def _status_bar(d, x0, y0, sw, strip_h, bg):
     d.rounded_rectangle([bx1 + 1, cy - bh * 0.22, bx1 + 1 + nub_w, cy + bh * 0.22], nub_w * 0.5, fill=fg + (170,))
     pad = bh * 0.14
     d.rounded_rectangle([bx1 - bw + pad, by0 + pad, bx1 - pad, by0 + bh - pad], bh * 0.16, fill=fg + (255,))
-    # wifi: an upward fan (pieslice) left of the battery
-    gap = sw * 0.028
-    wr = strip_h * 0.30
-    wcx = bx1 - bw - gap - wr
-    wcy = cy + wr * 0.55
-    d.pieslice([wcx - wr, wcy - wr, wcx + wr, wcy + wr], 230, 310, fill=fg + (255,))
     # cellular: four ascending signal bars (iOS 11+ style — Apple flags dots as
-    # a non-iOS status bar under Guideline 2.3.10). Tallest bar nearest the wifi.
+    # a non-iOS status bar under Guideline 2.3.10). Sits directly left of battery.
+    # ponytail: wifi glyph dropped — a fake wifi fan never looked authentic and
+    # only added 2.3.10 risk; time+signal+battery already read as iOS.
+    gap = sw * 0.028
     bar_w = strip_h * 0.06
     bar_gap = bar_w * 0.7
     base_y = cy + strip_h * 0.15                 # bars share a common baseline
-    rx = wcx - wr - gap                          # right edge of the bar group
+    rx = bx1 - bw - gap                          # right edge of the bar group
     for i in range(4):                           # i=0 = rightmost = tallest
         h = strip_h * (0.30 - i * 0.055)
         x1 = rx - i * (bar_w + bar_gap)
