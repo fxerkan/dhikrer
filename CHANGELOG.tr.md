@@ -9,6 +9,17 @@ Her sürümde ayrıca bir **Mağaza sürüm notu** vardır — düz metin, ≤50
 
 ---
 
+## [1.3.2] — 2026-09-02 · versionCode 15
+
+- **Düzeltildi: iPhone'da "Mağazada Puanla" düğmesi çalışmıyordu** — App Store bağlantısı hâlâ
+  yer tutucuydu (`idTODO_APP_STORE_ID`), bu yüzden iOS'ta *Mağazada Puanla*'ya dokunmak bozuk bir
+  sayfa açıyordu. Artık Dhikrer'in gerçek App Store sayfasına gidiyor. Android etkilenmemişti.
+
+**Mağaza sürüm notu:** Hata düzeltmesi: iPhone'da "Mağazada Puanla" düğmesi artık bozuk bir bağlantı
+yerine uygulamanın gerçek App Store sayfasını açıyor.
+
+---
+
 ## [1.3.1] — 2026-08-14 · versionCode 14
 
 - **Düzeltildi: uygulama kapalıyken widget hedefi aşıyordu** — uygulama tamamen kapatıldıktan

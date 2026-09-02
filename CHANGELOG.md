@@ -9,6 +9,17 @@ paste into the Google Play "What's new" field and the App Store "What's New" sec
 
 ---
 
+## [1.3.2] — 2026-09-02 · versionCode 15
+
+- **Fixed: "Rate on Store" button did nothing on iPhone** — the App Store link was still a
+  placeholder (`idTODO_APP_STORE_ID`), so tapping *Rate on Store* on iOS opened a broken page.
+  It now points to Dhikrer's real App Store listing. Android was unaffected.
+
+**Store release note:** Bug fix: on iPhone, the "Rate on Store" button now opens the app's real
+App Store page instead of a broken link.
+
+---
+
 ## [1.3.1] — 2026-08-14 · versionCode 14
 
 - **Fixed: widget counted past the target when the app was closed** — tapping the home-screen
