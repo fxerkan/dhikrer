@@ -11,6 +11,10 @@ on:
         description: "Upload to the stores? Off = build + sign + artifact only (dry run)."
         type: boolean
         default: false
+      ios_only:
+        description: "Skip the Android job (e.g. re-publishing only iOS without bumping versionCode)."
+        type: boolean
+        default: false
 
 # Tag pushes always publish; manual runs publish only when the box is ticked.
 env:
@@ -22,6 +26,8 @@ jobs:
   # ---------------------------------------------------------------------------
   android:
     runs-on: ubuntu-latest
+    # Skip on a manual "ios_only" re-publish; tag pushes always build both.
+    if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.ios_only) }}
     steps:
       - uses: actions/checkout@v4
 
