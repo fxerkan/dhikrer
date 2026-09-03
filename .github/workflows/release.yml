@@ -30,12 +30,10 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "20"
-
-      - name: Generate web assets
-        run: node tools/gen_app.mjs .
+      # No web-asset generation here: the WebView loads the committed
+      # android/app/src/main/assets/app/ directly. gen_app.mjs regenerates those
+      # from webapp-handoff/ (gitignored design source) and is a local dev step —
+      # run it before committing when the UI changes, not in CI.
 
       # Decode the signing keystore + write keystore.properties (both gitignored in the repo).
       - name: Restore signing keystore
@@ -89,9 +87,10 @@ jobs:
       - name: Install Capacitor CLI deps
         run: npm ci
 
-      - name: Generate web assets + sync iOS
+      # Build www/ from the committed android assets, then sync into ios/App/App/public.
+      # (No gen_app.mjs — see the android job; committed assets are the source of truth.)
+      - name: Build web assets + sync iOS
         run: |
-          node tools/gen_app.mjs .
           npm run ios:web
           npx cap sync ios
 
