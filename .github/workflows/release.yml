@@ -80,6 +80,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # App Store Connect rejects builds made with an SDK older than iOS 26
+      # (Xcode 26+). The macos-15 image defaults to Xcode 16.4, so pick the
+      # newest Xcode 26.x explicitly and fail loudly if the runner lacks it.
+      - name: Select Xcode 26+
+        run: |
+          XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
+          if [ -z "$XC" ]; then
+            echo "No Xcode 26.x on this runner. Installed Xcodes:"; ls -d /Applications/Xcode_*.app
+            exit 1
+          fi
+          echo "Selecting $XC"
+          sudo xcode-select -s "$XC/Contents/Developer"
+          xcodebuild -version
+
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
