@@ -49,14 +49,14 @@ Uygulama kimliği `com.fxerkan.dhikrer` — Türkçede **Zikirci**, İngilizcede
 
 **Android 8.0+ (API 26)** üzerinde çalışır — Android **12, 13, 14, 15, 16** test edildi ve desteklenir.
 
-Güncel sürüm: **1.2.3** (versionCode 11). Tüm geçmiş
+Güncel sürüm: **1.3.1** (versionCode 14). Tüm geçmiş
 [`CHANGELOG.tr.md`](CHANGELOG.tr.md) (Türkçe) · [`CHANGELOG.md`](CHANGELOG.md) (English) dosyalarında.
 
 ## Yol haritası
 
 İleriki sürümler için planlananlar:
 
-- 🌍 **Tam Arapça (RTL) arayüz** — sağdan‑sola Arapça yerelleştirmesinin tamamlanması, doğrulanması ve dil seçicide etkinleştirilmesi.
+- 🎙️ **Ses tanıma ile zikir takibi** — sesli okudukça cihaz üzerinde ses tanıma ile otomatik sayım.
 - 🎧 **Bluetooth kulaklık entegrasyonu** — Bluetooth kulaklık tuşlarıyla say ve kontrol et.
 - 🔊 **Zikir seslendirme** — saydıkça aktif zikrin sesli okunması.
 - 📊 **İstatistik widget'ı** — günlük sayım, seri ve ilerlemeyi gösteren ana ekran widget'ı.

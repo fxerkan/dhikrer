@@ -78,10 +78,9 @@ superseded by `hero_set.py`. Legacy Play screenshots sit in `store/android/_lega
 
 ## Roadmap (planned, not yet built)
 
-Full Arabic (RTL) UI (verify + enable in the language picker) · Bluetooth headset
-integration · dhikr audio narration (spoken playback) · statistics home-screen
-widget · dhikr sharing. Full list lives in `README.md`.
+Voice-recognition dhikr tracking (auto-count via on-device speech recognition) ·
+Bluetooth headset integration · dhikr audio narration (spoken playback) ·
+statistics home-screen widget · dhikr sharing. Full list lives in `README.md`.
 
-Note: Arabic strings exist (`tools/langs.js` `ar`) and `gen_app.mjs` already
-un-disables the `ar` option in the built `app.html`; RTL renders. What's left is
-verification/polish + enabling it in the `webapp-handoff` source.
+Note: Full Arabic (RTL) UI is done — Arabic strings live in `tools/langs.js` `ar`,
+`gen_app.mjs` un-disables the `ar` option in the built `app.html`, and RTL renders.

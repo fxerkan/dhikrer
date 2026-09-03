@@ -48,14 +48,14 @@ App ID `com.fxerkan.dhikrer` — named **Zikirci** in Turkish, **Dhikrer** in En
 
 Runs on **Android 8.0+ (API 26)** — Android **12, 13, 14, 15, 16** are all tested and supported.
 
-Current release: **1.2.3** (versionCode 11). Full history in
+Current release: **1.3.1** (versionCode 14). Full history in
 [`CHANGELOG.md`](CHANGELOG.md) (English) · [`CHANGELOG.tr.md`](CHANGELOG.tr.md) (Türkçe).
 
 ## Roadmap
 
 Planned for future releases:
 
-- 🌍 **Full Arabic (RTL) UI** — complete right‑to‑left Arabic localization, verified and enabled in the language picker.
+- 🎙️ **Voice‑recognition dhikr tracking** — count automatically as you recite aloud, using on‑device speech recognition.
 - 🎧 **Bluetooth headset integration** — count and control with the buttons on Bluetooth earbuds/headphones.
 - 🔊 **Dhikr audio narration** — spoken playback of the active dhikr as you count.
 - 📊 **Statistics widget** — a home‑screen widget showing your daily count, streak, and progress.
