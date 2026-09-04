@@ -21,10 +21,20 @@ Rules:
   - `android/app/build.gradle.kts` → `versionName` + `versionCode`
   - `ios/App/App.xcodeproj/project.pbxproj` → `MARKETING_VERSION` (= `versionName`) + `CURRENT_PROJECT_VERSION` (= `versionCode`), in **both** Debug and Release configs
   - `package.json` → `version` (= `versionName`)
-- Current: `1.3.1` / code `14`. History `1.0`–`1.5` (old 2-part scheme) maps to `1.0.0`–`1.0.5`.
+- Current: `1.3.2` / code `15`. History `1.0`–`1.5` (old 2-part scheme) maps to `1.0.0`–`1.0.5`.
 - Name release APKs `Zikirci-Dhikrer-<versionName>.apk`.
 - On every release, add the entry to `CHANGELOG.md` (EN) **and** `CHANGELOG.tr.md` (TR),
-  including the ≤500-char Play Store / App Store "What's new" note.
+  including the ≤500-char Play Store / App Store "What's new" note. Also bump
+  `store/release-notes.json` (`version` + per-locale `notes`, incl. `ar`) — the CI reads
+  it to fill the App Store "What's New"; it only applies notes whose `version` matches the
+  build, so stale notes are never shipped.
+- **Publishing (CI/CD).** `.github/workflows/release.yml` (see [`.github/RELEASE_CICD.md`]):
+  push a `v*` tag → Android → Play internal, iOS binary → App Store Connect, then the
+  `ios_prepare` job (ASC API, `tools/asc_prepare_version.py`) waits for build processing and
+  **creates the App Store version + attaches the build + writes What's New** — leaving it one
+  manual click from **Submit for Review** (it never auto-submits). To re-publish only iOS at
+  the same versionCode after Android already shipped, run the workflow manually with
+  `ios_only=true` + `publish=true` (a full re-run would fail Play's duplicate-versionCode check).
 - **App Store submissions (Apple Guideline 2.1):** the **App Review Information → Notes**
   field is MANDATORY — paste `store/ios/APP_REVIEW_NOTES.md` verbatim and attach a
   screen recording made on a *physical* iPhone. An empty/thin Notes field is why our

@@ -180,3 +180,39 @@ jobs:
         with:
           name: dhikrer-ios-ipa
           path: ${{ runner.temp }}/export/App.ipa
+
+  # ---------------------------------------------------------------------------
+  # Prepare the App Store version (create + attach build + What's New) so the
+  # release needs only one manual click: "Submit for Review". Never submits.
+  # Runs on cheap ubuntu (pure ASC API); waits for Apple-side build processing.
+  # ---------------------------------------------------------------------------
+  ios_prepare:
+    runs-on: ubuntu-latest
+    needs: ios
+    if: ${{ needs.ios.result == 'success' && (github.event_name == 'push' || inputs.publish) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install "pyjwt[crypto]"
+
+      - name: Read version + build from the iOS project
+        id: ver
+        run: |
+          PBX=ios/App/App.xcodeproj/project.pbxproj
+          echo "version=$(grep -m1 -oE 'MARKETING_VERSION = [^;]+' $PBX | awk '{print $3}')" >> "$GITHUB_OUTPUT"
+          echo "build=$(grep -m1 -oE 'CURRENT_PROJECT_VERSION = [0-9]+' $PBX | awk '{print $3}')" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare App Store version (no submit)
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          API_KEY_BASE64: ${{ secrets.ASC_API_KEY_BASE64 }}
+          APP_VERSION: ${{ steps.ver.outputs.version }}
+          BUILD_NUMBER: ${{ steps.ver.outputs.build }}
+        run: |
+          echo "$API_KEY_BASE64" | base64 -d > "$RUNNER_TEMP/asc.p8"
+          ASC_API_KEY_PATH="$RUNNER_TEMP/asc.p8" python3 tools/asc_prepare_version.py

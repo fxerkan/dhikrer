@@ -1,0 +1,9 @@
+{
+  "_note": "App Store 'What's New' per locale for the CURRENT release. Bump `version` + all notes each release (keep in sync with CHANGELOG's store note). The CI ios_prepare job (tools/asc_prepare_version.py) only writes these when `version` matches the build's MARKETING_VERSION, so stale notes are never shipped. Keys are App Store Connect locale codes.",
+  "version": "1.3.2",
+  "notes": {
+    "en-US": "Bug fix: on iPhone, the \"Rate on Store\" button now opens the app's real App Store page instead of a broken link.",
+    "tr": "Hata düzeltmesi: iPhone'da \"Mağazada Puanla\" düğmesi artık bozuk bir bağlantı yerine uygulamanın gerçek App Store sayfasını açıyor.",
+    "ar": "إصلاح خلل: على iPhone، أصبح زر «قيّم على المتجر» يفتح الآن صفحة التطبيق الحقيقية في App Store بدلاً من رابط معطّل."
+  }
+}
