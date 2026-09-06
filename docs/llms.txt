@@ -1,0 +1,18 @@
+# Dhikrer · Zikirci
+
+> A free, ad-free, offline digital dhikr counter (tasbih / tesbih / zikirmatik) for Android and iOS. No account, no analytics, no tracking — everything stays on your device. Trilingual: English, Türkçe, العربية (RTL).
+
+## Pages
+
+- [Home](https://fxerkan.github.io/dhikrer/): App overview, features, screenshots, user guide, and FAQ.
+- [Privacy Policy](https://fxerkan.github.io/dhikrer/privacy.html): No account, no analytics, no tracking; all data stays on device.
+
+## Get the app
+
+- [App Store (iOS)](https://apps.apple.com/app/id6803203796)
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=com.fxerkan.dhikrer)
+
+## Source
+
+- [GitHub repository](https://github.com/fxerkan/dhikrer): Open-source project.
+- [Changelog](https://github.com/fxerkan/dhikrer/blob/main/CHANGELOG.md)
