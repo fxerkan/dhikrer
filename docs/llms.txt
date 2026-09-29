@@ -4,8 +4,8 @@
 
 ## Pages
 
-- [Home](https://fxerkan.github.io/dhikrer/): App overview, features, screenshots, user guide, and FAQ.
-- [Privacy Policy](https://fxerkan.github.io/dhikrer/privacy.html): No account, no analytics, no tracking; all data stays on device.
+- [Home](https://dhikrer.fxerkan.com/): App overview, features, screenshots, user guide, and FAQ.
+- [Privacy Policy](https://dhikrer.fxerkan.com/privacy.html): No account, no analytics, no tracking; all data stays on device.
 
 ## Get the app
 
